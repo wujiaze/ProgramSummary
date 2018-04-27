@@ -1,0 +1,7 @@
+D:\Desktop\编程学习总结\C#总结\特性\AttributeLearn\AttributeLearn\bin\Debug\AttributeLearn.exe.config
+D:\Desktop\编程学习总结\C#总结\特性\AttributeLearn\AttributeLearn\bin\Debug\AttributeLearn.exe
+D:\Desktop\编程学习总结\C#总结\特性\AttributeLearn\AttributeLearn\bin\Debug\AttributeLearn.pdb
+D:\Desktop\编程学习总结\C#总结\特性\AttributeLearn\AttributeLearn\obj\Debug\AttributeLearn.csprojResolveAssemblyReference.cache
+D:\Desktop\编程学习总结\C#总结\特性\AttributeLearn\AttributeLearn\obj\Debug\AttributeLearn.csproj.CoreCompileInputs.cache
+D:\Desktop\编程学习总结\C#总结\特性\AttributeLearn\AttributeLearn\obj\Debug\AttributeLearn.exe
+D:\Desktop\编程学习总结\C#总结\特性\AttributeLearn\AttributeLearn\obj\Debug\AttributeLearn.pdb

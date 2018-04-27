@@ -1,0 +1,6 @@
+D:\Desktop\log4net-2.0.8-src\log4net-2.0.8\tests\bin\Debug\log4net.Tests.dll
+D:\Desktop\log4net-2.0.8-src\log4net-2.0.8\tests\bin\Debug\log4net.Tests.pdb
+D:\Desktop\log4net-2.0.8-src\log4net-2.0.8\tests\src\obj\Debug\log4net.Tests.vs2012.csprojResolveAssemblyReference.cache
+D:\Desktop\log4net-2.0.8-src\log4net-2.0.8\tests\src\obj\Debug\log4net.Tests.vs2012.csproj.CoreCompileInputs.cache
+D:\Desktop\log4net-2.0.8-src\log4net-2.0.8\tests\src\obj\Debug\log4net.Tests.dll
+D:\Desktop\log4net-2.0.8-src\log4net-2.0.8\tests\src\obj\Debug\log4net.Tests.pdb

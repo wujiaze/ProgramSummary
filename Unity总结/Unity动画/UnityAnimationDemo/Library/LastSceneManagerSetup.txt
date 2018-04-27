@@ -1,0 +1,4 @@
+sceneSetups:
+- path: "Assets/04Mecanim\u52A8\u753B/3D\u7B80\u5355\u52A8\u753B/scene.unity"
+  isLoaded: 1
+  isActive: 1
