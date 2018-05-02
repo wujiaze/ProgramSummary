@@ -68,6 +68,14 @@ namespace 特性
 
         #endregion
 
+        #region Flags
+        // 常用于枚举，这个枚举就成为了位标记枚举
+        //  所以可以使用按位或“|”来进行组合。
+
+
+        #endregion
+
+
         #region MyAttribute
         //[Test]
         static void play()

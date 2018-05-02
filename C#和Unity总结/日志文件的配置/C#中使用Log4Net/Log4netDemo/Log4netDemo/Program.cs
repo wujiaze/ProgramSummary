@@ -15,7 +15,7 @@ namespace Log4netDemo
         static void Main(string[] args)
         {
             // 初始化log
-            XmlConfigurator.Configure(new FileInfo("log4net.config"));// 文件路径在bin/DeBug
+            XmlConfigurator.Configure(new FileInfo("log4net.config"));// 文件路径在bin/DeBug/og4net.config
             myLogger.Warn("这是一个警告日志");
             myLogger.Info("单击了按钮");
             myLogger.Debug("用Log4Net写入数据库日志");
