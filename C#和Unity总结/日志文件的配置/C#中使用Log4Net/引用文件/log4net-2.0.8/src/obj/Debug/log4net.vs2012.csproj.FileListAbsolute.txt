@@ -1,0 +1,10 @@
+D:\Desktop\log4net-2.0.8-src\log4net-2.0.8\build\bin\net\4.5\debug\log4net.dll
+D:\Desktop\log4net-2.0.8-src\log4net-2.0.8\build\bin\net\4.5\debug\log4net.pdb
+D:\Desktop\log4net-2.0.8-src\log4net-2.0.8\build\bin\net\4.5\debug\log4net.xml
+D:\Desktop\log4net-2.0.8-src\log4net-2.0.8\src\obj\Debug\log4net.vs2012.csproj.CoreCompileInputs.cache
+D:\Desktop\log4net-2.0.8-src\log4net-2.0.8\src\obj\Debug\log4net.dll
+D:\Desktop\log4net-2.0.8-src\log4net-2.0.8\src\obj\Debug\log4net.pdb
+D:\Desktop\编程工具\日志文件的配置\C#中使用Log4Net\引用文件\log4net-2.0.8\src\obj\Debug\log4net.vs2012.csprojResolveAssemblyReference.cache
+D:\Desktop\编程工具\日志文件的配置\C#中使用Log4Net\引用文件\log4net-2.0.8\src\obj\Debug\log4net.vs2012.csproj.CoreCompileInputs.cache
+D:\Desktop\编程工具\日志文件的配置\C#中使用Log4Net\引用文件\log4net-2.0.8\src\obj\Debug\log4net.dll
+D:\Desktop\编程工具\日志文件的配置\C#中使用Log4Net\引用文件\log4net-2.0.8\src\obj\Debug\log4net.pdb
