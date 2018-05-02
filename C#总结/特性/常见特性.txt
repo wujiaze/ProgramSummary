@@ -1,5 +1,0 @@
-[Obsolete] ：过时标记
-[Conditional] ：条件编译
-[DebuggerStepThrough]:调试跳过
-[Flags]:位标记
-[Serializable] / [NonSerialized] ：序列化标记

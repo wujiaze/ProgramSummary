@@ -1,4 +1,0 @@
-sceneSetups:
-- path: "Assets/Lesson02_\u7B2C\u4E09\u4EBA\u79F0\u76F8\u673A\u8DDF\u968F/scene.unity"
-  isLoaded: 1
-  isActive: 1

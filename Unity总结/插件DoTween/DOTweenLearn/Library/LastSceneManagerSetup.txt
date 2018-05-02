@@ -1,4 +1,0 @@
-sceneSetups:
-- path: "Assets/Dotween\u4E2D\u9014\u6539\u53D8\u76EE\u6807\u503C/scene.unity"
-  isLoaded: 1
-  isActive: 1

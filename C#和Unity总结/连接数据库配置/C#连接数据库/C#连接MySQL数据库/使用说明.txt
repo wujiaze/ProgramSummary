@@ -1,6 +1,0 @@
-安装mysql时，勾选了connect .net 产品，所以在C:\Program Files (x86)\MySQL\Connector.NET 6.9\Assemblies
-根据C#框架选择对应版本的MySql.Data.DLL 文件
-
-这里已经将版本复制到引用文件里了
-
-当项目需要使用时，将dll文件复制到输出根目录bin/Debug ，然后在项目中引用这个dll

@@ -1,7 +1,0 @@
-D:\Desktop\C#编程学习总结\接口测试\InterfaceTest\InterfaceTest\bin\Debug\InterfaceTest.exe.config
-D:\Desktop\C#编程学习总结\接口测试\InterfaceTest\InterfaceTest\bin\Debug\InterfaceTest.exe
-D:\Desktop\C#编程学习总结\接口测试\InterfaceTest\InterfaceTest\bin\Debug\InterfaceTest.pdb
-D:\Desktop\C#编程学习总结\接口测试\InterfaceTest\InterfaceTest\obj\Debug\InterfaceTest.csprojResolveAssemblyReference.cache
-D:\Desktop\C#编程学习总结\接口测试\InterfaceTest\InterfaceTest\obj\Debug\InterfaceTest.csproj.CoreCompileInputs.cache
-D:\Desktop\C#编程学习总结\接口测试\InterfaceTest\InterfaceTest\obj\Debug\InterfaceTest.exe
-D:\Desktop\C#编程学习总结\接口测试\InterfaceTest\InterfaceTest\obj\Debug\InterfaceTest.pdb

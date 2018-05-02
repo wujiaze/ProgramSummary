@@ -1,7 +1,0 @@
-D:\Desktop\ExceptionLearn\ExceptionLearn\bin\Debug\ExceptionLearn.exe.config
-D:\Desktop\ExceptionLearn\ExceptionLearn\bin\Debug\ExceptionLearn.exe
-D:\Desktop\ExceptionLearn\ExceptionLearn\bin\Debug\ExceptionLearn.pdb
-D:\Desktop\ExceptionLearn\ExceptionLearn\obj\Debug\ExceptionLearn.csprojResolveAssemblyReference.cache
-D:\Desktop\ExceptionLearn\ExceptionLearn\obj\Debug\ExceptionLearn.csproj.CoreCompileInputs.cache
-D:\Desktop\ExceptionLearn\ExceptionLearn\obj\Debug\ExceptionLearn.exe
-D:\Desktop\ExceptionLearn\ExceptionLearn\obj\Debug\ExceptionLearn.pdb
