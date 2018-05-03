@@ -35,5 +35,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
-// 自己添加的log4net文件
+// 在一个程序集中，添加这个特性
+// 意思是：选择 log4net.config 这个配置文件
+// 文件路径在 bin/DeBug/log4net.config ，所以 log4net.config 需要输出到目录
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]

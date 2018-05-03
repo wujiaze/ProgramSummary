@@ -6,3 +6,12 @@ D:\Desktop\编程工具\日志文件的配置\Log4netDemo\Log4netDemo\obj\Debug\
 D:\Desktop\编程工具\日志文件的配置\Log4netDemo\Log4netDemo\obj\Debug\Log4netDemo.pdb
 D:\Desktop\编程工具\日志文件的配置\Log4netDemo\Log4netDemo\bin\Debug\Log4netDemo.exe.config
 D:\Desktop\编程工具\日志文件的配置\Log4netDemo\Log4netDemo\bin\Debug\log4net.config
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\日志文件的配置\C#中使用Log4Net\Log4netDemo\Log4netDemo\bin\Debug\log4net.config
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\日志文件的配置\C#中使用Log4Net\Log4netDemo\Log4netDemo\bin\Debug\Log4netDemo.exe.config
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\日志文件的配置\C#中使用Log4Net\Log4netDemo\Log4netDemo\bin\Debug\Log4netDemo.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\日志文件的配置\C#中使用Log4Net\Log4netDemo\Log4netDemo\bin\Debug\Log4netDemo.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\日志文件的配置\C#中使用Log4Net\Log4netDemo\Log4netDemo\obj\Debug\Log4netDemo.csprojResolveAssemblyReference.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\日志文件的配置\C#中使用Log4Net\Log4netDemo\Log4netDemo\obj\Debug\Log4netDemo.csproj.CoreCompileInputs.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\日志文件的配置\C#中使用Log4Net\Log4netDemo\Log4netDemo\obj\Debug\Log4netDemo.csproj.CopyComplete
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\日志文件的配置\C#中使用Log4Net\Log4netDemo\Log4netDemo\obj\Debug\Log4netDemo.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\日志文件的配置\C#中使用Log4Net\Log4netDemo\Log4netDemo\obj\Debug\Log4netDemo.pdb

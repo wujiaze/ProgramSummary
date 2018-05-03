@@ -3,7 +3,8 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 // 由于 SoapFormatter 不能序列化泛型，所以就不采用这个格式化器了
-using System.Runtime.Serialization.Formatters.Soap; // 这个命名空间需要在引用中手动添加
+// 这个命名空间需要在引用中手动添加
+using System.Runtime.Serialization.Formatters.Soap; 
 
 namespace Serialize
 {

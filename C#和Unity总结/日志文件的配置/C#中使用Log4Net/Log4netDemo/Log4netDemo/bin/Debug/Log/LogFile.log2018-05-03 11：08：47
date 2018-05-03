@@ -1,0 +1,6 @@
+2018-05-03 11:08:49,331 [1] WARN  Log4netDemo.Program [(null)] - 这是一个警告日志
+2018-05-03 11:08:49,392 [1] INFO  Log4netDemo.Program [(null)] - 单击了按钮
+2018-05-03 11:08:49,404 [1] DEBUG Log4netDemo.Program [(null)] - 用Log4Net写入数据库日志
+2018-05-03 11:08:49,414 [1] ERROR Log4netDemo.Program [(null)] - 这是一个错误日志
+2018-05-03 11:08:49,427 [1] FATAL Log4netDemo.Program [(null)] - 这是一个致命的错误日志
+2018-05-03 11:08:49,489 [1] WARN  roo [(null)] - 通过Nmae来获取不同的记录器

@@ -16,3 +16,11 @@ D:\Desktop\编程工具\连接数据库配置\C#连接数据库\C#连接SQLite�
 D:\Desktop\编程工具\连接数据库配置\C#连接数据库\C#连接SQLite数据库\ConnectSQLiteDemo\ConnectSQLite\obj\Debug\ConnectSQLite.csproj.CoreCompileInputs.cache
 D:\Desktop\编程工具\连接数据库配置\C#连接数据库\C#连接SQLite数据库\ConnectSQLiteDemo\ConnectSQLite\obj\Debug\ConnectSQLite.exe
 D:\Desktop\编程工具\连接数据库配置\C#连接数据库\C#连接SQLite数据库\ConnectSQLiteDemo\ConnectSQLite\obj\Debug\ConnectSQLite.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\连接数据库配置\C#连接数据库\C#连接SQLite数据库\ConnectSQLiteDemo\ConnectSQLite\bin\Debug\ConnectSQLite.exe.config
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\连接数据库配置\C#连接数据库\C#连接SQLite数据库\ConnectSQLiteDemo\ConnectSQLite\bin\Debug\ConnectSQLite.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\连接数据库配置\C#连接数据库\C#连接SQLite数据库\ConnectSQLiteDemo\ConnectSQLite\bin\Debug\ConnectSQLite.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\连接数据库配置\C#连接数据库\C#连接SQLite数据库\ConnectSQLiteDemo\ConnectSQLite\obj\Debug\ConnectSQLite.csprojResolveAssemblyReference.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\连接数据库配置\C#连接数据库\C#连接SQLite数据库\ConnectSQLiteDemo\ConnectSQLite\obj\Debug\ConnectSQLite.csproj.CoreCompileInputs.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\连接数据库配置\C#连接数据库\C#连接SQLite数据库\ConnectSQLiteDemo\ConnectSQLite\obj\Debug\ConnectSQLite.csproj.CopyComplete
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\连接数据库配置\C#连接数据库\C#连接SQLite数据库\ConnectSQLiteDemo\ConnectSQLite\obj\Debug\ConnectSQLite.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\连接数据库配置\C#连接数据库\C#连接SQLite数据库\ConnectSQLiteDemo\ConnectSQLite\obj\Debug\ConnectSQLite.pdb

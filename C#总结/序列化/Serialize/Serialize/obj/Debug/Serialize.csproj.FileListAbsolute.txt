@@ -5,3 +5,10 @@ D:\Desktop\编程学习总结\ProgramSummary\ProgramSummary\C#总结\Serialize\S
 D:\Desktop\编程学习总结\ProgramSummary\ProgramSummary\C#总结\Serialize\Serialize\obj\Debug\Serialize.csproj.CoreCompileInputs.cache
 D:\Desktop\编程学习总结\ProgramSummary\ProgramSummary\C#总结\Serialize\Serialize\obj\Debug\Serialize.exe
 D:\Desktop\编程学习总结\ProgramSummary\ProgramSummary\C#总结\Serialize\Serialize\obj\Debug\Serialize.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\序列化\Serialize\Serialize\bin\Debug\Serialize.exe.config
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\序列化\Serialize\Serialize\bin\Debug\Serialize.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\序列化\Serialize\Serialize\bin\Debug\Serialize.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\序列化\Serialize\Serialize\obj\Debug\Serialize.csprojResolveAssemblyReference.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\序列化\Serialize\Serialize\obj\Debug\Serialize.csproj.CoreCompileInputs.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\序列化\Serialize\Serialize\obj\Debug\Serialize.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\序列化\Serialize\Serialize\obj\Debug\Serialize.pdb

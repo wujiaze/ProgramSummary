@@ -3,32 +3,57 @@ using System.Data.SQLite;
 
 namespace ConnectSQLite
 {
-    class SqLiteHelper
+    /// <summary>
+    /// SQLite 帮助操作类
+    /// </summary>
+    class SQLiteHelper
     {
+        /// <summary>
+        /// 数据库连接对象
+        /// </summary>
         private SQLiteConnection connection;
 
-        public SqLiteHelper()
+        public SQLiteHelper()
         {
             connection = new SQLiteConnection();
         }
         /// <summary>
         /// 连接并打开数据库
-        /// Pooling=true;FailIfMissing=false：路径不存在数据库时，会创建数据库。当只有数据库名时，表示数据库在bin/Debug路径下
+        /// Pooling=true;FailIfMissing=false
+        /// 路径不存在数据库时，会创建数据库。当只有数据库名时，表示数据库在bin/Debug路径下
         /// </summary>
         /// <param name="DBpath">数据库路径</param>
         public void OpenDataBase(string DBpath)
         {
+            if(string.IsNullOrEmpty(DBpath))return;
             try
             {
                 connection.ConnectionString = @"Data Source="+ DBpath + ";Pooling=true;FailIfMissing=false";
                 connection.Open();
-                Console.WriteLine("成功打开数据库");
+                Console.WriteLine("成功打开数据库"+ DBpath);
             }
             catch (Exception e)
             {
-                Console.WriteLine("数据库打开失败" +e);
+                Console.WriteLine(DBpath+"数据库打开失败" +e);
             }
         }
+        /// <summary>
+        /// 关闭数据库
+        /// </summary>
+        public void CloseDataBase()
+        {
+            try
+            {
+                connection.Close();
+                Console.WriteLine("成功关闭数据库");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("关闭数据库出现问题" + e.Message);
+
+            }
+        }
+
 
         /// <summary>
         /// 创建表，存在这张表时，就不做操作
@@ -43,7 +68,7 @@ namespace ConnectSQLite
         private string ColumnName1;
         private string ColumnName2;
         private string ColumnName3;
-        public void CreatTable(string tablename, string column1Name, string column1Type, string column2Name, string column2Type, string column3Name, string column3Type)
+        public  void CreatTable(string tablename, string column1Name, string column1Type, string column2Name, string column2Type, string column3Name, string column3Type)
         {
 
             //判断数据库里面是否存在某个表格--比如UserTable
@@ -59,9 +84,9 @@ namespace ConnectSQLite
                 Console.WriteLine(reader.FieldCount);
                 for (int i = 0; i < reader.FieldCount; i++)
                 {
+                    Console.WriteLine(reader.GetValue(i).ToString());
                     if (reader.GetValue(i).ToString() == "1")
                     {
-                        Console.WriteLine(tablename + "表格已经存在");
                         isExit = true;
                         ColumnName1 = column1Name;
                         ColumnName2 = column2Name;
@@ -105,6 +130,7 @@ namespace ConnectSQLite
         /// <param name="column2Value">第二列的值</param>
         /// <param name="column3Value">第三列的值</param>
         public void InsertData(string tableName , string column1Value, string column2Value, string column3Value)
+
         {
             SQLiteCommand cmd = connection.CreateCommand();
             cmd.CommandText = "insert into " + tableName + "("+ColumnName1+ "," + ColumnName2 + ","+ColumnName3+ ")" + " values"+"('" + column1Value + "','" + column2Value + "','" + column3Value + "')";
@@ -212,21 +238,6 @@ namespace ConnectSQLite
                 Console.WriteLine("查找数据失败" + ex);
             }
         }
-        /// <summary>
-        /// 关闭数据库
-        /// </summary>
-        public void CloseDataBase()
-        {
-            try
-            {
-                connection.Close();
-                Console.WriteLine("成功关闭数据库");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("关闭数据库出现问题" + e.Message);
-
-            }
-        }
+        
     }
 }

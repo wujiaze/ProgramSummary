@@ -7,7 +7,7 @@ namespace ConnectSQLite
         {
             // 总结: 1.类型 int和 integer 是一样的
             //       2. SQLite会自动添加ID列，并且名称为 "rowid";
-            SqLiteHelper sqLiteHelper =new SqLiteHelper();
+            SQLiteHelper sqLiteHelper =new SQLiteHelper();
             string DataBasePath = "D:/Desktop/database.db";
             sqLiteHelper.OpenDataBase(DataBasePath);
             string tablename = "rr";
@@ -17,6 +17,7 @@ namespace ConnectSQLite
             string column2Type = "int";
             string column3Name = "color";
             string column3Type = "text";
+            sqLiteHelper.CreatTable(tablename, column1Name, column1Type, column2Name, column2Type, column3Name, column3Type);
             sqLiteHelper.CreatTable(tablename, column1Name, column1Type, column2Name, column2Type, column3Name, column3Type);
             sqLiteHelper.InsertData(tablename, "二手奥拓", "1600", "red");
             sqLiteHelper.UpdateData(tablename, column2Name, "1500", column1Name, "二手奥拓");
