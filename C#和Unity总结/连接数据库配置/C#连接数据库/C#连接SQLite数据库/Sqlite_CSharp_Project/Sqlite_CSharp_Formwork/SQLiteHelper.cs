@@ -32,7 +32,8 @@ namespace Sqlite_CSharp_Formwork
         /// <summary>
         /// 连接并打开数据库
         /// Pooling=true;FailIfMissing=false
-        /// 路径不存在数据库时，会创建数据库。当只有数据库名时，表示数据库在bin/Debug路径下
+        /// 路径不存在数据库时，会创建数据库。
+        /// 当只有数据库名时，表示数据库在bin/Debug路径下
         /// </summary>
         /// <param name="DBpath">数据库路径</param>
         public static void OpenDataBase(string DBpath)
