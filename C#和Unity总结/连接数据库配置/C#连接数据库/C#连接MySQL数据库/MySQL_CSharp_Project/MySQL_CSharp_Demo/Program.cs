@@ -13,15 +13,15 @@ namespace MySQL_CSharp_Demo
             string tablename = "rr";
             string tablename2 = "pp";
             string column1Name = "type";
-            string column1Type = FiledType.VarChar.ToString();
+            string column1Type = FieldType.VarChar.ToString();
             string column2Name = "price";
-            string column2Type = FiledType.Int.ToString();
+            string column2Type = FieldType.Int.ToString();
             string column3Name = "color";
-            string column3Type = FiledType.VarChar.ToString();
+            string column3Type = FieldType.VarChar.ToString();
             string[] types = new string[] { column1Type, column2Type, column3Type };
             string[] name = new string[] { column1Name, column2Name, column3Name };
             string[] colLength = new[] {"255", "255", "2000"};
-            string[] colState = new[] {"NULL", "NULL", "NULL"};
+            string[] colState = new[] { FieldState.Null.ToString(), FieldState.Null.ToString(), FieldState.Null.ToString() };
             MySQLHelper.CreateTable(tablename, name, types, colLength,colState);
             MySQLHelper.CreateTable(tablename2, name, types, colLength, colState);
             // 增

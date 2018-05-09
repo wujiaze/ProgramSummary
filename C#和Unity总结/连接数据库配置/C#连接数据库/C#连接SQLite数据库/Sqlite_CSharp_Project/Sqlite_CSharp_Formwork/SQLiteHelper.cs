@@ -8,7 +8,24 @@ namespace Sqlite_CSharp_Formwork
     {
         NonQuery
     }
-
+    /// <summary>
+    /// SQLite 中常用的数据类型
+    /// </summary>
+    public enum FieldType
+    {
+        VarChar,    // 代表字符串
+        Int,        // 代表整数
+        Double,     // 双精度浮点数
+        Float,      // 单精度浮点数
+        DateTime    // 日期加时间
+    }
+    /// <summary>
+    /// 字段的状态
+    /// </summary>
+    public enum FieldState
+    {
+        Null
+    }
     /// <summary>
     /// SQLite 操作类
     /// </summary>
@@ -158,8 +175,10 @@ namespace Sqlite_CSharp_Formwork
         /// <returns>The table.</returns>
         /// <param name="tableName">数据表名</param>
         /// <param name="colNames">字段名</param>
-        /// <param name="colTypes">字段名类型</param>
-        public  static SQLiteDataReader CreateTable(string tableName, string[] colNames, string[] colTypes)
+        /// <param name="colTypes">字段名类型  FieldType </param>
+        /// <param name="colLength">数据的预留长度</param>
+        /// <param name="colState">数据的可设置状态 FieldState</param>
+        public static SQLiteDataReader CreateTable(string tableName, string[] colNames, string[] colTypes, string[] colLength, string[] colState)
         {
             SQLiteCommand dbCommand = dbConnection.CreateCommand();
             dbCommand.CommandText = "SELECT COUNT(*) FROM SQLITE_MASTER WHERE TYPE = 'table' AND NAME = " + "'"+tableName+"'";
@@ -184,12 +203,13 @@ namespace Sqlite_CSharp_Formwork
             }
             else
             {
-                string queryString = "CREATE TABLE IF NOT EXISTS " + tableName + "( " + colNames[0] + " " + colTypes[0];
+                string queryString = "CREATE TABLE IF NOT EXISTS " + tableName + "( " + colNames[0] + " " + colTypes[0] + "(" + colLength[0] + ")" +
+                                     " DEFAULT " + colState[0] ;
                 for (int i = 1; i < colNames.Length; i++)
                 {
-                    queryString += ", " + colNames[i] + " " + colTypes[i];
+                    queryString += ","+colNames[i] + " " + colTypes[i] + "(" + colLength[i] + ")" + " DEFAULT " + colState[i] ;
                 }
-                queryString += "  ) ";
+                queryString += "  );";
                 return ExecuteQuery(queryString);
             }
         }

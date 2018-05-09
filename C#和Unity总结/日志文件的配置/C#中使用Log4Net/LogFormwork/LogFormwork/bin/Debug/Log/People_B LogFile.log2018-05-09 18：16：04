@@ -1,0 +1,3 @@
+2018-05-09 18:16:05,132 [1] DEBUG People_B [(null)] - p
+System.DivideByZeroException: 尝试除以零。
+   在 LogFormwork.Program.Main(String[] args) 位置 D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\日志文件的配置\C#中使用Log4Net\LogFormwork\LogFormwork\Program.cs:行号 56

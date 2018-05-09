@@ -18,7 +18,7 @@ namespace MySQL_CSharp_Formwork
     /// <summary>
     /// MySQL中常用的数据类型
     /// </summary>
-    public enum FiledType
+    public enum FieldType
     {
         VarChar,    // 代表字符串
         Int,        // 代表整数
@@ -26,9 +26,16 @@ namespace MySQL_CSharp_Formwork
         Float,      // 单精度浮点数
         DateTime    // 日期加时间
     }
+    /// <summary>
+    /// 字段的状态
+    /// </summary>
+    public enum FieldState
+    {
+        Null
+    }
 
     /// <summary>
-    /// SQLite 操作类
+    /// MySQL 操作类
     /// </summary>
     public class MySQLHelper
     {
@@ -81,6 +88,7 @@ namespace MySQL_CSharp_Formwork
                 }
                 catch (Exception e)
                 {
+                    dbConnection.Close();
                     try
                     {
                         string tmpstr = String.Format("Host = {0};port ={1};UID ={2};PWD={3};", host, port, userName, passwd);
@@ -204,9 +212,10 @@ namespace MySQL_CSharp_Formwork
                 if (dbConnection != null)
                 {
                     dbConnection.Close();
+                    Console.WriteLine("成功关闭数据库");
                 }
                 dbConnection = null;
-                Console.WriteLine("成功关闭数据库");
+                
             }
             catch (Exception e)
             {

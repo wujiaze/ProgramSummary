@@ -8,3 +8,4 @@ D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\连接数据库配
 D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\连接数据库配置\C#连接数据库\C#连接SQLite数据库\Sqlite_CSharp_Project\Sqlite_CSharp_Demo\obj\Debug\Sqlite_CSharp_Demo.csproj.CopyComplete
 D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\连接数据库配置\C#连接数据库\C#连接SQLite数据库\Sqlite_CSharp_Project\Sqlite_CSharp_Demo\obj\Debug\ConsoleApp1.exe
 D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\连接数据库配置\C#连接数据库\C#连接SQLite数据库\Sqlite_CSharp_Project\Sqlite_CSharp_Demo\obj\Debug\ConsoleApp1.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\连接数据库配置\C#连接数据库\C#连接SQLite数据库\Sqlite_CSharp_Project\Sqlite_CSharp_Demo\bin\Debug\System.Data.SQLite.dll

@@ -1,0 +1,7 @@
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\日志文件的配置\C#中使用Log4Net\LogFormwork\LogFramework\bin\Debug\LogFramework.dll
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\日志文件的配置\C#中使用Log4Net\LogFormwork\LogFramework\bin\Debug\LogFramework.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\日志文件的配置\C#中使用Log4Net\LogFormwork\LogFramework\bin\Debug\log4net.dll
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\日志文件的配置\C#中使用Log4Net\LogFormwork\LogFramework\obj\Debug\LogFramework.csproj.CoreCompileInputs.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\日志文件的配置\C#中使用Log4Net\LogFormwork\LogFramework\obj\Debug\LogFramework.csproj.CopyComplete
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\日志文件的配置\C#中使用Log4Net\LogFormwork\LogFramework\obj\Debug\LogFramework.dll
+D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\日志文件的配置\C#中使用Log4Net\LogFormwork\LogFramework\obj\Debug\LogFramework.pdb

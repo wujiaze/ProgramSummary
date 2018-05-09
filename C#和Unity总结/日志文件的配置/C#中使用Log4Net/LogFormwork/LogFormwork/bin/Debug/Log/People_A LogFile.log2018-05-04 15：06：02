@@ -1,4 +1,0 @@
-2018-05-04 15:06:02,175 [1] FATAL People_A [(null)] - System.DivideByZeroException: 尝试除以零。
-   在 LogFormwork.Program.Main(String[] args) 位置 D:\Desktop\Log4net\c#Log4netFormwork\LogFormwork\LogFormwork\Program.cs:行号 36
-2018-05-04 15:06:02,316 [1] FATAL People_A [(null)] - System.DivideByZeroException: 尝试除以零。
-   在 LogFormwork.Program.Main(String[] args) 位置 D:\Desktop\Log4net\c#Log4netFormwork\LogFormwork\LogFormwork\Program.cs:行号 36
