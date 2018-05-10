@@ -78,6 +78,7 @@ namespace Serialize
         /// <returns></returns>
         public static object FileToInstanceData(string filepath)
         {
+            if (string.IsNullOrEmpty(filepath)) return null;
             FileStream fs = new FileStream(filepath, FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
             object obj = null;
@@ -97,5 +98,6 @@ namespace Serialize
         }
 
        
+
     }
 }
