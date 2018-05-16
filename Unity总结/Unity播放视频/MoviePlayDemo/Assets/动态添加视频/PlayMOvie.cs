@@ -37,7 +37,7 @@ public class PlayMOvie : MonoBehaviour {
         }
         Debug.Log("Done Preparing Video");
         Debug.Log(videoPlayer.texture.width);
-
+        // 一定要准备好才能设置画面
         image.texture = videoPlayer.texture;
         videoPlayer.Play();
         audioSource.Play();
