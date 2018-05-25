@@ -26,21 +26,10 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 1
-    packedHash:
-      serializedVersion: 2
-      Hash: f3755fbc769006f096de139a7a2d3e84
     variantMultiplier: 1
-    bindAsDefault: 1
-    finalFormat: 4
-    hashString: f3755fbc769006f096de139a7a2d3e84
-    totalSpriteSurfaceArea: 14136
     packables:
     - {fileID: 2800000, guid: 1980d9f62c26f614b90a978734f15ad6, type: 3}
-    packedSpriteRenderDataKeys:
-    - 1980d9f62c26f614b90a978734f15ad6: 21300004
-    - 1980d9f62c26f614b90a978734f15ad6: 21300002
-    - 1980d9f62c26f614b90a978734f15ad6: 21300000
-    - 1980d9f62c26f614b90a978734f15ad6: 21300006
+    bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300004, guid: 1980d9f62c26f614b90a978734f15ad6, type: 3}
