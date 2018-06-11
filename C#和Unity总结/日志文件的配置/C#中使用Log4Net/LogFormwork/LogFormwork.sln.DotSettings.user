@@ -1,0 +1,5 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
+  &lt;Assembly Path="D:\Desktop\Log4net\c#Log4netFormwork\新项目引用文件\SQLite\System.Data.SQLite.dll" /&gt;&#xD;
+  &lt;Assembly Path="D:\Desktop\编程学习总结\ProgramSummary\C#和Unity总结\日志文件的配置\C#中使用Log4Net\新项目引用文件\MySQL\MySql.Data.dll" /&gt;&#xD;
+&lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>
