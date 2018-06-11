@@ -1,0 +1,7 @@
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\非托管资源类\System.IO\流类\StreamTest\StreamTest\bin\Debug\StreamTest.exe.config
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\非托管资源类\System.IO\流类\StreamTest\StreamTest\bin\Debug\StreamTest.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\非托管资源类\System.IO\流类\StreamTest\StreamTest\bin\Debug\StreamTest.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\非托管资源类\System.IO\流类\StreamTest\StreamTest\obj\Debug\StreamTest.csprojResolveAssemblyReference.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\非托管资源类\System.IO\流类\StreamTest\StreamTest\obj\Debug\StreamTest.csproj.CoreCompileInputs.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\非托管资源类\System.IO\流类\StreamTest\StreamTest\obj\Debug\StreamTest.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\非托管资源类\System.IO\流类\StreamTest\StreamTest\obj\Debug\StreamTest.pdb
