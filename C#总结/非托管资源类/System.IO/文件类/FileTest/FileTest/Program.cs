@@ -90,7 +90,7 @@ namespace FileTest
             using (sw1)                                                             // 通过这种方式创建的了"流写器"，并没有创建原本文件内容的“流”，意味着写入时是全部覆盖的，不像 FileStream 写入时还能追加文本
             {
                 string sw1str = "我的博客";                                          // 当写入中文时，会改变文件的编码格式为 UTF8
-                sw1.Write(false);                                                  // 写入
+                sw1.Write(false);                                                   // 写入
                 sw1.WriteLine(sw1str);                                              // 行写入
                 sw1.WriteLine(sw1str);
                 Console.WriteLine(sw1.Encoding);
@@ -105,7 +105,7 @@ namespace FileTest
             using (sr)
             {
                 Console.WriteLine(sr.Read());                                       // 读取当前流位置的byte，即文件内容都转换成了byte类型，同时流的位置前进
-                Console.WriteLine(sr.ReadLine());                                     // 读取一行流，并且转换成字符串，同时流的位置前进
+                Console.WriteLine(sr.ReadLine());                                   // 读取一行流，并且转换成字符串，同时流的位置前进
                 Console.WriteLine(sr.ReadToEnd());                                  // 从当前位置读取到末尾，并且转换成字符串，同时流的位置前进
             }
 
@@ -113,6 +113,7 @@ namespace FileTest
             #endregion
 
             #region 文件实例类 FileInfo
+
             /* FileSystemInfo 抽象类 是 FileInfo 的基类 */  // TODO  FileInfo 的方法和File类中基本一致，推荐使用 FileInfo，另外 FileInfo 还能获取 DirectoryInfo 的信息
             /* 文件实例类 FileInfo */
             string filepath3 = Path.Combine("D:\\", "Desktop", "filepath3");
