@@ -1,0 +1,7 @@
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\Begin_End_Invoke_Test\Begin_End_Invoke_Test\bin\Debug\Begin_End_Invoke_Test.exe.config
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\Begin_End_Invoke_Test\Begin_End_Invoke_Test\bin\Debug\Begin_End_Invoke_Test.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\Begin_End_Invoke_Test\Begin_End_Invoke_Test\bin\Debug\Begin_End_Invoke_Test.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\Begin_End_Invoke_Test\Begin_End_Invoke_Test\obj\Debug\Begin_End_Invoke_Test.csprojResolveAssemblyReference.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\Begin_End_Invoke_Test\Begin_End_Invoke_Test\obj\Debug\Begin_End_Invoke_Test.csproj.CoreCompileInputs.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\Begin_End_Invoke_Test\Begin_End_Invoke_Test\obj\Debug\Begin_End_Invoke_Test.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\Begin_End_Invoke_Test\Begin_End_Invoke_Test\obj\Debug\Begin_End_Invoke_Test.pdb

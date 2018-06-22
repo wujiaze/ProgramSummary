@@ -1,0 +1,15 @@
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\GUIBackgroundWorker\GUIBackgroundWorker\bin\Debug\GUIBackgroundWorker.exe.config
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\GUIBackgroundWorker\GUIBackgroundWorker\bin\Debug\GUIBackgroundWorker.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\GUIBackgroundWorker\GUIBackgroundWorker\bin\Debug\GUIBackgroundWorker.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\GUIBackgroundWorker\GUIBackgroundWorker\obj\Debug\GUIBackgroundWorker.csprojResolveAssemblyReference.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\GUIBackgroundWorker\GUIBackgroundWorker\obj\Debug\MainWindow.g.cs
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\GUIBackgroundWorker\GUIBackgroundWorker\obj\Debug\App.g.cs
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\GUIBackgroundWorker\GUIBackgroundWorker\obj\Debug\GUIBackgroundWorker_MarkupCompile.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\GUIBackgroundWorker\GUIBackgroundWorker\obj\Debug\GUIBackgroundWorker_MarkupCompile.lref
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\GUIBackgroundWorker\GUIBackgroundWorker\obj\Debug\MainWindow.baml
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\GUIBackgroundWorker\GUIBackgroundWorker\obj\Debug\GUIBackgroundWorker.g.resources
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\GUIBackgroundWorker\GUIBackgroundWorker\obj\Debug\GUIBackgroundWorker.Properties.Resources.resources
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\GUIBackgroundWorker\GUIBackgroundWorker\obj\Debug\GUIBackgroundWorker.csproj.GenerateResource.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\GUIBackgroundWorker\GUIBackgroundWorker\obj\Debug\GUIBackgroundWorker.csproj.CoreCompileInputs.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\GUIBackgroundWorker\GUIBackgroundWorker\obj\Debug\GUIBackgroundWorker.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\GUIBackgroundWorker\GUIBackgroundWorker\obj\Debug\GUIBackgroundWorker.pdb

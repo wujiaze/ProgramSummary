@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUIBackgroundWorker", "GUIBackgroundWorker\GUIBackgroundWorker.csproj", "{F066A48C-1A00-4290-8841-ACBE7AEC3F05}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F066A48C-1A00-4290-8841-ACBE7AEC3F05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F066A48C-1A00-4290-8841-ACBE7AEC3F05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F066A48C-1A00-4290-8841-ACBE7AEC3F05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F066A48C-1A00-4290-8841-ACBE7AEC3F05}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4302E4DE-2DAA-4E72-B9AC-01DAC81D6BAD}
+	EndGlobalSection
+EndGlobal

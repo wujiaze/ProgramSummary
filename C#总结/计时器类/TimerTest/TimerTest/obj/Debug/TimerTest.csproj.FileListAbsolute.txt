@@ -1,0 +1,14 @@
+D:\Desktop\C#编程学习总结\Timer类\TimerTest\TimerTest\bin\Debug\TimerTest.exe.config
+D:\Desktop\C#编程学习总结\Timer类\TimerTest\TimerTest\bin\Debug\TimerTest.exe
+D:\Desktop\C#编程学习总结\Timer类\TimerTest\TimerTest\bin\Debug\TimerTest.pdb
+D:\Desktop\C#编程学习总结\Timer类\TimerTest\TimerTest\obj\Debug\TimerTest.csprojResolveAssemblyReference.cache
+D:\Desktop\C#编程学习总结\Timer类\TimerTest\TimerTest\obj\Debug\TimerTest.csproj.CoreCompileInputs.cache
+D:\Desktop\C#编程学习总结\Timer类\TimerTest\TimerTest\obj\Debug\TimerTest.exe
+D:\Desktop\C#编程学习总结\Timer类\TimerTest\TimerTest\obj\Debug\TimerTest.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\非托管资源类\Timer类\TimerTest\TimerTest\bin\Debug\TimerTest.exe.config
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\非托管资源类\Timer类\TimerTest\TimerTest\bin\Debug\TimerTest.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\非托管资源类\Timer类\TimerTest\TimerTest\bin\Debug\TimerTest.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\非托管资源类\Timer类\TimerTest\TimerTest\obj\Debug\TimerTest.csprojResolveAssemblyReference.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\非托管资源类\Timer类\TimerTest\TimerTest\obj\Debug\TimerTest.csproj.CoreCompileInputs.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\非托管资源类\Timer类\TimerTest\TimerTest\obj\Debug\TimerTest.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\非托管资源类\Timer类\TimerTest\TimerTest\obj\Debug\TimerTest.pdb

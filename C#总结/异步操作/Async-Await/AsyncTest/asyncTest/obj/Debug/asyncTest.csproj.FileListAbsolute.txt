@@ -1,0 +1,14 @@
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\asyncTest\asyncTest\bin\Debug\asyncTest.exe.config
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\asyncTest\asyncTest\bin\Debug\asyncTest.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\asyncTest\asyncTest\bin\Debug\asyncTest.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\asyncTest\asyncTest\obj\Debug\asyncTest.csprojResolveAssemblyReference.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\asyncTest\asyncTest\obj\Debug\asyncTest.csproj.CoreCompileInputs.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\asyncTest\asyncTest\obj\Debug\asyncTest.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\asyncTest\asyncTest\obj\Debug\asyncTest.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\Async-Await\AsyncTest\asyncTest\bin\Debug\asyncTest.exe.config
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\Async-Await\AsyncTest\asyncTest\bin\Debug\asyncTest.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\Async-Await\AsyncTest\asyncTest\bin\Debug\asyncTest.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\Async-Await\AsyncTest\asyncTest\obj\Debug\asyncTest.csprojResolveAssemblyReference.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\Async-Await\AsyncTest\asyncTest\obj\Debug\asyncTest.csproj.CoreCompileInputs.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\Async-Await\AsyncTest\asyncTest\obj\Debug\asyncTest.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\Async-Await\AsyncTest\asyncTest\obj\Debug\asyncTest.pdb

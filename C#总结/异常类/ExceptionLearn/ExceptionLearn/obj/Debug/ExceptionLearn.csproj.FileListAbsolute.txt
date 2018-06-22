@@ -5,3 +5,10 @@ D:\Desktop\ExceptionLearn\ExceptionLearn\obj\Debug\ExceptionLearn.csprojResolveA
 D:\Desktop\ExceptionLearn\ExceptionLearn\obj\Debug\ExceptionLearn.csproj.CoreCompileInputs.cache
 D:\Desktop\ExceptionLearn\ExceptionLearn\obj\Debug\ExceptionLearn.exe
 D:\Desktop\ExceptionLearn\ExceptionLearn\obj\Debug\ExceptionLearn.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异常类\ExceptionLearn\ExceptionLearn\bin\Debug\ExceptionLearn.exe.config
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异常类\ExceptionLearn\ExceptionLearn\bin\Debug\ExceptionLearn.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异常类\ExceptionLearn\ExceptionLearn\bin\Debug\ExceptionLearn.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异常类\ExceptionLearn\ExceptionLearn\obj\Debug\ExceptionLearn.csprojResolveAssemblyReference.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异常类\ExceptionLearn\ExceptionLearn\obj\Debug\ExceptionLearn.csproj.CoreCompileInputs.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异常类\ExceptionLearn\ExceptionLearn\obj\Debug\ExceptionLearn.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\异常类\ExceptionLearn\ExceptionLearn\obj\Debug\ExceptionLearn.pdb

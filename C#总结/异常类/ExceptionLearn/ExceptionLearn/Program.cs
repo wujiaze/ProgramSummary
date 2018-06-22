@@ -31,6 +31,7 @@ namespace ExceptionLearn
 
             string s = null;
             NewClass.PrintArg(s);
+            Console.WriteLine("---------");
             NewClass.PrintArg("Hi");
             Console.ReadLine();
 
@@ -85,11 +86,12 @@ namespace ExceptionLearn
         }
     }
 
+
     /// <summary>
     /// throw 对象 可以用在try 或者 catch ,一般用在try
     /// 功能：在编写程序的时候,根据猜测在适当的地方创建对应的异常类对象
     /// 这个异常可能不会中断程序运行，但是还是需要处理，此时我们就 抛出（throw）这个异常，
-    /// 这时，就会去匹配Catch语句 ，原来try中的语句就不在执行了
+    /// 这时，就会去匹配Catch语句 ，原来try中的之后的语句就不在执行了
     /// </summary>
     class NewClass
     {
@@ -113,7 +115,7 @@ namespace ExceptionLearn
     }
 
     /// <summary>
-    ///  throw 无对象,只能用在catch语句中
+    ///  throw 不加对象,只能用在catch语句中
     ///  功能：用于重新抛出当前Catch语句捕获的异常，在外层的Catch中寻求处理
     /// </summary>
     class NextClass
@@ -143,6 +145,7 @@ namespace ExceptionLearn
             }
         }
     }
+
     /// <summary>
     /// 自定义异常类
     /// 说明：继承 ApplicationException 和 Exception 和 SystemException 的效果是类似的
