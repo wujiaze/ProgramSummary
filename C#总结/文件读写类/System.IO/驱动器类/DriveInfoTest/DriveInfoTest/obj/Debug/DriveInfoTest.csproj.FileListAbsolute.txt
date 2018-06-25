@@ -1,0 +1,7 @@
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\驱动器类\DriveInfoTest\DriveInfoTest\bin\Debug\DriveInfoTest.exe.config
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\驱动器类\DriveInfoTest\DriveInfoTest\bin\Debug\DriveInfoTest.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\驱动器类\DriveInfoTest\DriveInfoTest\bin\Debug\DriveInfoTest.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\驱动器类\DriveInfoTest\DriveInfoTest\obj\Debug\DriveInfoTest.csprojResolveAssemblyReference.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\驱动器类\DriveInfoTest\DriveInfoTest\obj\Debug\DriveInfoTest.csproj.CoreCompileInputs.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\驱动器类\DriveInfoTest\DriveInfoTest\obj\Debug\DriveInfoTest.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\驱动器类\DriveInfoTest\DriveInfoTest\obj\Debug\DriveInfoTest.pdb

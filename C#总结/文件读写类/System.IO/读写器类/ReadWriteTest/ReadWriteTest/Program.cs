@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,11 +22,12 @@ namespace ReadWriteTest
 
             /* 字符串读写器   一般来说，基本用不到，主要是学习 各种方法，为 StreamReader 打下基础
              * StringReader  实现 TextReader ，使其从字符串读取。
-             * StringWriter 
+             * StringWriter  
             */
 
-            string stringText = "中文qwer1234@#￥%……&*\nzxcv1234中文";
-            //#region  读取 
+
+            #region  读取 
+            //string stringText = "中文qwer1234@#￥%……&*\nzxcv1234中文";
             //Console.WriteLine("--------------Read & Peek-------------------");
             //using (StringReader reader = new StringReader(stringText))
             //{
@@ -123,10 +125,13 @@ namespace ReadWriteTest
             //}
 
 
-            //#endregion
+            #endregion
 
             #region 写入  
-            // 
+            // 构造函数1   StringWriter();
+            // 在内部是采用了 StringWriter((IFormatProvider) CultureInfo.CurrentCulture)
+            // 构造函数2  public StringWriter(IFormatProvider formatProvider)
+            // todo
 
 
 
@@ -138,7 +143,7 @@ namespace ReadWriteTest
              * 其他方法和 StringReader 类似
              *
              */
-            // 读取
+
 
             #region 读取 
             // StreamReader.DefaultBufferSize =1024
@@ -176,60 +181,78 @@ namespace ReadWriteTest
 
             /* 总结 所有的构造函数都是从构造函数6中分化出来的，所以这里就选择构造函数6来解释*/
 
-            // 重点 encoding/ ：文件是AscII ,读取Utf8，那么是utf8吗，是，那么准确吗 ，不是，还是ascii吗 TODO
-            // detectEncodingFromByteOrderMarks 若是false，则 encoding 的处理 TODO
-            // bufferSize 不采用默认值，是不是一次读取了1024，读玩之后，在读取1024这样 TODO
-            // leaveOpen true:表示在释放StreamReader资源之后，Stream还是打开状态 测试 TODO 一个流中，多个StreamReader ，是否是继续读取下去
+            // 重点
+            // encoding ：选择流的编码格式      默认为 Encoding.UTF8
+            // detectEncodingFromByteOrderMarks： true：则表示会根据文件流的文本自行判断编码格式； false：则表示直接根据 encoding 来判断编码格式  默认为 true
+            // bufferSize : 读写器的内部缓冲区
+            // leaveOpen true:表示在释放StreamReader资源之后，Stream还是打开状态 ，默认是 false ：释放读写器，同时也释放底层流
 
-            // 这里采用文件流，当然也可以是其他流 TODO 流那一篇解释完毕，再来看看其他流在这里是否跟文件流是一致的
+            // 这里采用文件流，当然也可以是其他流                                    TODO 流那一篇解释完毕，再来看看其他流在这里是否跟文件流是一致的
 
             // 属性 BaseStream        返回的就是读取的流
             //      CurrentEncoding   返回的
             //      EndOfStream
             // 方法 DiscardBufferedData()
-            //      其余方法和StringReader
-            string pathASCII = "D:\\Desktop\\MyASCIIFile.txt";
-            string pathUTF8 = "D:\\Desktop\\MyUTF8File.txt";
+            //      其余方法和StringReader 的基本一致
 
             string ABCUTF = "D:\\Desktop\\ABCUTF.txt";
             string ABCANSI = "D:\\Desktop\\ABCANSI.txt";
+
             using (FileStream stream = new FileStream(ABCUTF, FileMode.OpenOrCreate))
             {
-                Console.WriteLine(stream.Length);
-                using (StreamReader reader = new StreamReader(stream,Encoding.UTF8,true,1024,false)) // 都采用默认参数
+                using (StreamReader reader = new StreamReader(stream, Encoding.Default, true, 1024, false))
                 {
-                    
-                    Stream temp = reader.BaseStream;                        // BaseStream
+                    Stream temp = reader.BaseStream;                        // BaseStream，获取读写器的底层流
                     Console.WriteLine(temp.Equals(stream));
-                    Console.WriteLine(reader.EndOfStream);                  // EndOfStream
-                    Console.WriteLine(reader.ReadToEnd());
-                    Console.WriteLine(reader.EndOfStream);
-                    Console.WriteLine(reader.CurrentEncoding);              //  TODO ansi读取为UTF-8,那么写入时，会不会乱码
-
+                    Console.WriteLine(reader.CurrentEncoding);              //  获取当期的编码
+                    if (!reader.EndOfStream)                                // 是否读到了流的结尾
+                    {
+                        Console.WriteLine(reader.ReadToEnd());              // 整个读取流，并显示为字符串
+                    }
                 }
             }
-            //string pathNew = "D:\\Desktop\\New.txt";
-            //using (StreamReader reader = new StreamReader(pathNew, Encoding.UTF8, true, 1024))              
-            //{
-                
-            //}
 
-            //using (StreamReader reader = File.OpenText(pathNew))  // 内部使用的是 StreamReader(string path) 这个构造方法
-            //{
+            Console.WriteLine("----------------- 内部缓冲区 && DiscardBufferedData() -----------------------------");
+            using (FileStream stream = new FileStream(ABCANSI, FileMode.OpenOrCreate))
+            {
+                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8, true, 1024, false))  //内部缓存区的大小，TODO 暂时不知道用处，使用默认值就可以了
+                {
+                    Console.WriteLine(reader.BaseStream.Length);
+                    for (int i = 0; i < 10; i++)
+                    {
+                        reader.Read();
+                    }
+                    reader.DiscardBufferedData();                                           // 当 reader 读取过 流，此时 DiscardBufferedData 清楚内部缓存区，就相当于读到了最后（实际是因为没有了内容）
+                    Console.WriteLine(reader.EndOfStream);
+                }
+            }
+            Console.WriteLine("------------------------leaveOpen-------------------------");
+            using (FileStream stream = new FileStream(ABCANSI, FileMode.OpenOrCreate))
+            {
+                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8, true, 1024, true))  // leaveOpen:true
+                {
+                    Console.WriteLine("1");
+                }
+                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8, true, 1024, false)) // leaveOpen:false
+                {
+                    Console.WriteLine("2");
+                }
+            }
 
-            //}
+
 
             #endregion
 
-                // 写入
+           
 
-                #region 写入
+            #region 写入
 
 
 
-                #endregion
+            #endregion
 
-                Console.ReadLine();
+
+            Console.ReadLine();
         }
        
     }
