@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{556139D1-B538-4B11-BFAD-5E42C6D1009A}</ProjectGuid>
+    <ProjectGuid>{9E417394-DE65-4CA6-BBA5-D68150849296}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ReadWriteTest</RootNamespace>
-    <AssemblyName>ReadWriteTest</AssemblyName>
+    <RootNamespace>IFormatProviderTest</RootNamespace>
+    <AssemblyName>IFormatProviderTest</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

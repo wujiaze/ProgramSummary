@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
+using System.Net.Sockets;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,6 +37,8 @@ namespace StreamTest
              * Flush()                                      清除该流的所有缓冲数据，并将缓冲数据写入基础设施(PC,移动设备等等，一般可以理解为文件) todo
              *
              */
+
+
             // Todo 流的异步操作
             // todo Close Dispose 使用using就可以了
             //// 内存流
@@ -43,6 +48,13 @@ namespace StreamTest
             //// 缓存流
             //BufferedStream bs = new BufferedStream(ms);
             // 网络流
+            //NetworkStream
+            // 压缩流
+            //DeflateStream
+            // 加密流
+            //CryptoStream
         }
+
+
     }
 }

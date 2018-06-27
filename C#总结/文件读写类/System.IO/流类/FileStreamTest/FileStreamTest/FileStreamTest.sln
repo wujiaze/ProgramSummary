@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileStreamTest", "FileStreamTest\FileStreamTest.csproj", "{CA39A68A-D97F-448C-8873-ACD598241351}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA39A68A-D97F-448C-8873-ACD598241351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA39A68A-D97F-448C-8873-ACD598241351}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA39A68A-D97F-448C-8873-ACD598241351}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA39A68A-D97F-448C-8873-ACD598241351}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {67F2D4CD-D441-43A2-9019-B8AC6E12D12B}
+	EndGlobalSection
+EndGlobal

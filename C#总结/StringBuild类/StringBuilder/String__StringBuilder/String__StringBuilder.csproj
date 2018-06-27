@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9E417394-DE65-4CA6-BBA5-D68150849296}</ProjectGuid>
+    <ProjectGuid>{8C35E9D1-63B5-4681-A846-4D6916768E11}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>IFormatProviderTest</RootNamespace>
-    <AssemblyName>IFormatProviderTest</AssemblyName>
+    <RootNamespace>String__StringBuilder</RootNamespace>
+    <AssemblyName>String__StringBuilder</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
