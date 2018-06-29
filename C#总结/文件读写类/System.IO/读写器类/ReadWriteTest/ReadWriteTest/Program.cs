@@ -441,7 +441,7 @@ namespace ReadWriteTest
             filePath = "D:\\Desktop\\File7.txt";
             using (FileStream stream = new FileStream(filePath,FileMode.OpenOrCreate,FileAccess.Write,FileShare.Read,4096,false))
             {
-                using (StreamWriter streamWriter = new StreamWriter(stream,Encoding.UTF8,128,true))         // leaveopen :true 表示当编写器关闭时，不关闭底层流
+                using (StreamWriter streamWriter = new StreamWriter(stream, Encoding.UTF8, 128, true))         // leaveopen :true 表示当编写器关闭时，不关闭底层流
                 {
                     streamWriter.AutoFlush = true;
                     streamWriter.Write("ABC");                                                              //  AutoFlush: true ，则每次调用 Write 系列方法，都会立即写入文本
@@ -452,7 +452,11 @@ namespace ReadWriteTest
                     streamWriter.Write("123");
                     streamWriter.Flush();                                                                     //  Flush 立即写入文本
                     Thread.Sleep(3000);
-                    streamWriter.Write("456");                                                                //  没用 Flush ，则会在关闭 StreamWriter 对象时，写入文本
+                    for (int i = 0; i < 4097; i++)                                                            //超过StreamWriter的缓冲区大小，看不出效果
+                                                                                                              //超过 FileStream 的缓冲区大小，就会内部调用Flush，写入文件
+                    {
+                        streamWriter.Write("4");
+                    }                                                                                   //  没用 Flush ，则会在关闭 StreamWriter 对象时，写入文本
                     Thread.Sleep(3000);
                 }
                 using (StreamWriter streamWriter = new StreamWriter(stream, Encoding.UTF8, 128, true))
