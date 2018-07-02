@@ -1,0 +1,7 @@
+D:\Desktop\UpFileStreamTest\UpFileStreamTest\bin\Debug\UpFileStreamTest.exe.config
+D:\Desktop\UpFileStreamTest\UpFileStreamTest\bin\Debug\UpFileStreamTest.exe
+D:\Desktop\UpFileStreamTest\UpFileStreamTest\bin\Debug\UpFileStreamTest.pdb
+D:\Desktop\UpFileStreamTest\UpFileStreamTest\obj\Debug\UpFileStreamTest.csprojResolveAssemblyReference.cache
+D:\Desktop\UpFileStreamTest\UpFileStreamTest\obj\Debug\UpFileStreamTest.csproj.CoreCompileInputs.cache
+D:\Desktop\UpFileStreamTest\UpFileStreamTest\obj\Debug\UpFileStreamTest.exe
+D:\Desktop\UpFileStreamTest\UpFileStreamTest\obj\Debug\UpFileStreamTest.pdb
