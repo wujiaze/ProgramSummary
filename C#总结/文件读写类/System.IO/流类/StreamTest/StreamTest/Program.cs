@@ -34,8 +34,8 @@ namespace StreamTest
              * Seek(long offset, SeekOrigin origin)：       重新设定流中的位置
              *                                              Origin.Begin: 流开始的位置  Origin.Current：流当前的位置  Origin.End： 流结束的位置
              *                                              offset ：相对于上述位置的偏移量
-             * SetLength(long value)                        设置当前流的长度 TODO
-             * Flush()                                      清除该流的所有缓冲数据，并将缓冲数据写入基础设施(PC,移动设备等等，一般可以理解为文件) todo
+             * SetLength(long value)                        设置当前流的长度
+             * Flush()                                      清除该流的所有缓冲数据，并将缓冲数据写入基础设施(PC,移动设备等等，一般可以理解为文件) 
              *
              * 子类
              *  FileStream
@@ -43,14 +43,14 @@ namespace StreamTest
              */
 
 
-            // Todo 流的异步操作
-            // todo Close Dispose 使用using就可以了
             //// 内存流
             //MemoryStream ms   = new MemoryStream();
             //// 文件流
             FileStream fs = new FileStream("", FileMode.OpenOrCreate);
             //// 缓存流
             //BufferedStream bs = new BufferedStream(ms);
+
+            // TODO 以下的流，以后再看
             // 网络流
             //NetworkStream
             // 压缩流

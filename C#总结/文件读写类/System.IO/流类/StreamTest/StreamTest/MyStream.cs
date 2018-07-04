@@ -31,7 +31,6 @@ namespace StreamTest
 
         public override long Seek(long offset, SeekOrigin origin)
         {
-            origin == 
             throw new NotImplementedException();
         }
 
