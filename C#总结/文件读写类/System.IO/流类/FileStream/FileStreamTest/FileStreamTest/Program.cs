@@ -49,7 +49,6 @@ namespace FileStreamTest
             // 3.3  FileStream(SafeFileHandle handle, FileAccess access, int bufferSize, bool isAsync)
 
 
-            // TODO File、FileInfo 类 生成的 FileStream 类的构造函数
 
             /* 属性
             *  CanRead
@@ -67,7 +66,7 @@ namespace FileStreamTest
 
             /* 方法
              * Write
-             * WriteAsync
+             * WriteAsync           // 一般实际的用法，看最下面
              *
              * Read                    
              * ReadAsync
@@ -84,8 +83,8 @@ namespace FileStreamTest
              * Seek
              *
              * SetLength
-             *
-             * Flush
+             *  
+             * Flush        一般用于写入
              * FlushAsync
              *
              * Lock
@@ -128,6 +127,8 @@ namespace FileStreamTest
             // 方法 WriteAsync
             Console.WriteLine("---------------------WriteAsync---------------------");
             string filePath3 = "D:\\Desktop\\MyFile3.txt";
+            Task task1 = WriteToFileAsync(filePath3, "ssss");               // 一般实际的用法,见最下面
+            task1.Wait();
             using (FileStream fileStream = new FileStream(filePath3, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None, 1024, FileOptions.Asynchronous)) 
             {
                 string str = "96tyt 你好！";
@@ -135,6 +136,7 @@ namespace FileStreamTest
                 Task task = fileStream.WriteAsync(bytes, 0, bytes.Length);                  // 异步操作时，FileOptions 可以为 Asynchronous，也可以是 None ，这两者都不会阻塞当前线程
                 task.Wait();                                                                // 但是，None 内部采用同步方法  Asynchronous 内部采用异步方法，所以建议采用 Asynchronous
             }
+
             // 结合  StreamWriter 
             Console.WriteLine("---------------------StreamWriter---------------------");
             string filePath4 = "D:\\Desktop\\MyFile4.txt";
@@ -281,6 +283,7 @@ namespace FileStreamTest
 
 
             #region 采用 2.2 测试   同时 测试 多线程 方法
+            // 下面的多线程的方法 不适用 using 语句，同时自身也快被淘汰了，用 Async来代替更好
             /* 
              * BeginRead
              * BeginWrite
@@ -291,33 +294,31 @@ namespace FileStreamTest
             // 内部也是 Init 方法 和 构造函数第一类 是类似的
             // 
             /* 主要的几个枚举
-             * FileSystemRights.Write           // 写
-             * FileSystemRights.Read            // 读
-             * FileSystemRights.Modify          // 读 写 运行 删除
+             * FileSystemRights.Write           // 写    权限
+             * FileSystemRights.Read            // 读    权限
+             * FileSystemRights.Modify          // 读 写 运行 删除 权限
              * FileSystemRights.FullControl     // 全部权限
              */
             Console.WriteLine("--------------  2.1 测试 ------------------");
             Console.WriteLine("--------------  BeginWrite / EndWrite  ------------------");
             string pathSecond = "D:\\Desktop\\FileSecond.txt";
-            using (FileStream fileStream = new FileStream(pathSecond,FileMode.Create,FileSystemRights.Write, FileShare.Read,4096,FileOptions.None))         // BeginWrite 这类方法也不需要一定要 异步选项
-            {
-                string str = "Hello你好！";
-                byte[] bytes = Encoding.Default.GetBytes(str);
-                fileStream.BeginWrite(bytes, 0, bytes.Length, BeginWriteCallBack, fileStream);              // 新开线程执行任务
-                Console.WriteLine("方法"+Thread.CurrentThread.ManagedThreadId);
-            }
-            Console.WriteLine("--------------  BeginRead / EndRead  ------------------");
-            using (FileStream fileStream = new FileStream(pathSecond, FileMode.Open, FileSystemRights.Read, FileShare.Read, 4096, FileOptions.Asynchronous)) // 但是最好还是使用异步选项
-            {
-                byte[] bytes = new byte[fileStream.Length];
-                MyClass myClass = new MyClass(){Bytes = bytes,FileStream = fileStream };
-                fileStream.BeginRead(bytes, 0, bytes.Length, BeginReadCallBack, myClass);
-            }
+            FileStream writeStream = new FileStream(pathSecond, FileMode.Create, FileSystemRights.Write, FileShare.Read, 4096, FileOptions.None);// BeginWrite 这类方法也不需要一定要 异步选项
+            string writeStr = "Hello你好！";
+            byte[] writeByteArr = Encoding.Default.GetBytes(writeStr);
+            writeStream.BeginWrite(writeByteArr, 0, writeByteArr.Length, BeginWriteCallBack, writeStream);              // 新开线程执行任务
+            Console.WriteLine("线程方法： " + Thread.CurrentThread.ManagedThreadId);
 
+
+            Console.WriteLine("--------------  BeginRead / EndRead  ------------------");
+            string pathSecond2 = "D:\\Desktop\\MyFile2.txt";
+            FileStream readStream = new FileStream(pathSecond2, FileMode.Open, FileSystemRights.Read, FileShare.Read, 4096, FileOptions.Asynchronous);// 但是最好还是使用异步选项
+            byte[] readBytes = new byte[readStream.Length];
+            MyClass myClass = new MyClass() { Bytes = readBytes, FileStream = readStream };
+            readStream.BeginRead(readBytes, 0, readBytes.Length, BeginReadCallBack, myClass);
 
 
             Console.WriteLine("--------------  2.2 测试 ------------------");
-            string pathSecond2 = "D:\\Desktop\\FileSecond2.txt";
+            string pathSecond3 = "D:\\Desktop\\FileSecond2.txt";
             //FileSecurity sec = new FileSecurity(pathSecond,AccessControlSections.All);        //TODO 以后再看，目前无法解答
             //using (FileStream fileStream = new FileStream(pathSecond2, FileMode.Create, FileSystemRights.Write, FileShare.Read, 4096, FileOptions.Asynchronous, sec))
             //{
@@ -349,6 +350,7 @@ namespace FileStreamTest
             if (stream == null)return;
             stream.EndWrite(ar);
             Console.WriteLine("回调线程: "+Thread.CurrentThread.ManagedThreadId);
+            stream.Close();
         }
         private static void BeginReadCallBack(IAsyncResult ar)
         {
@@ -356,12 +358,22 @@ namespace FileStreamTest
             if (myClass == null) return;
             myClass.FileStream.EndRead(ar);
             Console.WriteLine("回调：" + Encoding.Default.GetString(myClass.Bytes));
+            myClass.FileStream.Close();
         }
 
         class MyClass
         {
             public byte[] Bytes { get; set; }
             public FileStream FileStream { get; set; }
+        }
+
+        private static async Task WriteToFileAsync(string filePath,string value)
+        {
+            using (FileStream fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None, 1024, FileOptions.Asynchronous))
+            {
+                byte[] bytes = Encoding.Default.GetBytes(value);
+                await fileStream.WriteAsync(bytes, 0, bytes.Length);                       
+            }
         }
     }
 }

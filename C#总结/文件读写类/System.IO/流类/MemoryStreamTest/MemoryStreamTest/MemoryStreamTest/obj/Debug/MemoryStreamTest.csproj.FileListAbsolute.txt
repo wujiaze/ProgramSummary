@@ -1,0 +1,7 @@
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\流类\MemoryStreamTest\MemoryStreamTest\MemoryStreamTest\bin\Debug\MemoryStreamTest.exe.config
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\流类\MemoryStreamTest\MemoryStreamTest\MemoryStreamTest\bin\Debug\MemoryStreamTest.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\流类\MemoryStreamTest\MemoryStreamTest\MemoryStreamTest\bin\Debug\MemoryStreamTest.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\流类\MemoryStreamTest\MemoryStreamTest\MemoryStreamTest\obj\Debug\MemoryStreamTest.csprojResolveAssemblyReference.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\流类\MemoryStreamTest\MemoryStreamTest\MemoryStreamTest\obj\Debug\MemoryStreamTest.csproj.CoreCompileInputs.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\流类\MemoryStreamTest\MemoryStreamTest\MemoryStreamTest\obj\Debug\MemoryStreamTest.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\流类\MemoryStreamTest\MemoryStreamTest\MemoryStreamTest\obj\Debug\MemoryStreamTest.pdb

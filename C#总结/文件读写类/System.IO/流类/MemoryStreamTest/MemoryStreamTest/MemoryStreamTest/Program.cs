@@ -242,22 +242,22 @@ namespace MemoryStreamTest
                 stream.Write(writeBytes, 0, writeBytes.Length);
                 using (FileStream fileStream = new FileStream("D:\\Desktop\\2.txt", FileMode.OpenOrCreate))
                 {
-                    stream.Position = 0;                            //  从当前流中读取一段写入目标流 ，所以跟 Position 位置有关
-                    stream.CopyTo(fileStream);                      
+                    stream.Position = 0;                            //  从当前流的Position开始读取一段写入目标流 ，所以跟 Position 位置有关
+                    stream.CopyTo(fileStream);
                     Console.WriteLine(fileStream.Position);         //  影响 源流 和 目标流
                     Console.WriteLine(stream.Position);
                 }
             }
            
             //Read    Seek   //ReadAsync   跟WriteByte差不多的用法
-            Console.WriteLine(" -------------- Read & Seek --------------");
+            Console.WriteLine(" -------------- Read & Seek & CopyTo --------------");
             using (FileStream fileStream = new FileStream("D:\\Desktop\\1.txt", FileMode.OpenOrCreate))
             {
                 using (MemoryStream stream = new MemoryStream())            // 这种方法，比直接使用 FileStream 会快一些，性能好一些
                 {
                     fileStream.ReadByte();
                     int oldLength = (int)stream.Length;
-                    fileStream.CopyTo(stream);                              // 是从当前流的position位置开始，赋值给另一个流的Position的位置
+                    fileStream.CopyTo(stream,(int)fileStream.Length);       // 是从当前流的position位置开始，赋值给另一个流的Position的位置,读取的长度超过源流的长度，则只复制源流的长度
                     Console.WriteLine(stream.Position); 
                     int newLength = (int)stream.Length;
                     stream.Seek(-(newLength-oldLength), SeekOrigin.Current);// 得到内容的流的Position也是会前进复制过来的长度，当需要读取这段内容时，可以重新设定Position位置
@@ -337,19 +337,69 @@ namespace MemoryStreamTest
                 }
             }
 
-            //BeginRead
-            //EndRead
-            //BeginWrite
-            //EndWrite
+            // 注意：以下的I/O方法已经快过时了，推荐  Async 的方法    并且不能用using语句
+            // BeginWrite  EndWrite
+            Console.WriteLine("-------------- BeginWrite &  EndWrite --------------");
+            MemoryStream stream1 = new MemoryStream();
+            string s = "abc123你好！+";
+            byte[] tempBytes = Encoding.UTF8.GetBytes(s);
+            stream1.BeginWrite(tempBytes, 0, tempBytes.Length, BeginWriteCallBack, stream1);
 
+            // BeginRead   EndRead
+            Console.WriteLine("-------------- BeginRead &  EndRead --------------");
+            MemoryStream memoryStream = new MemoryStream();
+            FileStream stream2 = new FileStream("D:\\Desktop\\1.txt", FileMode.Open);
+            stream2.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            byte[] buffer = new byte[50];
+            MyClass m1 = new MyClass(memoryStream, buffer, stream2);
+            memoryStream.BeginRead(buffer, 0, (int)memoryStream.Length, BeginReadCallBack, m1);
 
+            Console.ReadLine();
+        }
+        /// <summary>
+        /// 写入完成的回调
+        /// </summary>
+        /// <param name="ar"></param>
+        private static void BeginWriteCallBack(IAsyncResult ar)
+        {
+            MemoryStream stream = ar.AsyncState as MemoryStream;
+            if(stream==null)return;
+            byte[] bytes = stream.ToArray();
+            stream.EndWrite(ar);                            //这一步是关闭流，所以需要通过流完成的事，需要在这一步之前
+            stream.Close();
+            string str = Encoding.UTF8.GetString(bytes);
+            Console.WriteLine("BeginWriteCallBack: "+str);
 
+        }
 
+        /// <summary>
+        /// 读取完成的回调
+        /// </summary>
+        /// <param name="ar"></param>
+        private static void BeginReadCallBack(IAsyncResult ar)
+        {
+            MyClass m1 = ar.AsyncState as MyClass;
+            if(m1==null)return;
+            string str = Encoding.UTF8.GetString(m1.bytes);
+            m1.stream.EndRead(ar);
+            m1.stream.Close();
+            m1.FileStream.Close();
+            Console.WriteLine("BeginReadCallBack: " + str);
+        }
 
+        private class MyClass
+        {
+            public FileStream FileStream;
+            public MemoryStream stream;
+            public byte[] bytes;
 
-
-                Console.ReadLine();
-           
+            public MyClass(MemoryStream stream, byte[] bytes, FileStream fileStream)
+            {
+                this.FileStream = fileStream;
+                this.stream = stream;
+                this.bytes = bytes;
+            }
         }
 
     }

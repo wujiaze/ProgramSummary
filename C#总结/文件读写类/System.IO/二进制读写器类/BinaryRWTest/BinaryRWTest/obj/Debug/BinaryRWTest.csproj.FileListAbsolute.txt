@@ -1,0 +1,7 @@
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\二进制读写器类\BinaryRWTest\BinaryRWTest\bin\Debug\BinaryRWTest.exe.config
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\二进制读写器类\BinaryRWTest\BinaryRWTest\bin\Debug\BinaryRWTest.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\二进制读写器类\BinaryRWTest\BinaryRWTest\bin\Debug\BinaryRWTest.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\二进制读写器类\BinaryRWTest\BinaryRWTest\obj\Debug\BinaryRWTest.csprojResolveAssemblyReference.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\二进制读写器类\BinaryRWTest\BinaryRWTest\obj\Debug\BinaryRWTest.csproj.CoreCompileInputs.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\二进制读写器类\BinaryRWTest\BinaryRWTest\obj\Debug\BinaryRWTest.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\文件读写类\System.IO\二进制读写器类\BinaryRWTest\BinaryRWTest\obj\Debug\BinaryRWTest.pdb

@@ -22,6 +22,7 @@ namespace FileTest
             string Txtfilepath = Path.Combine("D:\\", "Desktop", "Txtfilepath.txt");
             string fileCopyPath = Path.Combine("D:\\", "Desktop", "fileCopyPath");
             FileStream fs = File.Create(filepath);                                  // 创建或覆盖指定文件或(Text文件)，创建了文件流，没有关闭文件 TODO 文件自身的ASCII码，但是会根据写入文本的格式改变
+            // 内部是创建这个  FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.None, bufferSize)
             fs.Dispose();
             FileStream fstxt = File.Create(Txtfilepath);
             fstxt.Dispose();
@@ -60,6 +61,7 @@ namespace FileTest
             // FileMode.Append        只能写权限 FileAccess.Write
             string filepath2 = Path.Combine("D:\\", "Desktop", "filepath2");
             FileStream fs1 = File.Open(filepath2, FileMode.Append, FileAccess.Write);// 打开文件，采用文件流的形式,没有关闭文件,文件流的在这的规则：只写，追加
+            // 内部创建了 new FileStream(path, mode, access, share)
             using (fs1)                                                             //使用结束后自动释放资源
             {
                 string str1 = "str1 : 中文English123！@#￥%……&*（）";
@@ -67,6 +69,7 @@ namespace FileTest
                 fs1.Write(temp1, 0, temp1.Length);                                  // 写入byte数组，根据定义的流的性质，是追加文本
             }
             FileStream fs2 = File.OpenWrite(filepath2);                             // 以写的权限(不可读),以文件流的形式打开文件,没有关闭文件，,文件流的在这的规则：只写，覆盖
+            // 内部创建了  FileStream(path, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None);
             using (fs2)
             {
                 string strarr = "str2  中文English123！@#￥%……&*（）\r\n str2  sdhnfksajf2021230未开";  // 可以通过这个方式来进行换行
@@ -75,6 +78,7 @@ namespace FileTest
             }                                                                       // 跟 WriteAllText （以当前的字符串完全重写原文件） 是不同的概念
 
             FileStream fs3 = File.OpenRead(filepath2);                              // 以读的权限(不可写)，以文件流的形式打开文件,没有关闭文件
+            // 内部创建了 FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
             using (fs3)
             {
                 byte[] ReadByte = new byte[(int)fs3.Length];
@@ -87,6 +91,7 @@ namespace FileTest
             /* StreamWriter 和 StreamReader 的形式 */
             string Txtfilepath2 = Path.Combine("D:\\", "Desktop", "Txtfilepath2.txt");
             StreamWriter sw1 = File.CreateText(Txtfilepath2);                       // 创建或打开指定Text文件，创建了“流写器”，没有关闭文件  TODO 创建的文件自身是ASCII码，但是会根据写入文本的格式改变
+            // 内部创建了 StreamWriter(path, false); 内部创建了FileStream
             using (sw1)                                                             // 通过这种方式创建的了"流写器"，并没有创建原本文件内容的“流”，意味着写入时是全部覆盖的，不像 FileStream 写入时还能追加文本
             {
                 string sw1str = "我的博客";                                          // 当写入中文时，会改变文件的编码格式为 UTF8
@@ -96,12 +101,14 @@ namespace FileTest
                 Console.WriteLine(sw1.Encoding);
             }
             StreamWriter sw = File.AppendText(Txtfilepath2);                        // 追加UTF-8格式的文本文件，创建了“流写器”，没有关闭文件
+            // 内部创建了 StreamWriter(path, true); 内部创建了FileStream
             using (sw)                                                              // 通过这种方式创建的了"流写器"，并没有创建原本文件内容的“流”，即只能写在文件最后面，前面的内容不可更改,是一种“一次性”的写入。跟 FileStream 还是有所区别
             {
                 sw.Write('k');
                 sw.WriteLine("sdjflasj");
             }
             StreamReader sr = File.OpenText(Txtfilepath2);                          // 打开UTF-8格式的文本文件，创建了原本文件内容的“流读器”，没有关闭文件 TODO:若打开的文件不是UTF8编码，则会是乱码
+            // 内部创建了 StreamReader(path); 内部创建了FileStream
             using (sr)
             {
                 Console.WriteLine(sr.Read());                                       // 读取当前流位置的byte，即文件内容都转换成了byte类型，同时流的位置前进
@@ -119,7 +126,7 @@ namespace FileTest
             string filepath3 = Path.Combine("D:\\", "Desktop", "filepath3");
             string Txtfilepath3 = Path.Combine("D:\\", "Desktop", "Txtfilepath3.txt");
             FileInfo fi = new FileInfo(filepath3);
-            FileStream fs4 = fi.Create(); // 创建文件
+            FileStream fs4 = fi.Create(); // 创建文件   内部是 File.Create(this.FullPath)
             fs4.Dispose();
             fi = new FileInfo(Txtfilepath3);
             StreamWriter sw4 = fi.CreateText(); //创建text文件，格式：ACSII码

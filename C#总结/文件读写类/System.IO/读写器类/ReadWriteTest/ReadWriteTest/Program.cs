@@ -163,7 +163,7 @@ namespace ReadWriteTest
 
             // 第 2 类方法
             //  Write(bool value)       Write(object value)
-            //  内部使用了 Write(string)
+            //  内部使用了 Write(string)         object.ToString()
 
             // 第 3 类方法
             // Write(char[] buffer)   Write(char[] buffer, int index, int count)
@@ -272,7 +272,7 @@ namespace ReadWriteTest
             // bufferSize : 读写器的内部缓冲区
             // leaveOpen true:表示在释放StreamReader资源之后，Stream还是打开状态 ，默认是 false ：释放读写器，同时也释放底层流
 
-            // 这里采用文件流，当然也可以是其他流                                    TODO 流那一篇解释完毕，再来看看其他流在这里是否跟文件流是一致的
+            // 这里采用文件流，当然也可以是其他流                                   
 
             // 属性 BaseStream        返回的就是读取的流
             //      CurrentEncoding   返回的
