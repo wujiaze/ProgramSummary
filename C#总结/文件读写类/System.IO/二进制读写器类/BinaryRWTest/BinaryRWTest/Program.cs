@@ -42,7 +42,7 @@ namespace BinaryRWTest
              * Close/Dispose  在内部是一样的
              */
             Console.WriteLine("-------------- BinaryWriter ----------------");
-            using (FileStream stream = new FileStream("D:\\Desktop\\Binaray.txt",FileMode.OpenOrCreate))
+            using (FileStream stream = new FileStream("D:\\Desktop\\Binaray.bin",FileMode.OpenOrCreate))     // 保存为扩展名为bin 的二进制文件，可以拖入vs中查看
             {
                 using (BinaryWriter writer = new BinaryWriter(stream,Encoding.UTF8,false))
                 {
@@ -82,7 +82,7 @@ namespace BinaryRWTest
              *  
              */
             Console.WriteLine("-------------- BinaryReader ----------------");
-            using (FileStream stream = new FileStream("D:\\Desktop\\Binaray.txt", FileMode.Open))
+            using (FileStream stream = new FileStream("D:\\Desktop\\Binaray.bin", FileMode.Open))
             {
                 using (BinaryReader reader = new BinaryReader(stream, Encoding.UTF8, false))
                 {

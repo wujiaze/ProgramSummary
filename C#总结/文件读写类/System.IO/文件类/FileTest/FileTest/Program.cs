@@ -55,12 +55,11 @@ namespace FileTest
             string tmpTex = "appendalltext";
             File.AppendAllText(filePath1, tmpTex, Encoding.UTF8);                   // 创建/打开文件，以指定的编码追加文本（增加整个字符串）），然后关闭文件。
 
-
             /*  文件流的形式 */
             // FileMode.OpenOrCreate  配合可读可写   FileAccess.ReadWrite
             // FileMode.Append        只能写权限 FileAccess.Write
             string filepath2 = Path.Combine("D:\\", "Desktop", "filepath2");
-            FileStream fs1 = File.Open(filepath2, FileMode.Append, FileAccess.Write);// 打开文件，采用文件流的形式,没有关闭文件,文件流的在这的规则：只写，追加
+             FileStream fs1 = File.Open(filepath2, FileMode.Append, FileAccess.Write);// 打开文件，采用文件流的形式,没有关闭文件,文件流的在这的规则：只写，追加
             // 内部创建了 new FileStream(path, mode, access, share)
             using (fs1)                                                             //使用结束后自动释放资源
             {

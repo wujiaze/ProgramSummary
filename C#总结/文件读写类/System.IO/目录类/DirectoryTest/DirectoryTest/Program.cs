@@ -31,9 +31,8 @@ namespace DirectoryTest
             Directory.Delete(targetDirectPath);                                 // 只删除空目录
             //Directory.Delete(targetDirectPath, true);                          // 删除目录下的所有子目录和文件
 
-
             /* FileSystemInfo 抽象类 是 DirectoryInfo 和 FileInfo 的基类 */
-            /* 目录实例类 DirectoryInfo */   
+            /* 目录实例类 DirectoryInfo */
             // DirectoryInfo   内部的方法跟 静态类 Directory 类似
 
             DirectoryInfo di = new DirectoryInfo(directPath);       // 根据路径创建实例

@@ -129,8 +129,9 @@ namespace FileStreamTest
             string filePath3 = "D:\\Desktop\\MyFile3.txt";
             Task task1 = WriteToFileAsync(filePath3, "ssss");               // 一般实际的用法,见最下面
             task1.Wait();
-            using (FileStream fileStream = new FileStream(filePath3, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None, 1024, FileOptions.Asynchronous)) 
+            using (FileStream fileStream = new FileStream(filePath3, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None, 1024, FileOptions.Asynchronous))
             {
+                
                 string str = "96tyt 你好！";
                 byte[] bytes = Encoding.Default.GetBytes(str);
                 Task task = fileStream.WriteAsync(bytes, 0, bytes.Length);                  // 异步操作时，FileOptions 可以为 Asynchronous，也可以是 None ，这两者都不会阻塞当前线程
@@ -153,7 +154,7 @@ namespace FileStreamTest
             using (FileStream fileStream = new FileStream(filePath2, FileMode.Open, FileAccess.Read, FileShare.None, 4096, FileOptions.None))
             {                                                                                           // 测试说明：以 Encoding 方法写入的内容，需要以 Encoding 方法来读取
                 byte[] readBuffer = new byte[200];                        
-                int length = fileStream.Read(readBuffer, 0, 100);                                       // 测试说明：当读取接受的 数组 大于流的长度时，只读取流本身的长度
+                int length = fileStream.Read(readBuffer, offset:0, count:100);                                       // 测试说明：当读取接受的 数组 大于流的长度时，只读取流本身的长度
                 Console.WriteLine("读取的长度： " + length); 
                 string str = Encoding.UTF8.GetString(readBuffer);
                 Console.WriteLine(str);

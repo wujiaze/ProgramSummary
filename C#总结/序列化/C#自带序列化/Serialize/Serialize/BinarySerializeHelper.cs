@@ -1,10 +1,26 @@
 ﻿/*
- *         主题 ：采用 SoapFormatter 格式化器，进行序列化操作
+ *         主题 ：采用 BinaryFormatter 格式化器，进行序列化操作
+ *                流的编码格式由 BinaryFormatter 确定
  *
- *         缺点： 不支持泛型成员
+ *         缺点： 得到的文件可读性差
+ *                
+ *         优点： 1、可以序列化任何类字段成员   值类型：枚举，各种数值类型，布尔类型，自定义结构类型；
+ *                                        引用类型：Object，string，类对象，接口对象，委托对象，数组，集合     （TODO 指针，没接触过，接触到了再补充）
  *
- *         优点： 可读性强，互操作性强
- *  
+ *                2、可以序列化任意修饰符：  public，internal，private，protected，只是反序列化时，注意如何调用即可
+ *
+ *                3、可以序列化相互引用的对象，格式化器可以检测出相互引用的关系
+ *
+ *         使用方法： 1、类 / 结构体 必须标记 [Serializable] 特性，类 / 结构体 对象才能使用
+ *                   2、不想要序列化的字段成员前加上[NonSerialized]
+ *                   
+ *         注意点：  1、反序列化时  类 / 结构体 不需要任何构造函数，有构造函数也没问题
+ *                  2、不可以序列化 static const readonly
+ *                  3、属性不能被序列化，但是属性内部由字段构成，所以看上去属性是可以序列化的，故也是可以这样直接用属性的
+ *                  4、反序列化出来的是一种深度复制，不是复制了引用，而是复制了内存中的数据
+ *                  5、同一个流可以容纳多个对象的序列化，但是反序列化时，只要按照顺序，就可以得到对象的引用
+ *                  6、[Serializable] 特性不能被子类继承，所以 反/序列化 子类时，父类和子类都必须要有 [Serializable] 特性
+ *                  7、[NonSerialized] 特性 是可以被子类继承的
  */
 using System;
 using System.IO;
@@ -62,7 +78,7 @@ public class BinarySerializeHelper
     /// 序列化对象到文件
     /// </summary>
     /// <param name="obj">对象</param>
-    /// <param name="filepath">文件路径</param>
+    /// <param name="filepath">文件路径，扩展名最好是bin</param>
     /// <param name="isAppend">追加还是创建</param>
     public static void InstanceDataToFile(object obj, string filepath, bool isAppend)
     {
@@ -100,12 +116,12 @@ public class BinarySerializeHelper
     {
         InstanceDataToFile(obj, filepath, false);
     }
-    
+
 
     /// <summary>
     /// 将文件反序列化到对象(可以根据序列化之前的类型进行转换)
     /// </summary>
-    /// <param name="filepath"></param>
+    /// <param name="filepath">文件路径，扩展名最好是bin</param>
     /// <returns>对象</returns>
     public static object FileToInstanceData(string filepath)
     {
