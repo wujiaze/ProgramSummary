@@ -15,7 +15,7 @@
  *                  2、不想要序列化的字段成员前加上[NonSerialized]
  *
  *        注意点：  1、反序列化时  类 / 结构体 不需要任何构造函数，有构造函数也没问题
- *                   2、不可以序列化 static const readonly
+ *                   2、不可以序列化 static const 
  *                  3、属性不能被序列化，但是属性内部由字段构成，所以看上去属性是可以序列化的，故也是可以这样直接用属性的
  *                  4、反序列化出来的是一种深度复制，不是复制了引用，而是复制了内存中的数据
  *                  5、同一个流可以容纳多个对象的序列化，但是反序列化时，只要按照顺序，就可以得到对象的引用
@@ -34,6 +34,7 @@ public class SoapSerializeHelper
     /// </summary>
     private static SoapFormatter soapFormatter = new SoapFormatter();
 
+    // 非泛型
     /// <summary>
     /// 将内存对象序列化到内存流
     /// </summary>
@@ -49,8 +50,6 @@ public class SoapSerializeHelper
         soapFormatter.Serialize(memoStream, instance);
         return memoStream;
     }
-
-
     /// <summary>
     /// 将内存流反序列化为内存对象(可以根据序列化之前的类型进行转换)
     /// </summary>
@@ -71,10 +70,6 @@ public class SoapSerializeHelper
     {
         return MemoryToInstanceData(stream, false);
     }
-
-
-
-
     /// <summary>
     ///  序列化对象到文件
     /// </summary>
@@ -115,7 +110,6 @@ public class SoapSerializeHelper
     {
         InstanceDataToFile(instance, filepath, false);
     }
-
     /// <summary>
     /// 将文件反序列化到对象(可以根据序列化之前的类型进行转换)
     /// </summary>
@@ -142,6 +136,90 @@ public class SoapSerializeHelper
             fileStream.Close();
         }
         return obj;
+    }
+
+
+
+    // 泛型
+    public static MemoryStream InstanceDataToMemory<T>(T instance)
+    {
+        // 参数检查
+        if (instance == null) return null;
+        // 需要序列化的对象存在于内存中，所以这里采用 MemoryStream
+        MemoryStream memoStream = new MemoryStream();
+        // 将对象序列化之后传入流中
+        soapFormatter.Serialize(memoStream, instance);
+        return memoStream;
+    }
+    public static T MemoryToInstanceData<T>(Stream stream, bool isLeaveOpen)
+    {
+        //参数判断
+        if (stream == null) return default(T);
+        object obj = soapFormatter.Deserialize(stream);
+        // 关闭流
+        if (!isLeaveOpen)
+            stream.Close();
+        return (T)obj;
+    }
+    public static T MemoryToInstanceData<T>(Stream stream)
+    {
+        return MemoryToInstanceData<T>(stream, false);
+    }
+    public static void InstanceDataToFile<T>(T instance, string filepath, bool isAppend)
+    {
+        // 参数判断
+        if (filepath == null) throw new Exception("文件名不能为空");
+        if (instance == null) return;
+        FileStream fileStream = null;
+        if (!File.Exists(filepath))
+        {
+            fileStream = new FileStream(filepath, FileMode.Create, FileAccess.ReadWrite);
+        }
+        else
+        {
+            if (isAppend == false)
+                fileStream = new FileStream(filepath, FileMode.Create, FileAccess.ReadWrite);
+            if (isAppend == true)
+                fileStream = new FileStream(filepath, FileMode.Append, FileAccess.ReadWrite);
+        }
+        try
+        {
+            soapFormatter.Serialize(fileStream, instance);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            fileStream.Close();
+        }
+    }
+    public static void InstanceDataToFile<T>(T instance, string filepath)
+    {
+        InstanceDataToFile<T>(instance, filepath, false);
+    }
+    public static T FileToInstanceData<T>(string filepath)
+    {
+        if (string.IsNullOrEmpty(filepath))
+            throw new Exception("文件名不能为空！");
+        if (!File.Exists(filepath))
+            throw new Exception("文件不存在！");
+        FileStream fileStream = new FileStream(filepath, FileMode.Open, FileAccess.ReadWrite);
+        object obj = null;
+        try
+        {
+            obj = soapFormatter.Deserialize(fileStream);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            fileStream.Close();
+        }
+        return (T)obj;
     }
 }
 

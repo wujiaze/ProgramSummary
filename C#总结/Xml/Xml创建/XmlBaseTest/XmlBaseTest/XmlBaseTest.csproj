@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1A45913F-3720-42F7-B17A-747079422566}</ProjectGuid>
+    <ProjectGuid>{D46D5931-84FF-4328-9F74-78C52BDE4FDF}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>XmlSerialize</RootNamespace>
-    <AssemblyName>XmlSerialize</AssemblyName>
+    <RootNamespace>XmlBaseTest</RootNamespace>
+    <AssemblyName>XmlBaseTest</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,11 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SerClass.cs" />
-    <Compile Include="XmlSerializerHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

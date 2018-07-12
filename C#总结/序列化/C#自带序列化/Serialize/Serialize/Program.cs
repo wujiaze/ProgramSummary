@@ -16,8 +16,8 @@ namespace Serialize
         static void Main(string[] args)
         {
             SerTest st2 = new SerTest(1000, 5000f, 1000f, 1000f);
-            BinarySerializeHelper.InstanceDataToFile(st2, "D:\\Desktop\\1.txt");
-            SerTest mc = (SerTest)BinarySerializeHelper.FileToInstanceData("D:\\Desktop\\1.txt");
+            SoapSerializeHelper.InstanceDataToFile<SerTest>(st2, "D:\\Desktop\\1.txt");
+            SerTest mc = (SerTest)SoapSerializeHelper.FileToInstanceData("D:\\Desktop\\1.txt");
             mc.Print();
             Console.ReadLine();
         }

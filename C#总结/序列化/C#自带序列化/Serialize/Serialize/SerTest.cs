@@ -28,8 +28,9 @@ namespace Serialize
             this.attack = attack;
             this.defence = defence;
         }
-        // 下面四个特性的方法，必须带有 StreamingContext 参数
 
+
+        // 下面四个特性的方法，必须带有 StreamingContext 参数
 
         [OnSerializing]
         private void CaculatePowerRank(StreamingContext context)
@@ -56,6 +57,7 @@ namespace Serialize
         public void Print()
         {
             Console.WriteLine(this.powerRank);
+            Console.WriteLine("x "+x);
         }
     }
 }
