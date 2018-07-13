@@ -45,7 +45,6 @@
     <Compile Include="MyClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SerClass.cs" />
     <Compile Include="XmlSerializerHelper.cs" />
   </ItemGroup>
   <ItemGroup>

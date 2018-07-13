@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 
 namespace Serialize
 {
-    
+
     [Serializable]
     public class SerTest : BaseClass
     {
@@ -19,14 +19,15 @@ namespace Serialize
         private float defence;
         //[NonSerialized]
         //protected  float powerRank; // 这个数据很重要，不想序列化
-
-        public SerTest(int id,  float maxHp, float attack, float defence)
+        public BaseClass ba;
+        public SerTest(int id,  float maxHp, float attack, float defence, BaseClass ba)
         {
             this.id = id;
             this.maxHp = maxHp;
             this.currentHp = this.maxHp;
             this.attack = attack;
             this.defence = defence;
+            this.ba = ba;
         }
 
 
@@ -57,7 +58,7 @@ namespace Serialize
         public void Print()
         {
             Console.WriteLine(this.powerRank);
-            Console.WriteLine("x "+x);
+           
         }
     }
 }

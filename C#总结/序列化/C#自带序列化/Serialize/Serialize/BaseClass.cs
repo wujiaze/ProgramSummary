@@ -8,5 +8,7 @@ namespace Serialize
     {
         [NonSerialized]
         protected float powerRank;
+
+        public SerTest ser;
     }
 }
