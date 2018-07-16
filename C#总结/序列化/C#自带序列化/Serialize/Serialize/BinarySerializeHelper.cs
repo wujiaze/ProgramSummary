@@ -38,6 +38,7 @@ public class BinarySerializeHelper
 
     /// <summary>
     /// 将内存对象序列化到内存流
+    ///         返回的流的Position是流的末尾
     /// </summary>
     /// <param name="obj">需要序列化的对象</param>
     /// <returns>返回的流的Position是流的末尾</returns>
@@ -86,7 +87,31 @@ public class BinarySerializeHelper
         }
     }
 
-
+    /// <summary>
+    /// 将内存流反序列化为内存对象
+    /// </summary>
+    /// <param name="memoryStream">内存流</param>
+    /// <param name="index">设置流开始读取的位置</param>
+    /// <param name="isLeaveOpen">离开方法时，流是否保持开的状态</param>
+    /// <returns>返回内存对象</returns>
+    public static object MemoryToInstanceData(Stream memoryStream, long index, bool isLeaveOpen = false)
+    {
+        //参数判断
+        if (memoryStream == null) return null;
+        try
+        {
+            memoryStream.Position = index;
+            // 选择格式化器 
+            object obj = binaryFormatter.Deserialize(memoryStream);
+            if (!isLeaveOpen)
+                memoryStream.Close();
+            return obj;
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
     #endregion
 
 
