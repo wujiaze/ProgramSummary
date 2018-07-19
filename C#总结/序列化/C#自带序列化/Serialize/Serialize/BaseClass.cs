@@ -7,8 +7,6 @@ namespace Serialize
     public class BaseClass
     {
         [NonSerialized]
-        protected float powerRank;
-
-        public SerTest ser;
+        protected float powerRank;// 这个数据很重要，不想序列化
     }
 }

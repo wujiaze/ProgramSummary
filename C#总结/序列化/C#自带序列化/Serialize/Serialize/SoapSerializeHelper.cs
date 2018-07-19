@@ -5,7 +5,7 @@
  *         缺点： 不支持泛型成员
  *
  *         优点：1、一般可读性；                                                                                互操作性强(TODO 没有接触过)
- *              2、可以序列化任何类字段成员    值类型：枚举，各种数值类型，布尔类型，自定义结构类型；
+ *              2、可以序列化任何字段成员    值类型：枚举，各种数值类型，布尔类型，自定义结构类型；
  *                                        引用类型：Object，string，类对象，接口对象，委托对象，数组，集合        （TODO 指针，没接触过，接触到了再补充）
  *              3、可以序列化任意修饰符：  public，internal，private，protected，只是反序列化时，注意如何调用即可
  *
@@ -18,10 +18,9 @@
  *                  2、不可以序列化 static const 
  *                  3、属性不能被序列化，但是属性内部由字段构成，所以看上去属性是可以序列化的，故也是可以这样直接用属性的
  *                  4、反序列化出来的是一种深度复制，不是复制了引用，而是复制了内存中的数据
- *                  5、同一个流可以容纳多个对象的序列化，但是反序列化时，只要按照顺序，就可以得到对象的引用
+ *                  5、同一个流可以容纳多个对象的序列化，但是反序列化时，只要按照顺序，就可以得到对象
  *                  6、[Serializable] 特性不能被子类继承，所以 反/序列化 子类时，父类和子类都必须要有 [Serializable] 特性
- *                  7、[NonSerialized] 特性 是可以被子类继承的
- *          todo 不加 特性 [serilizar] 进行网络传输
+ *                  7、[NonSerialized] 特性 是可以被子类继承的,所以子类会忽略父类的带有这个特性的成员
  */
 
 using System;
@@ -42,7 +41,7 @@ public class SoapSerializeHelper
     /// </summary>
     /// <param name="instance">需要序列化的对象</param>
     /// <returns>返回的流的Position是流的末尾</returns>
-    public static MemoryStream InstanceDataToMemory<T>(T instance)
+    public static MemoryStream InstanceDataToMemory(object instance)
     {
         // 参数检查
         if (instance == null) return null;
@@ -85,31 +84,6 @@ public class SoapSerializeHelper
             throw e;
         }
     }
-    /// <summary>
-    /// 将内存流反序列化为内存对象
-    /// </summary>
-    /// <param name="memoryStream">内存流</param>
-    /// <param name="index">设置流开始读取的位置</param>
-    /// <param name="isLeaveOpen">离开方法时，流是否保持开的状态</param>
-    /// <returns>返回内存对象</returns>
-    public static object MemoryToInstanceData(Stream memoryStream, long index, bool isLeaveOpen = false)
-    {
-        //参数判断
-        if (memoryStream == null) return null;
-        try
-        {
-            memoryStream.Position = index;
-            // 选择格式化器 
-            object obj = soapFormatter.Deserialize(memoryStream);
-            if (!isLeaveOpen)
-                memoryStream.Close();
-            return obj;
-        }
-        catch (Exception e)
-        {
-            throw e;
-        }
-    }
 
     #endregion
 
@@ -121,7 +95,7 @@ public class SoapSerializeHelper
     /// <param name="instance">序列化对象</param>
     /// <param name="filepath">文件路径,最好带.xml后缀</param>
     /// <param name="isAppend">追加还是创建</param>
-    public static void InstanceDataToFile<T>(T instance, string filepath, bool isAppend = false)
+    public static void InstanceDataToFile(object instance, string filepath, bool isAppend = false)
     {
         // 参数判断
         if (filepath == null) throw new Exception("文件名不能为空");
@@ -150,6 +124,7 @@ public class SoapSerializeHelper
     {
         if (string.IsNullOrEmpty(filepath))
             throw new Exception("文件名不能为空！");
+        filepath = Path.ChangeExtension(filepath, ".xml");
         if (!File.Exists(filepath))
             throw new Exception("文件不存在！");
         FileStream fileStream = new FileStream(filepath, FileMode.Open, FileAccess.Read);
@@ -168,7 +143,7 @@ public class SoapSerializeHelper
         return (T)obj;
     }
 
-
+    /* 辅助方法 */
     /// <summary>
     /// 获取文件流
     /// </summary>

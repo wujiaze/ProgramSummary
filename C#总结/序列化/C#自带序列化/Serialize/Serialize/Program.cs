@@ -17,8 +17,7 @@ namespace Serialize
         static void Main(string[] args)
         {
             BaseClass ba = new BaseClass();
-            SerTest st2 = new SerTest(1000, 5000f, 1000f, 1000f, ba);
-            ba.ser = st2;
+            SerTest st2 = new SerTest(1000, 5000f, 1000f, 1000f);
             string path = "D:\\Desktop\\1.bin";
 
             BinarySerializeHelper.InstanceDataToFile(st2, path);

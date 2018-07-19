@@ -17,17 +17,13 @@ namespace Serialize
         private float maxHp;
         private float attack;
         private float defence;
-        //[NonSerialized]
-        //protected  float powerRank; // 这个数据很重要，不想序列化
-        public BaseClass ba;
-        public SerTest(int id,  float maxHp, float attack, float defence, BaseClass ba)
+        public SerTest(int id,  float maxHp, float attack, float defence)
         {
             this.id = id;
             this.maxHp = maxHp;
             this.currentHp = this.maxHp;
             this.attack = attack;
             this.defence = defence;
-            this.ba = ba;
         }
 
 
