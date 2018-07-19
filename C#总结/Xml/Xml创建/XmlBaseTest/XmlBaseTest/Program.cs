@@ -9,9 +9,11 @@ namespace XmlBaseTest
         {
             /* 采用文档对象模型DOM 方式*/
 
+
+
             /* 采用流方式 */
             /*
-             *  采用工厂方法，创建 XmlReader的三种子类的实例
+             *  采用工厂方法，创建 XmlReader 的三种子类的实例
              *  第一种  XmlDictionaryReader
              *  第二种  XmlNodeReader
              *  第三种  XmlTextReader

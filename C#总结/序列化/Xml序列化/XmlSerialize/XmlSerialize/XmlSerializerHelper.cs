@@ -1,24 +1,23 @@
 ﻿/*
  *      Title：.Net框架自带的 Xml序列化器   XmlSerializer 进行序列化操作
  *
- *      优点:  1、可以序列化字段和属性(属性的访问器必须是public，且两中访问器都要有)     
+ *      优点:  1、可以序列化字段(public)和属性(属性的访问器必须是public，且两种访问器都要有)     
  *             2、可以在得到的xml文档中添加注释
  *             3、支持 List<>  ArrayList
+ *      缺点：1、不能序列化  委托对象   接口对象(注意:实现接口的类是可以序列化的)
+ *                               实现 IDictionary,IDictionary<> 接口的对象，比如：HashTable/Dictionary，
+ *                               实现 ICollection,ICollection<> 接口的对象，比如：Queue/Queue<> ,Stack/Stack<>
+ *            2、不支持 ArrayList[]  List<>[]
+ *            3、不支持多维数组,但支持交错数组
  *
- *      使用方法：1、不想要序列化的字段成员前加上 [XmlIgnore] 特性
+ *      使用方法：1、不想要序列化的字段成员前加上 [XmlIgnore] 特性,可以被继承
  *               2、[XmlAttribute] 特性，使字段或属性，变成Xml文档中的属性
  *
  *      使用注意点: 1、必须有显示/隐式的默认构造函数
  *                 2、只能序列化是public修饰的对象
- *                 3、不能序列化  委托对象   接口对象(注意:实现接口的类是可以序列化的)
- *                               实现 IDictionary,IDictionary<> 接口的对象，比如：HashTable/Dictionary，
- *                               实现 ICollection,ICollection<> 接口的对象，比如：Queue/Queue<> ,Stack/Stack<>
- *                 4、不支持 ArrayList[]  List<>[]
- *                 5、不支持多维数组,但支持交错数组
- *                 6、[Obsolete] 对象不再序列化
- *                 7、不支持 static const readonly
- *                 8、[XmlIgnore] 特性可以被继承
- *                 9、序列化对象不能相互引用
+ *                 3、[Obsolete] 对象不再序列化
+ *                 4、不支持 static const readonly
+ *                 5、序列化对象不能相互引用，只支持单向引用
  *
  *                  todo 不加 特性 [serilizar] 进行网络传输 用于网络传输，1.什么都不加测试，加上[Serializable]测试，加上[XmlAttribute("AreaName")] 在测试 
  */
@@ -39,15 +38,16 @@ namespace XmlSerialize
         #region 序列化到内存
         /// <summary>
         /// 序列化对象到内存流
+        ///     未关闭流
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="obj">序列化对象</param>
+        /// <param name="instance">序列化对象</param>
         /// <param name="encoding">编码格式</param>
         /// <returns>返回的流的Position是流的末尾</returns>
-        public static MemoryStream InstanceToMemoryByXml<T>(T obj, Encoding encoding = null)
+        public static MemoryStream InstanceToMemoryByXml<T>(T instance, Encoding encoding = null)
         {
             // 参数检查
-            if (obj == null) return null;
+            if (instance == null) return null;
             // 获取编码格式
             if (encoding == null) encoding = Encoding.UTF8;
             MemoryStream memoryStream = new MemoryStream();
@@ -58,7 +58,7 @@ namespace XmlSerialize
                     XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));    // 这个构造函数不会内存泄漏
                     XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
                     ns.Add("", "");
-                    xmlSerializer.Serialize(streamWriter, obj, ns);
+                    xmlSerializer.Serialize(streamWriter, instance, ns);
                 }
                 catch (Exception e)
                 {
@@ -73,21 +73,21 @@ namespace XmlSerialize
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="stream">流</param>
-        /// <param name="index">设置流开始读取的位置</param>
+        /// <param name="streamIndex">设置流开始读取的位置</param>
         /// <param name="encoding">读取编码格式</param>
         /// <param name="leaveOpen">离开方法时，流是否保持开的状态</param>
         /// <returns>内存对象</returns>
-        public static T MemoryToInstanceByXml<T>(Stream stream, long index, Encoding encoding = null, bool leaveOpen = false)
+        public static T MemoryToInstanceByXml<T>(Stream stream, long streamIndex, Encoding encoding = null, bool leaveOpen = false)
         {
             //参数判断
             if (stream == null) return default(T);
             // 获取编码格式
             if (encoding == null) encoding = Encoding.UTF8;
-            using (StreamReader reader = new StreamReader(stream, encoding, false, 1024, leaveOpen))
+            using (StreamReader reader = new StreamReader(stream, encoding, true, 1024, leaveOpen))
             {
                 try
                 {
-                    stream.Position = index;
+                    stream.Position = streamIndex;
                     XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
                     T resultObj = (T)xmlSerializer.Deserialize(reader);
                     return resultObj;
@@ -104,7 +104,14 @@ namespace XmlSerialize
 
 
         #region 序列化到文件
-        // 序列化到文件
+        /// <summary>
+        /// 内存对象序列化到文件
+        /// </summary>
+        /// <typeparam name="T"> 对象类型</typeparam>
+        /// <param name="instance">序列化对象</param>
+        /// <param name="filePath">文件路径</param>
+        /// <param name="isAppend">是否追加模式</param>
+        /// <param name="encoding">编码方式</param>
         public static void InstanceToFileByXml<T>(T instance, string filePath, bool isAppend = false, Encoding encoding = null)
         {
             // 参数判断
@@ -116,7 +123,7 @@ namespace XmlSerialize
             if (encoding == null) encoding = Encoding.UTF8;
             // 获取文件流
             FileStream fileStream = GetFileStream(filePath, isAppend);
-            using (StreamWriter streamWriter = new StreamWriter(fileStream, encoding)) // 这个构造函数，默认会关闭底层流
+            using (StreamWriter streamWriter = new StreamWriter(fileStream, encoding)) // 这个构造函数，默认关闭底层流
             {
                 try
                 {
@@ -132,6 +139,13 @@ namespace XmlSerialize
             }
         }
 
+        /// <summary>
+        /// 文件反序列化到内存对象
+        /// </summary>
+        /// <typeparam name="T">类型</typeparam>
+        /// <param name="filePath">文件路径</param>
+        /// <param name="encoding">编码格式</param>
+        /// <returns></returns>
         public static T FileToInstanceByXml<T>(string filePath, Encoding encoding = null)
         {
             if (string.IsNullOrEmpty(filePath))
@@ -158,6 +172,7 @@ namespace XmlSerialize
             }
         }
 
+        /* 辅助方法 */
         private static FileStream GetFileStream(string filePath, bool isAppend)
         {
             FileStream fileStream = null;
@@ -178,16 +193,12 @@ namespace XmlSerialize
 
         #endregion
 
-
-
-
-
         // TODO 使用 XmlWrite/XmlReader xml文件,添加自定义格式？
 
         #region 等 XmlWrite 学好再看
         //// XmlWrite/XmlReader
         //// 1.1 Obj对象 序列化为 Xml字符串
-        //public static string XmlSerObjToStr<T>(T obj, Encoding encoding)
+        //public static string XmlSerObjToStr<T>(T instance, Encoding encoding)
         //{
         //    string str = "";
         //    // xml 格式设置
@@ -200,12 +211,12 @@ namespace XmlSerialize
         //    settings.NewLineChars = "\r\n";
         //    // xml 序列化器
         //    XmlSerializer serializer = new XmlSerializer(typeof(T));
-        //    // obj 是内存中的数据，就用内存流来保存序列化后的数据
+        //    // instance 是内存中的数据，就用内存流来保存序列化后的数据
         //    using (MemoryStream ms = new MemoryStream())
         //    {
         //        using (XmlWriter xw = XmlWriter.Create(ms, settings))
         //        {
-        //            serializer.Serialize(xw, obj, ns);
+        //            serializer.Serialize(xw, instance, ns);
         //            xw.Dispose(); // 这里 XmlWriter 似乎需要提前关闭，具体原因不是很懂
         //            // 以下是为了返回给用户使用
         //            using (StreamReader sr = new StreamReader(ms))
@@ -236,7 +247,7 @@ namespace XmlSerialize
 
 
         //// 2.1  obj对象序列化转换成xml文件
-        //public static void XmlSerObjToFile<T>(T obj, string outputPath)
+        //public static void XmlSerObjToFile<T>(T instance, string outputPath)
         //{
         //    // 方法3 ：XmlWriter写入
 
@@ -257,7 +268,7 @@ namespace XmlSerialize
         //        using (XmlWriter xw = XmlWriter.Create(stream, settings))
         //        {
         //            XmlSerializer serializer = new XmlSerializer(typeof(T));
-        //            serializer.Serialize(xw, obj, ns);
+        //            serializer.Serialize(xw, instance, ns);
         //            xw.Close();
         //            stream.Close();
         //            Console.WriteLine(stream.ToString());

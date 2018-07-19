@@ -34,7 +34,7 @@ namespace XmlSerialize
             
 
             MyClass mc1 = new MyClass(me, -10, 15, '=', -99, 89, 15, -45, 25, -78, true, ms, obj, "你好！AVB+", c1, iif, Print, arrint,
-               arrc1, arrlist, intlist, has, dic, arrqueue, queue, arratack, stack, aar1, a,cf,96);
+               arrc1, arrlist, intlist, has, dic, arrqueue, queue, arratack, stack, aar1, a,cf,96,100);
             //cf.my = mc1;
 
             XmlSerializerHelper.InstanceToFileByXml(mc1, "D:\\Desktop\\xml2.xml");

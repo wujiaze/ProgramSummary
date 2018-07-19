@@ -100,7 +100,7 @@ public class MyClass: ClassFace
         int num, bool isbo, MyStruct ms, object obj, string str,
         Class1 c1, IInterface ii, Action ac, int[] arrint, Class1[] arrClass1S,
         ArrayList arrlist, List<int> list, Hashtable has, Dictionary<float, byte> dic,
-        Queue arrqueue, Queue<double> queue, Stack arrsta, Stack<decimal> sta, List<ArrayList> arrl, ArrayList[] a, ClassFace cf, sbyte Sby)
+        Queue arrqueue, Queue<double> queue, Stack arrsta, Stack<decimal> sta, List<ArrayList> arrl, ArrayList[] a, ClassFace cf, sbyte Sby, byte face)
     {
         this.enu1 = enu;
         this.sby = sby;
@@ -133,6 +133,7 @@ public class MyClass: ClassFace
         //this.a = a;
         this.cf = cf;
         this.Sby = Sby;
+        this.face = face;
     }
     public MyClass() { }
 

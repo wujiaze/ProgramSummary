@@ -1,0 +1,8 @@
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Xml\Xml创建\DOM模式\XmlDOMTest\XmlDOMTest\bin\Debug\XmlDOMTest.exe.config
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Xml\Xml创建\DOM模式\XmlDOMTest\XmlDOMTest\bin\Debug\XmlDOMTest.xml
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Xml\Xml创建\DOM模式\XmlDOMTest\XmlDOMTest\bin\Debug\XmlDOMTest.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Xml\Xml创建\DOM模式\XmlDOMTest\XmlDOMTest\bin\Debug\XmlDOMTest.pdb
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Xml\Xml创建\DOM模式\XmlDOMTest\XmlDOMTest\obj\Debug\XmlDOMTest.csprojResolveAssemblyReference.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Xml\Xml创建\DOM模式\XmlDOMTest\XmlDOMTest\obj\Debug\XmlDOMTest.csproj.CoreCompileInputs.cache
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Xml\Xml创建\DOM模式\XmlDOMTest\XmlDOMTest\obj\Debug\XmlDOMTest.exe
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Xml\Xml创建\DOM模式\XmlDOMTest\XmlDOMTest\obj\Debug\XmlDOMTest.pdb
