@@ -1,3 +1,4 @@
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\延迟加载技术\DeloyLoad\DeloyLoad\bin\Debug\DeloyLoad.exe.config
 D:\Desktop\编程学习总结\ProgramSummary\C#总结\延迟加载技术\DeloyLoad\DeloyLoad\bin\Debug\DeloyLoad.exe
 D:\Desktop\编程学习总结\ProgramSummary\C#总结\延迟加载技术\DeloyLoad\DeloyLoad\bin\Debug\DeloyLoad.pdb
 D:\Desktop\编程学习总结\ProgramSummary\C#总结\延迟加载技术\DeloyLoad\DeloyLoad\obj\Debug\DeloyLoad.csprojResolveAssemblyReference.cache
