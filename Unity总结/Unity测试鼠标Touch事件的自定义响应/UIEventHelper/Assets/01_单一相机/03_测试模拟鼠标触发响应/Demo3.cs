@@ -36,33 +36,26 @@ public class Demo3 : MonoBehaviour
     private void PosCallBack(string arg0)
     {
         if(posX.text=="" | posY.text=="")return;
-        MouseSimulater.MoveTo(float.Parse(posX.text), float.Parse(posY.text));
-        //MouseSimulater.LeftClick(float.Parse(posX.text), float.Parse(posY.text));
+        
+        MouseSimulater.LeftClick(float.Parse(posX.text)/Screen.width, float.Parse(posY.text) / Screen.height);
         Restext.text = "当前Unity分辨率：" +Screen.width + " / " +Screen.height + "当前点击：" + posX.text + " / " + posY.text;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Restext.text = "当前Unity分辨率：" + Screen.width + " / " + Screen.height;
-        }
-
         if (Input.GetKeyDown(KeyCode.A))
         {
             Screen.SetResolution(800, 600, true);
-            Restext.text = "当前Unity分辨率：" + Screen.width + " / " + Screen.height;
         }
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Screen.SetResolution(8000, 6000, true);
-            Restext.text = "当前Unity分辨率：" + Screen.width + " / " + Screen.height;
+            Screen.fullScreen = false;
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
             Screen.SetResolution(1920, 1080, true);
-            Restext.text = "当前Unity分辨率：" + Screen.width + " / " + Screen.height;
         }
+        Restext.text = "当前Unity分辨率：" + Screen.width + " / " + Screen.height;
     }
 
     
