@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/scenne.unity
+- path: "Assets/01_\u5355\u4EBA\u65E5\u5FD7/01_\u63A7\u5236\u53F0/Demo01.unity"
   isLoaded: 1
   isActive: 1

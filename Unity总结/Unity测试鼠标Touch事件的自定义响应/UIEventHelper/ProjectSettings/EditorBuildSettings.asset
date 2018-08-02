@@ -5,6 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: "Assets/01_\u5355\u4E00\u76F8\u673A/03_\u6D4B\u8BD5\u6A21\u62DF\u9F20\u6807\u89E6\u53D1\u54CD\u5E94/Demo3.unity"
+  - enabled: 0
+    path: "Assets/01_\u5355\u4E00\u76F8\u673A/03_\u6D4B\u8BD5\u6A21\u62DF\u9F20\u6807\u54CD\u5E94/Demo3.unity"
     guid: 89a9c524a0ae319499d9f845be8b4240
+  - enabled: 0
+    path: "Assets/02_\u591A\u4E2A\u76F8\u673A/UI\u76F8\u673A/02_\u6D4B\u8BD5\u6A21\u62DF\u9F20\u6807\u54CD\u5E94/Demo02.unity"
+    guid: 1db2de8a03900264388511aba0fa68e6
+  - enabled: 1
+    path: "Assets/02_\u591A\u4E2A\u76F8\u673A/Gun\u76F8\u673A/02_\u6D4B\u8BD5\u6A21\u62DF\u9F20\u6807\u54CD\u5E94/Demo02_gun_02.unity"
+    guid: fdda0705373bf5542a8597ce40cf5a23

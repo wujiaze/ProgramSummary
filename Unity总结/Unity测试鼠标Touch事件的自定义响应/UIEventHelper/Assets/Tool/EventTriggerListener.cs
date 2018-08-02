@@ -3,10 +3,13 @@
  *      适用环境：
  *               1、UGUI   -- UI事件           条件：Canvas组件上添加 GraphicRaycaster 组件
  *               2、2D/3D  -- 射线检测封装事件  条件：1、渲染3D/2D 的Camera,添加 PhysicsRaycaster/PhysicsRaycaster2D 组件，需要去掉UI选项
- *                                                  2、3D/2D 对象，需要添加碰撞体/触发器  
+ *                                                  2、3D/2D 对象，需要添加碰撞体/触发器
+ *               3、不管是UI 还是 2D/3D 都需要添加 EventSystem 对象
  *      使用方法：
  *            
  *            需要触发 鼠标/touch 事件的对象，使用Bind方法，然后调用触发事件，添加自定义委托
+ *
+ *      提示：eventData 的坐标，都是相对于Unity屏幕的左下角，即Unity坐标系坐标
  *
  *      注意点：
  *            一：单一相机：
@@ -17,14 +20,27 @@
  *            1.2、若需要优先响应3D/2D事件：将Canvas对象的Canvas组件的OrderInLayer设置为-1(小于所有3D/2D)
  *                                        2D优先于3D，需要将2D的 SpriteRenderer 的 OrderInLayer设置为大于0(因为3D这个值始终是0)
  *            产生的效果： 1、当UI和2D/3D模型重叠的部分，始终只响应2D/3D模型
- *                        2、当2D/3D之间重叠的部分，响应层级大的模型
+ *                        2、当2D/3D之间重叠的部分，响应层级大的模型，层级相同的响应靠近相机的模型
  *
  *            1.3、穿透触发效果: 对需要进行穿透的对象，使用 BindPass 方法，触发的顺序，从最上面向下穿透
  *
  *          二：多个相机
- *              当UI和2D/3D ,不同相机时，
+ *              2.1、UI相机 和 3D相机
+ *               2.1.1、 UI射线 和 3D/2D射线 都是从各自的相机中发射，所以两个相机位置不同，不影响点击事件
+ *               2.1.2、响应的顺序：
+ *                      1、由于UI相机的Depth比3D相机大，所以会始终先触发UI事件
+ *                      2、3D事件的响应：靠近相机的优先响应
+ *                      3、2D事件的响应：高层级的优先响应，相同层级，靠近相机的优先响应
+ *                      4、3D/2D 事件的响应：高层级的优先响应，相同层级，靠近相机的优先响应  （3D的层级永远是0）
+ *               2.1.3、穿透触发效果：和单一相机一样的用法，一样的效果
  *
- *        提示：eventData 的坐标，都是相对于Unity屏幕的左下角
+ *              2.2、3D相机 和 3D相机
+ *                   2.2.1、 一定要先添加EventSystem这个游戏对象
+ *                   2.2.2、 相机添加 PhysicsRaycaster 组件 ，EventMask属性：去掉UI(若没有UI)
+ *                   2.2.3、 深度相机的EventMask属性：只渲染自己的那一层   主摄像机：去掉深度相机渲染的那一层
+ *               2.2.4 响应顺序
+ *                   深度相机 Depth值大，所以先响应，其余的根据距离摄像机的远近来判断
+ *               2.2.5 穿透触发效果：和单一相机一样的用法，一样的效果
  *            
  */
 using System;
@@ -53,6 +69,11 @@ public class EventTriggerListener : EventTrigger
             this.isUI = this.recttransform != null ? true : false;
         }
 
+        /// <summary>
+        /// 在当前的距离上移动3D/2D模型
+        /// </summary>
+        /// <param name="camera">渲染3D/2D的相机</param>
+        /// <param name="distance">设定的距离，默认为当前距离</param>
         public void Move3D2DonDistance(Camera camera, float distance = -1f)
         {
             if (Mathf.Approximately(distance, -1f))
@@ -98,6 +119,7 @@ public class EventTriggerListener : EventTrigger
     /// <param name="go">监听的游戏对象</param>
     public static EventTriggerListener Bind(GameObject go)
     {
+        if (go == null) return null;
         EventTriggerListener triggerListener = go.GetComponent<EventTriggerListener>();
         if (triggerListener == null)
             triggerListener = go.AddComponent<EventTriggerListener>();
@@ -111,9 +133,7 @@ public class EventTriggerListener : EventTrigger
     /// <returns></returns>
     public static EventTriggerListener BindPass(GameObject go)
     {
-        EventTriggerListener triggerListener = go.GetComponent<EventTriggerListener>();
-        if (triggerListener == null)
-            triggerListener = go.AddComponent<EventTriggerListener>();
+        EventTriggerListener triggerListener = Bind(go);
         triggerListener.isPass = true;
         return triggerListener;
     }
