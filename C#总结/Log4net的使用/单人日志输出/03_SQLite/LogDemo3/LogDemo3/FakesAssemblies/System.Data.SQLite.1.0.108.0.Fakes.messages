@@ -1,0 +1,247 @@
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.AssemblySourceIdAttribute 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.AssemblySourceTimeStampAttribute 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteLogCallback 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLite3 生成存根: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLite3_UTF16 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteBackup 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteBase 生成存根: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteOpenFlagsEnum 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConnectionFlags 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteStatusOpsEnum 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConfigDbOpsEnum 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConfigOpsEnum 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteTraceFlags 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteBlob 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteCommand 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteCommandBuilder 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteDataReaderValue 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteReadBlobEventArgs 生成存根: 类型没有系列可见的构造函数。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteReadArrayEventArgs 生成存根: 类型没有系列可见的构造函数。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteReadValueEventArgs 生成存根: 类型没有系列可见的构造函数。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteBindValueCallback 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteReadValueCallback 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteTypeCallbacks 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteTypeCallbacksMap 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.ConnectionEventArgs 生成存根: 类型没有系列可见的构造函数。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConnectionEventHandler 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConnection 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SynchronizationModes 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteProgressCallback 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteAuthorizerCallback 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteUpdateCallback 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteCommitCallback 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteTraceCallback 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteTraceCallback2 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteRollbackCallback 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteProgressEventHandler 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteAuthorizerEventHandler 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteCommitHandler 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteUpdateEventHandler 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteTraceEventHandler 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteBackupCallback 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.ProgressEventArgs 生成存根: 类型没有系列可见的构造函数。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.AuthorizerEventArgs 生成存根: 类型没有系列可见的构造函数。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.UpdateEventType 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.UpdateEventArgs 生成存根: 类型没有系列可见的构造函数。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.CommitEventArgs 生成存根: 类型没有系列可见的构造函数。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.TraceEventArgs 生成存根: 类型没有系列可见的构造函数。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConnectionPool 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConnectionStringBuilder 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConvert 生成存根: 类型没有系列可见的构造函数。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.TypeAffinity 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConnectionEventType 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteDateFormats 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteJournalModeEnum 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteSynchronousEnum 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteExecuteType 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteAuthorizerActionCode 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteProgressReturnCode 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteAuthorizerReturnCode 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteType 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteDbTypeMap 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteDbTypeMapping 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.TypeNameStringComparer 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteDataAdapter 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteDataReader 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteDefineConstants 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteException 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteErrorCode 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteFactory 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteInvokeDelegate 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteStepDelegate 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteFinalDelegate 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteCompareDelegate 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.FunctionType 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteCallback 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteFinalCallback 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteCollation 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.CollationTypeEnum 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.CollationEncodingEnum 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.CollationSequence 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteFunctionAttribute 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteKeyReader 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.LogEventArgs 生成存根: 类型没有系列可见的构造函数。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteLogEventHandler 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteLog 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteMetaDataCollectionNames 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteParameter 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteParameterCollection 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteStatement 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteTransaction 生成存根: 类型没有系列可见的构造函数。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteTransaction2 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteTransactionBase 生成存根: 类型没有系列可见的构造函数。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.HelperMethods 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.NativeLibraryHelper 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.UnsafeNativeMethodsPosix 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.UnsafeNativeMethodsWin32 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.UnsafeNativeMethods 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConnectionHandle 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteStatementHandle 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteBackupHandle 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteBlobHandle 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SR 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteEnlistment 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteContext 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteValue 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteIndexConstraintOp 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteIndexFlags 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteIndexConstraint 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteIndexOrderBy 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteIndexConstraintUsage 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteIndexInputs 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteIndexOutputs 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteIndex 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteMemory 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteString 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteBytes 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteMarshal 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteChangeSetConflictType 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteChangeSetConflictResult 生成存根: 类型是一个值类型。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SessionTableFilterCallback 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SessionConflictCallback 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteSessionHelpers 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConnectionLock 生成存根: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteChangeSetIterator 生成存根: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteMemoryChangeSetIterator 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteStreamChangeSetIterator 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteStreamAdapter 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteSessionStreamManager 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteChangeGroup 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteSession 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteChangeSetBase 生成存根: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteMemoryChangeSet 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteStreamChangeSet 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteChangeSetEnumerator 生成存根: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteMemoryChangeSetEnumerator 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteStreamChangeSetEnumerator 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteChangeSetMetadataItem 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 <PrivateImplementationDetails> 生成存根: 类型已密封。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteLogCallback 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLite3 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLite3_UTF16 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteBackup 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteBase 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.ISQLiteSchemaExtensions 生成填充码: 类型是一个接口。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteOpenFlagsEnum 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConnectionFlags 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteStatusOpsEnum 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConfigDbOpsEnum 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConfigOpsEnum 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteTraceFlags 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteBindValueCallback 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteReadValueCallback 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteTypeCallbacksMap 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConnectionEventHandler 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SynchronizationModes 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteProgressCallback 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteAuthorizerCallback 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteUpdateCallback 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteCommitCallback 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteTraceCallback 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteTraceCallback2 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteRollbackCallback 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteProgressEventHandler 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteAuthorizerEventHandler 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteCommitHandler 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteUpdateEventHandler 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteTraceEventHandler 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteBackupCallback 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.UpdateEventType 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.ISQLiteConnectionPool 生成填充码: 类型是一个接口。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConnectionPool 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.TypeAffinity 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConnectionEventType 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteDateFormats 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteJournalModeEnum 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteSynchronousEnum 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteExecuteType 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteAuthorizerActionCode 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteProgressReturnCode 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteAuthorizerReturnCode 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteType 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteDbTypeMap 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteDbTypeMapping 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.TypeNameStringComparer 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteDataReader+ColumnParent 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteDefineConstants 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteErrorCode 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteFunction+AggregateData 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteInvokeDelegate 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteStepDelegate 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteFinalDelegate 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteCompareDelegate 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.FunctionType 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteCallback 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteFinalCallback 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteCollation 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.CollationTypeEnum 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.CollationEncodingEnum 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteKeyReader 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteLogEventHandler 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteStatement 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.HelperMethods 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.NativeLibraryHelper 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.UnsafeNativeMethodsPosix 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.UnsafeNativeMethodsWin32 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.UnsafeNativeMethods 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConnectionHandle 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteStatementHandle 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteBackupHandle 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteBlobHandle 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SR 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteEnlistment 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.ISQLiteNativeModule 生成填充码: 类型是一个接口。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteIndexConstraintOp 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteIndexFlags 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.ISQLiteNativeHandle 生成填充码: 类型是一个接口。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.ISQLiteManagedModule 生成填充码: 类型是一个接口。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteMemory 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteString 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteBytes 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteMarshal 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteModule+SQLiteNativeModule 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteChangeSetConflictType 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteChangeSetConflictResult 生成填充码: 类型是一个枚举。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SessionTableFilterCallback 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SessionConflictCallback 生成填充码: 类型是一个委托。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.ISQLiteChangeSet 生成填充码: 类型是一个接口。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.ISQLiteChangeGroup 生成填充码: 类型是一个接口。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.ISQLiteChangeSetMetadataItem 生成填充码: 类型是一个接口。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.ISQLiteSession 生成填充码: 类型是一个接口。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteSessionHelpers 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteConnectionLock 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteChangeSetIterator 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteMemoryChangeSetIterator 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteStreamChangeSetIterator 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteStreamAdapter 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteSessionStreamManager 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteChangeGroup 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteSession 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteChangeSetBase 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteMemoryChangeSet 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteStreamChangeSet 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteChangeSetEnumerator 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteMemoryChangeSetEnumerator 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteStreamChangeSetEnumerator 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 System.Data.SQLite.SQLiteChangeSetMetadataItem 生成填充码: 类型对 exported or assembly(System.Data.SQLite.1.0.108.0.Fakes) 不可见。
+D:\Desktop\编程学习总结\ProgramSummary\C#总结\Log4net的使用\单人日志输出\03_SQLite\LogDemo3\LogDemo3\Fakes\System.Data.SQLite.fakes : warning : 无法为 <PrivateImplementationDetails> 生成填充码: 类型不受支持，因为存在内部限制。
