@@ -20,7 +20,8 @@
  *                   2、在本类中创建 log4net.ILog 对象 ，，加入字典
  *                   3、在 log4net.config 中，添加新的记录器
  *                   4、在 log4net.config 中，添加自定义的写入文件的形式
- *         注意点：编辑模式下，需要运行两次Unity，才能获取第一次运行的日志文件，这是Unity的Bug     
+ *         注意点：编辑模式下，需要运行两次Unity，才能获取第一次运行的日志文件，这是Unity的Bug
+ *                Unity的输出为.Net2.0
  */
 
 using System.Collections.Generic;
