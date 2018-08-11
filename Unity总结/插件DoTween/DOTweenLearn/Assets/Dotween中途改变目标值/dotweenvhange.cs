@@ -10,7 +10,7 @@ public class dotweenvhange : MonoBehaviour
 	{
 	    //tweener = transform.DOLocalMove(new Vector3(500, 100, 0), 5);
 
-	    tweener = transform.DOLocalMove(transform.localPosition + new Vector3(10, 0, 0), 1);
+	    tweener = transform.DOLocalMove(transform.localPosition + new Vector3(10, 0, 0), 5);
 	}
 	
 	

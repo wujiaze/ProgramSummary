@@ -2,7 +2,7 @@
  *         主题： LogHelper 工具类
  *               多人 Unity使用Log4net 打印日志输出到 回滚文件
  *
- *         设置方法：1、添加合适版本的 log4net.dll ,这里使用了 .net2.0 版本，放入 Plugin 文件夹
+ *         设置方法：1、添加合适版本的 log4net.dll ,这里使用了 .net2.0 版本，放入 Plugins 文件夹
  *                  2、编写合适的 log4net.config (详见文件), 路径： _logConfigPath
  *                     放在 StreamingAssets 文件夹之下
  *                  3、获取 log4net.config
