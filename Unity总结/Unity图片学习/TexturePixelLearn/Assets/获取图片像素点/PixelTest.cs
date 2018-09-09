@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PixelTest : MonoBehaviour {
+
     public GameObject Targetprafab;
     public Transform parent;
     private float gapdistance = 1000;
+
     void Start () {
+
         // 要加载图片
         Texture2D T2d = Resources.Load<Texture2D>("xin2");
 
         // 要读取图片需要勾选图片是否可读的选项
         Debug.Log(T2d.mipmapCount);
+
         Color color = T2d.GetPixel(5,10);
         Debug.Log(color);
         Color[] clr0 = T2d.GetPixels(0);

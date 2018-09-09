@@ -19,7 +19,7 @@ public class TexMap2Screen
     /// <param name="miplevel">像素纹理等级</param>
     /// <param name="isColor32">是否选择低精度</param>
     /// <returns></returns>
-    public static List<Vector2> MapTex2Screen(Texture2D Tex, float interval, int SamplingRate = 30, int increment = 5, int miplevel = 0, bool isColor32 = true)
+    public static List<Vector2> MapTex2Screen(Texture2D Tex, Vector2 centerPos, float interval, int SamplingRate = 30, int increment = 5, int miplevel = 0, bool isColor32 = true)
     {
         // 取样后的像素点归一化坐标
         List<Vector2> list = TexNormalized(Tex, SamplingRate, increment, miplevel, isColor32);
@@ -35,7 +35,7 @@ public class TexMap2Screen
         for (int i = 0; i < list.Count; i++)
         {
             Vector2 pos = new Vector2(list[i].x * Xinterval, list[i].y * Yinterval);
-            Vector2 posv3 = new Vector2(pos.x, pos.y);
+            Vector2 posv3 = new Vector2(pos.x, pos.y) + centerPos;
             WorldPosList.Add(posv3);
         }
         return WorldPosList;
@@ -157,7 +157,7 @@ public class TexMap2Screen
     /// <param name="height">像素图片的高</param>
     /// <param name="times">取样频率</param>
     /// <returns></returns>
-    private static List<Vector2> GetNormalizedList(Color[] colorArr,float width, float height, int times)
+    private static List<Vector2> GetNormalizedList(Color[] colorArr, float width, float height, int times)
     {
         List<Vector2> list = new List<Vector2>();
         int index;
