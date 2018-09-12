@@ -29,28 +29,28 @@ namespace Serialize
 
         // 下面四个特性的方法，必须带有 StreamingContext 参数
 
-        [OnSerializing]
+        [OnSerializing]     // 这个特性表示，在序列化之前自动调用
         private void CaculatePowerRank(StreamingContext context)
         {
             this.powerRank = 0.5f * maxHp + 0.2f * attack + 0.3f * defence;
         }
-        [OnSerialized]
+        [OnSerialized]       // 这个特性表示，在序列化之后自动调用
         private void PrintOnSer(StreamingContext context)
         {
             Console.WriteLine(this.powerRank);
         }
-        [OnDeserializing]
+        [OnDeserializing]   // 这个特性表示，在反序列化之前自动调用
         private void PrintOnDe(StreamingContext context)
         {
             Console.WriteLine(this.powerRank);
         }
 
-        [OnDeserialized]
+        [OnDeserialized]    // 这个特性表示，在反序列化之后自动调用
         private void CaculatePowerRankOnDes(StreamingContext context) // 反序列化完成后，重新计算powerRank
         {
             this.powerRank = 0.3f * maxHp + 0.2f * attack + 0.3f * defence;
         }
-
+        // 打印值
         public void Print()
         {
             Console.WriteLine(this.powerRank);

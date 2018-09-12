@@ -1,7 +1,0 @@
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\Xml\Xml创建\XmlBaseTest\XmlBaseTest\bin\Debug\XmlBaseTest.exe.config
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\Xml\Xml创建\XmlBaseTest\XmlBaseTest\bin\Debug\XmlBaseTest.exe
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\Xml\Xml创建\XmlBaseTest\XmlBaseTest\bin\Debug\XmlBaseTest.pdb
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\Xml\Xml创建\XmlBaseTest\XmlBaseTest\obj\Debug\XmlBaseTest.csprojResolveAssemblyReference.cache
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\Xml\Xml创建\XmlBaseTest\XmlBaseTest\obj\Debug\XmlBaseTest.csproj.CoreCompileInputs.cache
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\Xml\Xml创建\XmlBaseTest\XmlBaseTest\obj\Debug\XmlBaseTest.exe
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\Xml\Xml创建\XmlBaseTest\XmlBaseTest\obj\Debug\XmlBaseTest.pdb

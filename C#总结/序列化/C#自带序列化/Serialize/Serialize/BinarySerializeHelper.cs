@@ -5,22 +5,23 @@
  *         缺点： 得到的文件可读性差，是二进制文件
  *                
  *         优点： 1、可以序列化任何字段成员   值类型：枚举，各种数值类型，布尔类型，自定义结构类型；
- *                                        引用类型：Object，string，类对象，接口对象，委托对象，数组，集合     TODO 指针，没接触过，接触到了再补充
+ *                                         引用类型：Object，string，类对象，接口对象，委托对象，数组，集合 ，自定义引用类型        TODO 指针，没接触过，接触到了再补充
  *
- *                2、可以序列化任意修饰符：  public，internal，private，protected，只是反序列化时，注意如何调用即可
+ *                2、可以序列化任意修饰符：   public，internal，private，protected，protected internal
  *
  *                3、可以序列化相互引用的对象，格式化器可以检测出相互引用的关系
  *
- *         使用方法： 1、类 / 结构体 必须标记 [Serializable] 特性，类 / 结构体 对象才能使用
+ *         使用方法： 1、类 / 结构体 必须标记 [Serializable] 特性，才能使用
  *                   2、不想要序列化的字段成员前加上[NonSerialized]
  *                   
- *         注意点：  1、反序列化时  类 / 结构体 不需要任何构造函数，有构造函数也没问题
- *                  2、不可以序列化 static const 
+ *         注意点：  1、反序列化时  类 / 结构体 不需要任何构造函数，有构造函数也没问题           [实际原因是反序列化时，是不调用构造函数的]
+ *                  2、不可以序列化 static const  readonly 修饰的字段
  *                  3、属性不能被序列化，但是属性内部由字段构成，所以看上去属性是可以序列化的，故也是可以这样直接用属性的
  *                  4、反序列化出来的是一种深度复制，不是复制了引用，而是复制了内存中的数据
  *                  5、同一个流可以容纳多个对象的序列化，但是反序列化时，只要按照顺序，就可以得到对象
  *                  6、[Serializable] 特性不能被子类继承，所以 反/序列化 子类时，父类和子类都必须要有 [Serializable] 特性
  *                  7、[NonSerialized] 特性 是可以被子类继承的,所以子类会忽略父类的带有这个特性的成员
+ *                  8、不能序列化抽象类
  */
 using System;
 using System.IO;
@@ -60,7 +61,11 @@ public class BinarySerializeHelper
 
     }
 
-
+    /// <summary>
+    /// 获取序列化的byte形式
+    /// </summary>
+    /// <param name="instance"></param>
+    /// <returns></returns>
     public static byte[] InstanceDataToBytes(object instance)
     {
         MemoryStream memoStream = InstanceDataToMemory(instance);
