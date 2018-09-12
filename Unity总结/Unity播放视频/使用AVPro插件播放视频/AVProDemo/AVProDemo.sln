@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVProDemo", "AVProDemo.csproj", "{46F8C415-600B-5802-1DEA-58F59DE6C6D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVProDemo.Editor", "AVProDemo.Editor.csproj", "{BFD000BA-A489-DF3D-19C9-7345BE631135}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46F8C415-600B-5802-1DEA-58F59DE6C6D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46F8C415-600B-5802-1DEA-58F59DE6C6D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46F8C415-600B-5802-1DEA-58F59DE6C6D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46F8C415-600B-5802-1DEA-58F59DE6C6D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFD000BA-A489-DF3D-19C9-7345BE631135}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFD000BA-A489-DF3D-19C9-7345BE631135}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFD000BA-A489-DF3D-19C9-7345BE631135}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFD000BA-A489-DF3D-19C9-7345BE631135}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
