@@ -1,0 +1,20 @@
+﻿1
+00:00:00,000 --> 00:00:02,000
+这是一段字幕测试..!!  需要保存为UTF-8
+
+2
+00:00:02,000 --> 00:00:04,000
+你好！
+还行！多行测试
+
+3
+00:00:04,000 --> 00:00:5,000
+富文本颜色测试 <font color="cyan">改变颜色的字体</font> <b>粗字体</b> and <i>斜体</i> 都可以!
+
+4
+00:00:05,000 --> 00:00:06,000
+Rich text <font color="yellow">colours</font> <b>bold</b> and <i>italics</i> too!
+
+5
+00:00:06,000 --> 00:00:15,000
+Rich text <font color="#00ff00">colours</font> <b>bold</b> and <i>italics</i> too!

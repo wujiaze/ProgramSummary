@@ -17,12 +17,12 @@ namespace RenderHeads.Media.AVProVideo
 		private UITexture _uiTexture = null;
 
 		[SerializeField]
-		private MediaPlayer MediaPlayer = null;
+		private MediaPlayer _mediaPlayer = null;
 
 		public MediaPlayer Player
 		{
-			get { return MediaPlayer; }
-			set { if (MediaPlayer != value) { ChangeMediaPlayer(value); _isDirty = true; } }
+			get { return _mediaPlayer; }
+			set { if (_mediaPlayer != value) { ChangeMediaPlayer(value); _isDirty = true; } }
 		}
 
 		[SerializeField]
@@ -52,9 +52,9 @@ namespace RenderHeads.Media.AVProVideo
 			bool applied = false;
 
 			// Try to apply texture from media
-			if (MediaPlayer != null && MediaPlayer.TextureProducer != null)
+			if (_mediaPlayer != null && _mediaPlayer.TextureProducer != null)
 			{
-				Texture texture = MediaPlayer.TextureProducer.GetTexture();
+				Texture texture = _mediaPlayer.TextureProducer.GetTexture();
 				if (texture != null)
 				{
 					// Check for changing texture
@@ -65,7 +65,7 @@ namespace RenderHeads.Media.AVProVideo
 
 					if (_isDirty)
 					{
-						Apply(texture, MediaPlayer.TextureProducer.RequiresVerticalFlip());
+						Apply(texture, _mediaPlayer.TextureProducer.RequiresVerticalFlip());
 					}
 					applied = true;
 				}
@@ -111,16 +111,16 @@ namespace RenderHeads.Media.AVProVideo
 		private void ChangeMediaPlayer(MediaPlayer newPlayer)
 		{
 			// When changing the media player, handle event subscriptions
-			if (MediaPlayer != null)
+			if (_mediaPlayer != null)
 			{
-				MediaPlayer.Events.RemoveListener(OnMediaPlayerEvent);
-				MediaPlayer = null;
+				_mediaPlayer.Events.RemoveListener(OnMediaPlayerEvent);
+				_mediaPlayer = null;
 			}
 
-			MediaPlayer = newPlayer;
-			if (MediaPlayer != null)
+			_mediaPlayer = newPlayer;
+			if (_mediaPlayer != null)
 			{
-				MediaPlayer.Events.AddListener(OnMediaPlayerEvent);
+				_mediaPlayer.Events.AddListener(OnMediaPlayerEvent);
 			}
 		}
 
@@ -145,7 +145,7 @@ namespace RenderHeads.Media.AVProVideo
 			{
 				_defaultTexture = Texture2D.blackTexture;
 			}
-			ChangeMediaPlayer(MediaPlayer);
+			ChangeMediaPlayer(_mediaPlayer);
 		}
 
 		void Update()

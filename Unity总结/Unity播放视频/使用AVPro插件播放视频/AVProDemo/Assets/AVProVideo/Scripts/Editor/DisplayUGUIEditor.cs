@@ -65,7 +65,7 @@ namespace RenderHeads.Media.AVProVideo.Editor
 	        // Hence sticking with Rect here to be consistent with corresponding property in the API.
 	        m_UVRectContent = new GUIContent("UV Rect");
 
-	        m_Movie = serializedObject.FindProperty("MediaPlayer");
+	        m_Movie = serializedObject.FindProperty("_mediaPlayer");
 	        m_UVRect = serializedObject.FindProperty("m_UVRect");
 			m_SetNativeSize = serializedObject.FindProperty("_setNativeSize");
 			m_ScaleMode = serializedObject.FindProperty("_scaleMode");

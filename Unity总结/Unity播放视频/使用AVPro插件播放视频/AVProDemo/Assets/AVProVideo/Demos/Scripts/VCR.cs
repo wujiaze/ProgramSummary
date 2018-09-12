@@ -89,8 +89,8 @@ namespace RenderHeads.Media.AVProVideo.Demos
 			else
 			{
 				LoadingPlayer.OpenVideoFromFile(_location, LoadingPlayer.m_VideoPath, _AutoStartToggle.isOn);
-//				SetButtonEnabled( "PlayButton", !MediaPlayer.m_AutoStart );
-//				SetButtonEnabled( "PauseButton", MediaPlayer.m_AutoStart );
+//				SetButtonEnabled( "PlayButton", !_mediaPlayer.m_AutoStart );
+//				SetButtonEnabled( "PauseButton", _mediaPlayer.m_AutoStart );
 			}
 		}
 
@@ -187,18 +187,18 @@ namespace RenderHeads.Media.AVProVideo.Demos
 		}
 		//		public void OnMuteAudioButton()
 		//		{
-		//			if( MediaPlayer )
+		//			if( _mediaPlayer )
 		//			{
-		//				MediaPlayer.Control.MuteAudio( true );
+		//				_mediaPlayer.Control.MuteAudio( true );
 		//				SetButtonEnabled( "MuteButton", false );
 		//				SetButtonEnabled( "UnmuteButton", true );
 		//			}
 		//		}
 		//		public void OnUnmuteAudioButton()
 		//		{
-		//			if( MediaPlayer )
+		//			if( _mediaPlayer )
 		//			{
-		//				MediaPlayer.Control.MuteAudio( false );
+		//				_mediaPlayer.Control.MuteAudio( false );
 		//				SetButtonEnabled( "UnmuteButton", false );
 		//				SetButtonEnabled( "MuteButton", true );
 		//			}
@@ -246,8 +246,8 @@ namespace RenderHeads.Media.AVProVideo.Demos
 				{
 //					RemoveOpenVideoButton();
 
-//					SetButtonEnabled( "PlayButton", !MediaPlayer.m_AutoStart );
-//					SetButtonEnabled( "PauseButton", MediaPlayer.m_AutoStart );
+//					SetButtonEnabled( "PlayButton", !_mediaPlayer.m_AutoStart );
+//					SetButtonEnabled( "PauseButton", _mediaPlayer.m_AutoStart );
 				}
 				else
 				{
@@ -255,8 +255,8 @@ namespace RenderHeads.Media.AVProVideo.Demos
 //					SetButtonEnabled( "PauseButton", false );
 				}
 
-//				SetButtonEnabled( "MuteButton", !MediaPlayer.m_Muted );
-//				SetButtonEnabled( "UnmuteButton", MediaPlayer.m_Muted );
+//				SetButtonEnabled( "MuteButton", !_mediaPlayer.m_Muted );
+//				SetButtonEnabled( "UnmuteButton", _mediaPlayer.m_Muted );
 
 				OnOpenVideoFile();
 			}

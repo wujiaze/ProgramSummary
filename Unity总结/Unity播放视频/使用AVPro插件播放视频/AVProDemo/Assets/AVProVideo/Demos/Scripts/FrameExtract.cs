@@ -80,7 +80,7 @@ namespace RenderHeads.Media.AVProVideo.Demos
 			int textureWidth = info.GetVideoWidth();
 			int textureHeight = info.GetVideoHeight();
 #if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_IPHONE || UNITY_IOS || UNITY_TVOS
-			Orientation ori = Helper.GetOrientation(MediaPlayer.Info.GetTextureTransform());
+			Orientation ori = Helper.GetOrientation(_mediaPlayer.Info.GetTextureTransform());
 			if (ori == Orientation.Portrait || ori == Orientation.PortraitFlipped)
 			{
 				textureWidth = info.GetVideoHeight();

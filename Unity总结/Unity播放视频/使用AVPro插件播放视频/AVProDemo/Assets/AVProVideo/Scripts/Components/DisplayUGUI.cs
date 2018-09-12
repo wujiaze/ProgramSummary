@@ -398,9 +398,9 @@ namespace RenderHeads.Media.AVProVideo
 				if (_mediaPlayer != null)
 				{
 #if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_IPHONE || UNITY_IOS || UNITY_TVOS
-					if (MediaPlayer.Info != null)
+					if (_mediaPlayer.Info != null)
 					{
-						Orientation ori = Helper.GetOrientation(MediaPlayer.Info.GetTextureTransform());
+						Orientation ori = Helper.GetOrientation(_mediaPlayer.Info.GetTextureTransform());
 						if (ori == Orientation.Portrait || ori == Orientation.PortraitFlipped)
 						{
 							w = Mathf.RoundToInt(tex.height * uvRect.width);
@@ -478,7 +478,7 @@ namespace RenderHeads.Media.AVProVideo
 			Matrix4x4 m = Matrix4x4.identity;
 			if (HasValidTexture())
 			{
-				m = Helper.GetMatrixForOrientation(Helper.GetOrientation(MediaPlayer.Info.GetTextureTransform()));
+				m = Helper.GetMatrixForOrientation(Helper.GetOrientation(_mediaPlayer.Info.GetTextureTransform()));
 			}
 #endif
 			vbo.Clear();
@@ -546,7 +546,7 @@ namespace RenderHeads.Media.AVProVideo
 #if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_IPHONE || UNITY_IOS || UNITY_TVOS
 					if (HasValidTexture())
 					{
-						Matrix4x4 m = Helper.GetMatrixForOrientation(Helper.GetOrientation(MediaPlayer.Info.GetTextureTransform()));
+						Matrix4x4 m = Helper.GetMatrixForOrientation(Helper.GetOrientation(_mediaPlayer.Info.GetTextureTransform()));
 						textureSize = m.MultiplyVector(textureSize);
 						textureSize.x = Mathf.Abs(textureSize.x);
 						textureSize.y = Mathf.Abs(textureSize.y);
