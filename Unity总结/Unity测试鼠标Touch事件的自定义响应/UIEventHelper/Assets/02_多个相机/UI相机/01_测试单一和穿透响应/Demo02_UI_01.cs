@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Demo02_UI_01 : MonoBehaviour
 {
-
     private Image ui1;
     private Image ui2;
     private GameObject cube1;
@@ -29,14 +28,18 @@ public class Demo02_UI_01 : MonoBehaviour
         //EventTriggerListener.Bind(cube2.gameObject).onClick = OnClick;
         //EventTriggerListener.Bind(spt1.gameObject).onClick = OnClick;
         //EventTriggerListener.Bind(spt2.gameObject).onClick = OnClick;
-
-        
+        EventTriggerListener.Bind(ui1.gameObject).onEnter = OnEnter;
         EventTriggerListener.BindPass(ui1.gameObject).onClick = OnClick;
         EventTriggerListener.BindPass(ui2.gameObject).onClick = OnClick;
         EventTriggerListener.BindPass(cube1.gameObject).onClick = OnClick;
         EventTriggerListener.BindPass(cube2.gameObject).onClick = OnClick;
         EventTriggerListener.BindPass(spt1.gameObject).onClick = OnClick;
         EventTriggerListener.BindPass(spt2.gameObject).onClick = OnClick;
+    }
+
+    private void OnEnter(EventTriggerListener.PointerDataStruct obj)
+    {
+        print("enter");
     }
 
     private void OnClick(EventTriggerListener.PointerDataStruct obj)
