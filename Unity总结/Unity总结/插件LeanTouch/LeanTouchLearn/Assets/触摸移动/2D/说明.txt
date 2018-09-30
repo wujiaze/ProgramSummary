@@ -1,5 +1,0 @@
-﻿跟UI 的区别：
-Lean Touch 的 Select Using 选择Overlap2D
-Camera 的 Projection 改成 Orthographic
-2D游戏对象上还需要添加2D碰撞体
-其余的方法参考UI
