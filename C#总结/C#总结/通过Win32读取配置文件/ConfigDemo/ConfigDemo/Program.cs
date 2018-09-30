@@ -9,12 +9,13 @@ namespace ConfigDemo
     {
         static void Main(string[] args)
         {
-            string path = @"D:\Desktop\编程学习总结\ProgramSummary\C#总结\通过Win32读取配置文件\config.ini";
+            string path = @"D:\Desktop\编程学习总结\ProgramSummary\C#总结\C#总结\通过Win32读取配置文件\config.ini";
             string str = ReadIniData("section1", "width", "500", path);
             Console.WriteLine(str);
-            string path2 = @"D:\Desktop\编程学习总结\ProgramSummary\C#总结\通过Win32读取配置文件\config.txt";
+            string path2 = @"D:\Desktop\编程学习总结\ProgramSummary\C#总结\C#总结\通过Win32读取配置文件\config.txt";
             string str2 = ReadIniData("section1", "width", "500", path2);
             Console.WriteLine(str2);
+
             Console.Read();
         }
         [DllImport("kernel32.dll",CharSet = CharSet.Auto)]
