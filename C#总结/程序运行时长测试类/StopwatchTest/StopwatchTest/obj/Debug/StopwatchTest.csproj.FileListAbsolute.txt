@@ -1,7 +1,0 @@
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\程序运行时长测试类\StopwatchTest\StopwatchTest\bin\Debug\StopwatchTest.exe.config
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\程序运行时长测试类\StopwatchTest\StopwatchTest\bin\Debug\StopwatchTest.exe
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\程序运行时长测试类\StopwatchTest\StopwatchTest\bin\Debug\StopwatchTest.pdb
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\程序运行时长测试类\StopwatchTest\StopwatchTest\obj\Debug\StopwatchTest.csprojResolveAssemblyReference.cache
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\程序运行时长测试类\StopwatchTest\StopwatchTest\obj\Debug\StopwatchTest.csproj.CoreCompileInputs.cache
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\程序运行时长测试类\StopwatchTest\StopwatchTest\obj\Debug\StopwatchTest.exe
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\程序运行时长测试类\StopwatchTest\StopwatchTest\obj\Debug\StopwatchTest.pdb

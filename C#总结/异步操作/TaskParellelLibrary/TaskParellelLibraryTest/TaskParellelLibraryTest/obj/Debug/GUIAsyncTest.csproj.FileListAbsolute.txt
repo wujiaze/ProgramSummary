@@ -1,7 +1,0 @@
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\C#GUIAsyncTest\GUIAsyncTest\GUIAsyncTest\bin\Debug\GUIAsyncTest.exe.config
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\C#GUIAsyncTest\GUIAsyncTest\GUIAsyncTest\bin\Debug\GUIAsyncTest.exe
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\C#GUIAsyncTest\GUIAsyncTest\GUIAsyncTest\bin\Debug\GUIAsyncTest.pdb
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\C#GUIAsyncTest\GUIAsyncTest\GUIAsyncTest\obj\Debug\GUIAsyncTest.csprojResolveAssemblyReference.cache
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\C#GUIAsyncTest\GUIAsyncTest\GUIAsyncTest\obj\Debug\GUIAsyncTest.csproj.CoreCompileInputs.cache
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\C#GUIAsyncTest\GUIAsyncTest\GUIAsyncTest\obj\Debug\GUIAsyncTest.exe
-D:\Desktop\编程学习总结\ProgramSummary\C#总结\异步操作\C#GUIAsyncTest\GUIAsyncTest\GUIAsyncTest\obj\Debug\GUIAsyncTest.pdb

@@ -1,6 +1,0 @@
-C:\Users\WJZ\Desktop\c#5.6.1 workspace\反射特性和正则\正则\bin\Debug\正则.exe.config
-C:\Users\WJZ\Desktop\c#5.6.1 workspace\反射特性和正则\正则\bin\Debug\正则.exe
-C:\Users\WJZ\Desktop\c#5.6.1 workspace\反射特性和正则\正则\bin\Debug\正则.pdb
-C:\Users\WJZ\Desktop\c#5.6.1 workspace\反射特性和正则\正则\obj\Debug\正则.csproj.CoreCompileInputs.cache
-C:\Users\WJZ\Desktop\c#5.6.1 workspace\反射特性和正则\正则\obj\Debug\正则.exe
-C:\Users\WJZ\Desktop\c#5.6.1 workspace\反射特性和正则\正则\obj\Debug\正则.pdb

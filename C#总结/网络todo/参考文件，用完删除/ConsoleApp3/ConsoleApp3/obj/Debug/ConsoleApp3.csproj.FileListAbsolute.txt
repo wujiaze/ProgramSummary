@@ -1,7 +1,0 @@
-D:\Desktop\ConsoleApp3\ConsoleApp3\bin\Debug\ConsoleApp3.exe.config
-D:\Desktop\ConsoleApp3\ConsoleApp3\bin\Debug\ConsoleApp3.exe
-D:\Desktop\ConsoleApp3\ConsoleApp3\bin\Debug\ConsoleApp3.pdb
-D:\Desktop\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.csprojResolveAssemblyReference.cache
-D:\Desktop\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.csproj.CoreCompileInputs.cache
-D:\Desktop\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.exe
-D:\Desktop\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.pdb

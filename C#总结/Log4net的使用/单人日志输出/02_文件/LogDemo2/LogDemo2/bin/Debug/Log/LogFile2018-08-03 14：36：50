@@ -1,5 +1,0 @@
-2018-08-03 14:36:50,454 [1] DEBUG LogDemo2.LogHelper [(null)] - 你好！
-2018-08-03 14:36:50,484 [1] INFO  LogDemo2.LogHelper [(null)] - 你好！
-2018-08-03 14:36:50,484 [1] WARN  LogDemo2.LogHelper [(null)] - 你好！
-2018-08-03 14:36:50,485 [1] ERROR LogDemo2.LogHelper [(null)] - 你好！
-2018-08-03 14:36:50,485 [1] FATAL LogDemo2.LogHelper [(null)] - 你好！
