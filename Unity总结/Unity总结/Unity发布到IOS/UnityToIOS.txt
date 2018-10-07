@@ -1,0 +1,1 @@
+nrgctx-trampolines=8192,nimt-trampolines=8192,ntrampolines=4096
