@@ -31,9 +31,9 @@ namespace MemoryStreamTest
              *  3.1 MemoryStream(byte[] buffer, bool writable)                             false
              *  3.2 MemoryStream(       buffer,      true)
              *
-             *  一类的流能读写整个内部byte数组
-             *  二类的流能读写的位置在buffer数组的 index 和 count之间,index在流中同时也代表 Position = 0
-             *  三类的流只能读写 buffer 数组
+             *  第一类的流能读写整个内部byte数组
+             *  第二类的流能读写的位置在buffer数组的 index 和 count之间,index在流中同时也代表 Position = 0
+             *  第三类的流只能读写 buffer 数组
              */
 
 
