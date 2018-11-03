@@ -16,7 +16,7 @@
  *          二、 UTF8 系列
  *            UTF8 采用 new UTF8Encoding(false) 是不带BOM 的UTF编码
  *            使用 new UTF8Encoding(true) 或者  Encoding.UTF8 获取时,是带有BOM的，但是需要自己手动添加到byte数组开头  GetPreamble() 返回的BOM头(只有true时，这个方法才有值)
- *            另外， Windows中使用记事本,执行过“保存”操作的UTF8编码的文档时，才会添加BOM开头，仅仅写入而没有手动保存过的话，则写入什么就是什么，不会自动BOM头
+ *
  *
  *         三、UTF16 系列
  *            Encoding.BigEndianUnicode 相当于 new UnicodeEncoding(true, true);
@@ -48,13 +48,18 @@
  *              不管 Encoding 是什么，都是根据实际的编码读取的
  *              读到的就是 正常的字符串 ，字符串是不带字节顺序标记的，可以做和手动打出来的字符串一样的功能
  *
+ *    
  *
  *
  *
  *  主题3     网络传输
  *
  *
- *  注意：当文档中所有的内容都是 英文的话，就分辨不出是ANSI 还是 不带BOM的UTF8，不过使用两者的任意一种进行编码，都是不会错的
+ *  特别注意：
+ *          Windows中使用记事本,执行过“保存”操作的UTF8编码的文档时，才会添加BOM开头，仅仅写入而没有手动保存过的话，则写入什么就是什么，不会自动BOM头
+ *          英文：保存为ANSI时，可以理解为ASCII 或者 UTF8不带Bom，若是手动保存为UTF8,则会添加Bom头
+ *          中文：保存为ANSI时，就是使用了Default
+ *          
  */
 using System;
 using System.IO;
@@ -66,7 +71,8 @@ namespace EncodingTest
 {
     public enum MyEncodingType
     {
-        ANSI,
+        ASCII_UTF8withoutBom,
+        ANSI_Default,
         Utf8withBom,
         Utf8withoutBom,
         Utf16Big,
@@ -130,7 +136,6 @@ namespace EncodingTest
             //ConvertEncoding(path, Encoding.BigEndianUnicode);
             //ConvertEncoding(path, Encoding.Unicode);
             //ConvertEncoding(path, Encoding.Default);
-
             Console.WriteLine(GetEncode(path));
             Console.Read();
         }
@@ -168,7 +173,10 @@ namespace EncodingTest
                 {
                     switch (myEncodingType)
                     {
-                        case MyEncodingType.ANSI:
+                        case MyEncodingType.ASCII_UTF8withoutBom:
+                            srcEncoding = new UTF8Encoding(false);
+                            break;
+                        case MyEncodingType.ANSI_Default:
                             srcEncoding = Encoding.Default;
                             break;
                         case MyEncodingType.Utf8withBom:
@@ -194,6 +202,7 @@ namespace EncodingTest
                             srcEncoding = Encoding.Unicode;
                             rd.ReadBytes(2);
                             break;
+
                     }
                     byte[] srcBytes = rd.ReadBytes((int)rd.BaseStream.Length);
                     tarBytes = Encoding.Convert(srcEncoding, targetEncoding, srcBytes);
@@ -241,7 +250,12 @@ namespace EncodingTest
                     Decoder de = null;
                     switch (myEncodingType)
                     {
-                        case MyEncodingType.ANSI:
+                        case MyEncodingType.ASCII_UTF8withoutBom: // 源文本全为英文，也采用UTF8来解码
+                            de = new UTF8Encoding(false).GetDecoder();
+                            break;
+                        case MyEncodingType.ANSI_Default:
+                            if (targetEncoding == Encoding.ASCII)
+                                throw new Exception("当前编码，无法转为ASCII码");
                             de = Encoding.Default.GetDecoder();
                             break;
                         case MyEncodingType.Utf8withBom:
@@ -253,7 +267,7 @@ namespace EncodingTest
                         case MyEncodingType.Utf8withoutBom:
                             if (targetEncoding == Encoding.ASCII)
                                 throw new Exception("当前编码，无法转为ASCII码");
-                            de = new UTF8Encoding().GetDecoder();
+                            de = new UTF8Encoding(false).GetDecoder();
                             break;
                         case MyEncodingType.Utf16Big:
                             if (targetEncoding == Encoding.ASCII)
@@ -267,6 +281,7 @@ namespace EncodingTest
                             de = Encoding.Unicode.GetDecoder();
                             rd.ReadBytes(2);
                             break;
+
                         default:
                             break;
                     }
@@ -307,13 +322,17 @@ namespace EncodingTest
         /// <returns></returns>
         private static MyEncodingType GetEncode(string path)
         {
-            MyEncodingType type = MyEncodingType.ANSI;
+            MyEncodingType type = MyEncodingType.ANSI_Default;
             // 获取源文本的编码方式
             using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
                 BinaryReader reader = new BinaryReader(fs);     //这里选择任何一种编码都没关系，都是根据实际文本编码读取二进制
                 byte[] bytes = reader.ReadBytes((int)fs.Length);
-                if (IsUtf8WithoutBom(bytes))
+                if (IsASCII(bytes))
+                {
+                    type = MyEncodingType.ASCII_UTF8withoutBom; // 将ACSII 都看作UTF8 或 ASCII 都可以
+                }
+                else if (IsUtf8WithoutBom(bytes))
                 {
                     if (IsUtf8WithBom(bytes))
                     {
@@ -334,7 +353,8 @@ namespace EncodingTest
                 }
                 else
                 {
-                    type = MyEncodingType.ANSI;
+                    Console.WriteLine("当前编码方式：代码页：" + Encoding.Default.CodePage);
+                    type = MyEncodingType.ANSI_Default;
                 }
             }
             return type;
@@ -467,6 +487,23 @@ namespace EncodingTest
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// 每一个字节都小于 0x80 则判定为 ASCII
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
+        private static bool IsASCII(byte[] bytes)
+        {
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                if (bytes[i] >= 0x80)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
     }
