@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
-//-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
-//-----------------------------------------------------------------------------
-
 using RenderHeads.Media.AVProVideo;
+
+//-----------------------------------------------------------------------------
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
+//-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo.Demos
 {
 	/// <summary>
-	/// Simple GUI built using IMGUI to show scripting examples
+	/// Simple video player GUI built using IMGUI
+	/// Shows how a simpel video play can be created with scripting
+	/// Includes support for fading to black when a new video is loaded
 	/// </summary>
 	public class SimpleController : MonoBehaviour
 	{
@@ -33,7 +34,7 @@ namespace RenderHeads.Media.AVProVideo.Demos
 		//private bool _seekDragStarted;
         //private bool _seekDragWasPlaying;
 
-        void Start()
+        private void Start()
 		{
 			_mediaPlayer.Events.AddListener(OnMediaPlayerEvent);
 		}
@@ -80,7 +81,7 @@ namespace RenderHeads.Media.AVProVideo.Demos
 			}
 		}
 
-		void Update()
+		private void Update()
 		{
 			if (!_useFading)
 			{

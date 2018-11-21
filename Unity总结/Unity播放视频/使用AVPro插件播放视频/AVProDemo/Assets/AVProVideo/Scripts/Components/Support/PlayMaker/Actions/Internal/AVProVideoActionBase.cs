@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 #if PLAYMAKER
@@ -14,6 +14,11 @@ using RenderHeads.Media.AVProVideo;
 
 namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 {
+	public class AVProVideoActionHeader
+	{
+
+	}
+
 	/// <summary>
 	/// AVProVideo action base.
 	/// Gets and Caches MediaPlayer for perfs and code reuse

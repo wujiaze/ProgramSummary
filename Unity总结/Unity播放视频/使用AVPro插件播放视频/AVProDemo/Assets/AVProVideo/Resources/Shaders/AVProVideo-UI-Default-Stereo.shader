@@ -1,5 +1,3 @@
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
 Shader "AVProVideo/UI/Stereo"
 {
 	Properties
@@ -94,7 +92,7 @@ Shader "AVProVideo/UI/Stereo"
 			{
 				v2f OUT;
 
-				OUT.vertex = UnityObjectToClipPos(IN.vertex);
+				OUT.vertex = XFormObjectToClip(IN.vertex);
 
 #ifdef UNITY_HALF_TEXEL_OFFSET
 				OUT.vertex.xy += (_ScreenParams.zw-1.0)*float2(-1,1);

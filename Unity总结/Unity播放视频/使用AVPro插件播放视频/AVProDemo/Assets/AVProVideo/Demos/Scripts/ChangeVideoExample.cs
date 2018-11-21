@@ -2,31 +2,34 @@
 using RenderHeads.Media.AVProVideo;
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo.Demos
 {
+	/// <summary>
+	/// A demo that shows how to use scripting to load videos
+	/// </summary>
 	public class ChangeVideoExample : MonoBehaviour
 	{
-		public MediaPlayer mp;
+		[SerializeField]
+		private MediaPlayer _mediaPlayer;
 
-		public void NewVideo(string filePath)
+		public void LoadVideo(string filePath)
 		{
-			mp.m_AutoStart = true;
-			mp.OpenVideoFromFile(MediaPlayer.FileLocation.RelativeToStreamingAssetsFolder, filePath, false);
+			_mediaPlayer.OpenVideoFromFile(MediaPlayer.FileLocation.RelativeToStreamingAssetsFolder, filePath, true);
 		}
 
 		void OnGUI()
 		{
 			if (GUILayout.Button("video1"))
 			{
-				NewVideo("video1.mp4");
+				LoadVideo("video1.mp4");
 			}
 
 			if (GUILayout.Button("video2"))
 			{
-				NewVideo("video2.mp4");
+				LoadVideo("video2.mp4");
 			}
 		}
 	}

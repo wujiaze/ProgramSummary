@@ -14,7 +14,7 @@ using Windows.Storage.Streams;
 #endif
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo
@@ -24,21 +24,25 @@ namespace RenderHeads.Media.AVProVideo
 	{
 		public enum EventType
 		{
-			MetaDataReady,		// Called when meta data(width, duration etc) is available
-			ReadyToPlay,		// Called when the video is loaded and ready to play
-			Started,			// Called when the playback starts
-			FirstFrameReady,	// Called when the first frame has been rendered
-			FinishedPlaying,	// Called when a non-looping video has finished playing
-			Closing,			// Called when the media is closed
-			Error,				// Called when an error occurs
-			SubtitleChange,		// Called when the subtitles change
-			Stalled,			// Called when media is stalled (eg. when lost connection to media stream)
-			Unstalled			// Called when media is resumed form a stalled state (eg. when lost connection is re-established)
+			MetaDataReady,		// Triggered when meta data(width, duration etc) is available
+			ReadyToPlay,		// Triggered when the video is loaded and ready to play
+			Started,			// Triggered when the playback starts
+			FirstFrameReady,	// Triggered when the first frame has been rendered
+			FinishedPlaying,	// Triggered when a non-looping video has finished playing
+			Closing,			// Triggered when the media is closed
+			Error,				// Triggered when an error occurs
+			SubtitleChange,		// Triggered when the subtitles change
+			Stalled,			// Triggered when media is stalled (eg. when lost connection to media stream) - Currently only suported on Windows platforms
+			Unstalled,			// Triggered when media is resumed form a stalled state (eg. when lost connection is re-established)
+			ResolutionChanged,	// Triggered when the resolution of the video has changed (including the load) Useful for adaptive streams
+			StartedSeeking,		// Triggered whhen seeking begins
+			FinishedSeeking,    // Triggered when seeking has finished
+			StartedBuffering,	// Triggered when buffering begins
+			FinishedBuffering,	// Triggered when buttering has finished
 
 			// TODO: 
-			//FinishedSeeking,	// Called when seeking has finished
-			//StartLoop,			// Called when the video starts and is in loop mode
-			//EndLoop,			// Called when the video ends and is in loop mode
+			//StartLoop,		// Triggered when the video starts and is in loop mode
+			//EndLoop,			// Triggered when the video ends and is in loop mode
 		}
 	}
 
@@ -58,20 +62,20 @@ namespace RenderHeads.Media.AVProVideo
 
 	public interface IMediaControl
 	{
-		// TODO: CanPreRoll() PreRoll()
-		// TODO: audio panning
-
 		/// <summary>
 		/// Be careful using this method directly.  It is best to instead use the OpenVideoFromFile() method in the MediaPlayer component as this will set up the events correctly and also perform other checks
 		/// </summary>
-		bool	OpenVideoFromFile(string path, long offset, string httpHeaderJson);
+		bool	OpenVideoFromFile(string path, long offset, string httpHeaderJson, uint sourceSamplerate = 0, uint sourceChannels = 0, int forceFileFormat = 0);
 		bool	OpenVideoFromBuffer(byte[] buffer);
+		bool	StartOpenVideoFromBuffer(ulong length);
+		bool	AddChunkToVideoBuffer(byte[] chunk, ulong offset, ulong length);
+		bool	EndOpenVideoFromBuffer();
 
 #if NETFX_CORE
-		bool OpenVideoFromFile(IRandomAccessStream ras, string path, long offset, string httpHeaderJson);
+		bool	OpenVideoFromFile(IRandomAccessStream ras, string path, long offset, string httpHeaderJson, uint sourceSamplerate = 0, uint sourceChannels = 0);
 #endif
 
-		void CloseVideo();
+		void	CloseVideo();
 
 		void	SetLooping(bool bLooping);
 		bool	IsLooping();
@@ -89,9 +93,39 @@ namespace RenderHeads.Media.AVProVideo
 		void	Stop();
 		void	Rewind();
 
+		/// <summary>
+		/// The time seeked will be to the exact time
+		/// This can take a long time is the keyframes are far apart
+		/// Some platforms don't support this and instead seek to the closet keyframe
+		/// </summary>
 		void	Seek(float timeMs);
+
+		/// <summary>
+		/// The time seeked will be to the closet keyframe
+		/// </summary>
 		void	SeekFast(float timeMs);
+
+		/// <summary>
+		/// The time seeked to will be within the range [timeMS-beforeMs, timeMS+afterMs] for efficiency.
+		/// Only supported on macOS, iOS and tvOS.  
+		/// Other platforms will automatically pass through to Seek()
+		/// </summary>
+		void	SeekWithTolerance(float timeMs, float beforeMs, float afterMs);
+
 		float	GetCurrentTimeMs();
+
+		/// <summary>
+		/// Returns the current video time in number of seconds since 1 Jan 1970
+		/// This can be converted into a DateTime using ConvertSecondsSince1970ToDateTime()
+		/// Only supported on macOS, iOS, tvOS and Android (using ExoPlayer API)
+		/// </summary>
+		double  GetCurrentDateTimeSecondsSince1970();
+
+		/// <summary>
+		/// Returns a range of time values that can be seeked in milliseconds
+		/// Only supported on macOS, iOS, tvOS and Android (using ExoPlayer API)
+		/// </summary>
+		TimeRange[] GetSeekableTimeRanges();
 
 		float	GetPlaybackRate();
 		void	SetPlaybackRate(float rate);
@@ -114,6 +148,7 @@ namespace RenderHeads.Media.AVProVideo
 		bool	GetBufferedTimeRange(int index, ref float startTimeMs, ref float endTimeMs);
 
 		ErrorCode GetLastError();
+		long	GetLastExtendedErrorCode();
 
 		void	SetTextureProperties(FilterMode filterMode = FilterMode.Bilinear, TextureWrapMode wrapMode = TextureWrapMode.Clamp, int anisoLevel = 1);
 
@@ -221,7 +256,7 @@ namespace RenderHeads.Media.AVProVideo
 		///		"DirectShow" - legacy Microsoft API but still very useful especially with modern filters such as LAV
 		///		"MF-MediaEngine-Software" - uses the Windows 8.1 features of the Microsoft Media Foundation API, but software decoding
 		///		"MF-MediaEngine-Hardware" - uses the Windows 8.1 features of the Microsoft Media Foundation API, but GPU decoding
-		///	Android just has "MediaPlayer"
+		///	Android has "MediaPlayer" and "ExoPlayer"
 		///	macOS / tvOS / iOS just has "AVfoundation"
 		/// </summary>
 		string GetPlayerDescription();
@@ -241,6 +276,12 @@ namespace RenderHeads.Media.AVProVideo
 		/// The affine transform of the texture as an array of six floats: a, b, c, d, tx, ty.
 		/// </summary>
 		float[] GetTextureTransform();
+
+		/// <summary>
+		/// Gets the estimated bandwidth used by all video players (in bits per second)
+		/// Currently only supported on Android when using ExoPlayer API
+		/// </summary>
+		long GetEstimatedTotalBandwidthUsed();
 
 		/*
 		string GetMediaDescription();
@@ -270,6 +311,11 @@ namespace RenderHeads.Media.AVProVideo
 		int GetTextureFrameCount();
 
 		/// <summary>
+		/// Returns whether this platform supports counting the number of times the texture has been updated
+		/// </summary>
+		bool SupportsTextureFrameCount();
+
+		/// <summary>
 		/// Returns the presentation time stamp of the current texture
 		/// </summary>
 		long GetTextureTimeStamp();
@@ -278,11 +324,6 @@ namespace RenderHeads.Media.AVProVideo
 		/// Returns true if the image on the texture is upside-down
 		/// </summary>
 		bool RequiresVerticalFlip();
-	}
-
-	// TODO: complete this?
-	public interface IMediaConsumer
-	{
 	}
 
 	public enum Platform
@@ -308,6 +349,13 @@ namespace RenderHeads.Media.AVProVideo
 		CustomUV,				// Custom packing, use the mesh UV to unpack, uv0=left eye, uv1=right eye
 	}
 
+	public enum StereoEye
+	{
+		Both,
+		Left,
+		Right,
+	}
+
 	public enum AlphaPacking
 	{
 		None,
@@ -328,6 +376,23 @@ namespace RenderHeads.Media.AVProVideo
 		LandscapeFlipped,		// Landscape Left (180 degrees)
 		Portrait,				// Portrait Up (90 degrees)
 		PortraitFlipped,		// Portrait Down (-90 degrees)
+	}
+
+	public enum VideoMapping
+	{
+		Unknown,
+		Normal,
+		EquiRectangular360,
+		EquiRectangular180,
+		CubeMap3x2,
+	}
+
+	public enum FileFormat
+	{
+		Unknown,
+		HLS,
+		DASH,
+		SmoothStreaming,
 	}
 
 	public static class Windows
@@ -382,6 +447,11 @@ namespace RenderHeads.Media.AVProVideo
 		INVALID,             /// Invalid/unknown map. This must always be last.
 	}
 
+	public struct TimeRange
+	{
+		public float startTime, duration;
+	}
+
 	public class Subtitle
 	{
 		public int index;
@@ -401,7 +471,7 @@ namespace RenderHeads.Media.AVProVideo
 
 	public static class Helper
 	{
-		public const string ScriptVersion = "1.7.4";
+		public const string ScriptVersion = "1.8.9";
 
 		public static string GetName(Platform platform)
 		{
@@ -424,7 +494,7 @@ namespace RenderHeads.Media.AVProVideo
 					result = "No Error";
 					break;
 				case ErrorCode.LoadFailed:
-					result = "Loading failed.  Codec not supported or video resolution too high or insufficient system resources.";
+					result = "Loading failed.  File not found, codec not supported, video resolution too high or insufficient system resources.";
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
 					// Add extra information for older Windows versions that don't have support for modern codecs
 					if (SystemInfo.operatingSystem.StartsWith("Windows XP") ||
@@ -563,6 +633,41 @@ namespace RenderHeads.Media.AVProVideo
 			return result;
 		}
 
+		public static void SetupStereoEyeModeMaterial(Material material, StereoEye mode)
+		{
+			switch (mode)
+			{
+				case StereoEye.Both:
+					material.DisableKeyword("FORCEEYE_LEFT");
+					material.DisableKeyword("FORCEEYE_RIGHT");				
+					material.EnableKeyword("FORCEEYE_NONE");
+					break;
+				case StereoEye.Left:
+					material.DisableKeyword("FORCEEYE_NONE");
+					material.DisableKeyword("FORCEEYE_RIGHT");
+					material.EnableKeyword("FORCEEYE_LEFT");
+					break;
+				case StereoEye.Right:
+					material.DisableKeyword("FORCEEYE_NONE");
+					material.DisableKeyword("FORCEEYE_LEFT");
+					material.EnableKeyword("FORCEEYE_RIGHT");
+					break;
+			}
+		}
+		public static void SetupLayoutMaterial(Material material, VideoMapping mapping)
+		{
+			material.DisableKeyword("LAYOUT_NONE");
+			material.DisableKeyword("LAYOUT_EQUIRECT180");
+
+			switch (mapping)
+			{
+				// Only EquiRectangular180 currently does anything in the shader
+				case VideoMapping.EquiRectangular180:
+					material.EnableKeyword("LAYOUT_EQUIRECT180");
+					break;
+			}
+		}
+
 		public static void SetupStereoMaterial(Material material, StereoPacking packing, bool displayDebugTinting)
 		{
 			material.DisableKeyword("STEREO_CUSTOM_UV");
@@ -639,6 +744,12 @@ namespace RenderHeads.Media.AVProVideo
 		{
 			float frameDurationSeconds = 1f / frameRate;
 			return ((float)frame * frameDurationSeconds) + (frameDurationSeconds * 0.5f);		// Add half a frame we that the time lands in the middle of the frame range and not at the edges
+		}
+
+		public static System.DateTime ConvertSecondsSince1970ToDateTime(double secondsSince1970)
+		{
+			System.TimeSpan time = System.TimeSpan.FromSeconds(secondsSince1970);
+			return new System.DateTime(1970, 1, 1).Add(time);
 		}
 
 		public static void DrawTexture(Rect screenRect, Texture texture, ScaleMode scaleMode, AlphaPacking alphaPacking, Material material)

@@ -3,22 +3,27 @@ using UnityEditor;
 using System.Collections.Generic;
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo.Editor
 {
+	/// <summary>
+	/// Editor for the ApplyToMesh component
+	/// </summary>
 	[CanEditMultipleObjects]
 	[CustomEditor(typeof(ApplyToMesh))]
 	public class ApplyToMeshEditor : UnityEditor.Editor
 	{
+		private static readonly GUIContent _guiTextTextureProperty = new GUIContent("Texture Property");
+
 		private SerializedProperty _propTextureOffset;
 		private SerializedProperty _propTextureScale;
 		private SerializedProperty _propMediaPlayer;
 		private SerializedProperty _propRenderer;
 		private SerializedProperty _propTexturePropertyName;
 		private SerializedProperty _propDefaultTexture;
-		private string[] _materialTextureProperties = new string[0];
+		private GUIContent[] _materialTextureProperties = new GUIContent[0];
 
 		void OnEnable()
 		{
@@ -62,7 +67,7 @@ namespace RenderHeads.Media.AVProVideo.Editor
 					}
 				}
 
-				List<string> items = new List<string>(8);
+				List<GUIContent> items = new List<GUIContent>(8);
 				foreach (MaterialProperty matProp in matProps)
 				{
 					if (matProp.type == MaterialProperty.PropType.Texture)
@@ -71,16 +76,16 @@ namespace RenderHeads.Media.AVProVideo.Editor
 						{
 							texturePropertyIndex = items.Count;
 						}
-						items.Add(matProp.name);
+						items.Add(new GUIContent(matProp.name));
 					}
 				}
 				_materialTextureProperties = items.ToArray();
 			}
 
-			int newTexturePropertyIndex = EditorGUILayout.Popup("Texture Property", texturePropertyIndex, _materialTextureProperties);
+			int newTexturePropertyIndex = EditorGUILayout.Popup(_guiTextTextureProperty, texturePropertyIndex, _materialTextureProperties);
 			if (newTexturePropertyIndex != texturePropertyIndex)
 			{
-				_propTexturePropertyName.stringValue = _materialTextureProperties[newTexturePropertyIndex];
+				_propTexturePropertyName.stringValue = _materialTextureProperties[newTexturePropertyIndex].text;
 			}
 
 			if (hasKeywords && _propTexturePropertyName.stringValue != "_MainTex")

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo.Demos
@@ -15,12 +15,12 @@ namespace RenderHeads.Media.AVProVideo.Demos
 		public int _trackIndex;
 		private bool _isQueued;
 
-		void OnEnable()
+		private void OnEnable()
 		{
 			_isQueued = true;
 		}
 
-		void Update()
+		private void Update()
 		{
 			if (_isQueued && IsVideoLoaded())
 			{

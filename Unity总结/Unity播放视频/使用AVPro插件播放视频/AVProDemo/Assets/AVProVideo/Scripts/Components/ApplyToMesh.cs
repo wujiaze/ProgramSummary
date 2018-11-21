@@ -12,11 +12,14 @@
 using UnityEngine;
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo
 {
+	/// <summary>
+	/// Sets up a mesh to display the video from a MediaPlayer
+	/// </summary>
 	[AddComponentMenu("AVPro Video/Apply To Mesh", 300)]
 #if UNITY_HELPATTRIB
 	[HelpURL("http://renderheads.com/product/avpro-video/")]
@@ -104,26 +107,31 @@ namespace RenderHeads.Media.AVProVideo
 		private static int _propStereo;
 		private static int _propAlphaPack;
 		private static int _propApplyGamma;
+		private static int _propLayout;
 
 		private const string PropChromaTexName = "_ChromaTex";
-		private static int _propChromaTex;
+		private static  int _propChromaTex;
 
 		private const string PropUseYpCbCrName = "_UseYpCbCr";
 		private static int _propUseYpCbCr;
 
-		public void ForceUpdate()
-		{
-			_isDirty = true;
-			LateUpdate();
-		}
-
 		private void Awake()
 		{
-			if (_propStereo == 0 || _propAlphaPack == 0)
+			if (_propStereo == 0)
 			{
 				_propStereo = Shader.PropertyToID("Stereo");
+			}
+			if (_propAlphaPack == 0)
+			{
 				_propAlphaPack = Shader.PropertyToID("AlphaPack");
+			}
+			if (_propApplyGamma == 0)
+			{
 				_propApplyGamma = Shader.PropertyToID("_ApplyGamma");
+			}
+			if (_propLayout == 0)
+			{
+				_propLayout = Shader.PropertyToID("Layout");
 			}
 			if (_propChromaTex == 0)
 			{
@@ -133,6 +141,12 @@ namespace RenderHeads.Media.AVProVideo
 			{
 				_propUseYpCbCr = Shader.PropertyToID(PropUseYpCbCrName);
 			}
+		}
+
+		public void ForceUpdate()
+		{
+			_isDirty = true;
+			LateUpdate();
 		}
 
 		// We do a LateUpdate() to allow for any changes in the texture that may have happened in Update()
@@ -269,6 +283,11 @@ namespace RenderHeads.Media.AVProVideo
 
 							if (_media != null)
 							{
+								// Apply changes for layout
+								if (mat.HasProperty(_propLayout))
+								{
+									Helper.SetupLayoutMaterial(mat, _media.VideoLayoutMapping);
+								}
 								// Apply changes for stereo videos
 								if (mat.HasProperty(_propStereo))
 								{

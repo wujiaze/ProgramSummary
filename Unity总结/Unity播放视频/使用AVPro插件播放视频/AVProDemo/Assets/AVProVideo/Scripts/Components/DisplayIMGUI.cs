@@ -12,11 +12,14 @@
 using UnityEngine;
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo
 {
+	/// <summary>
+	/// Displays the video from MediaPlayer component using IMGUI
+	/// </summary>
 	[AddComponentMenu("AVPro Video/Display IMGUI", 200)]
 #if UNITY_HELPATTRIB
 	[HelpURL("http://renderheads.com/product/avpro-video/")]

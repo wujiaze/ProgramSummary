@@ -1,14 +1,27 @@
 ﻿//-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
+
+#if !UNITY_WSA_10_0 && !UNITY_WINRT_8_1 && !UNITY_WSA && !UNITY_WEBPLAYER
+	#define SUPPORT_SSL
+#endif
 
 using System;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
+#if SUPPORT_SSL
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
+using System.Net;
+#endif
 
 namespace RenderHeads.Media.AVProVideo
 {
+	/// <summary>
+	/// Utility class to parses an HLS(m3u8) adaptive stream from a URL to 
+	/// allow easy inspection and navitation of the stream data
+	/// </summary>
 	public class HLSStream : Stream
 	{
 		private const string BANDWITH_NAME = "BANDWIDTH=";
@@ -234,15 +247,24 @@ namespace RenderHeads.Media.AVProVideo
 						fileLines = fileString.Split('\n');
 					}
 #else
-					string fileString = new System.Net.WebClient().DownloadString(filename);
-					fileLines = fileString.Split('\n');
+
+#if SUPPORT_SSL
+					if (filename.ToLower().StartsWith("https://"))
+					{
+						ServicePointManager.ServerCertificateValidationCallback = MyRemoteCertificateValidationCallback;
+					}
+#endif
+					using (System.Net.WebClient webClient = new System.Net.WebClient())
+					{
+						string fileString = webClient.DownloadString(filename);
+						fileLines = fileString.Split('\n');
+					}
 #endif
 				}
 				else
 				{
 					fileLines = File.ReadAllLines(filename);
-				}
-				
+				}	
 
 				int lastDash = filename.LastIndexOf('/');
 				if(lastDash < 0)
@@ -260,7 +282,36 @@ namespace RenderHeads.Media.AVProVideo
 			}
 		}
 
-
+#if SUPPORT_SSL
+		private bool MyRemoteCertificateValidationCallback(System.Object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+		{
+			bool isOk = true;
+			// If there are errors in the certificate chain,
+			// look at each error to determine the cause.
+			if (sslPolicyErrors != SslPolicyErrors.None)
+			{
+				for (int i = 0; i < chain.ChainStatus.Length; i++)
+				{
+					if (chain.ChainStatus[i].Status == X509ChainStatusFlags.RevocationStatusUnknown)
+					{
+						continue;
+					}
+					chain.ChainPolicy.RevocationFlag = X509RevocationFlag.EntireChain;
+					chain.ChainPolicy.RevocationMode = X509RevocationMode.Online;
+					chain.ChainPolicy.UrlRetrievalTimeout = new TimeSpan(0, 1, 0);
+					// Note: change flags to X509VerificationFlags.AllFlags to skip all security checks
+					chain.ChainPolicy.VerificationFlags = X509VerificationFlags.NoFlag;
+					bool chainIsValid = chain.Build((X509Certificate2)certificate);
+					if (!chainIsValid)
+					{
+						isOk = false;
+						break;
+					}
+				}
+			}
+			return isOk;
+		}
+#endif
 	}
 }
 

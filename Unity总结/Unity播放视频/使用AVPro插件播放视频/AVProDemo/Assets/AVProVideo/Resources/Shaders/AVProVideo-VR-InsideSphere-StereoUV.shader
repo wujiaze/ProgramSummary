@@ -1,6 +1,4 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "AVProVideo/VR/InsideSphere Unlit (stereo+fog) Stereo UV"
+﻿Shader "AVProVideo/VR/InsideSphere Unlit (stereo+fog) Stereo UV"
 {
     Properties
     {
@@ -65,7 +63,7 @@ Shader "AVProVideo/VR/InsideSphere Unlit (stereo+fog) Stereo UV"
 			v2f vert(appdata v)
 			{
 				v2f o;
-				o.vertex = UnityObjectToClipPos(v.vertex);
+				o.vertex = XFormObjectToClip(v.vertex);
 
 				if (IsStereoEyeLeft(_cameraPosition, UNITY_MATRIX_V[0].xyz))
 				{

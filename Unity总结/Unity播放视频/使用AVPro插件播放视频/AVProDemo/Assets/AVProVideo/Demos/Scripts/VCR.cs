@@ -9,16 +9,25 @@ using System.Collections;
 using RenderHeads.Media.AVProVideo;
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo.Demos
 {
+	/// <summary>
+	/// A demo of a simple video player using uGUI for display
+	/// Uses two MediaPlayer components, with one displaying the current video
+	/// while the other loads the next video.  MediaPlayers are then swapped
+	/// once the video is loaded and has a frame available for display.
+	/// This gives a more seamless display than simply using a single MediaPlayer
+	/// as its texture will be destroyed when it loads a new video
+	/// </summary>
 	public class VCR : MonoBehaviour 
 	{
 		public MediaPlayer	_mediaPlayer;
 		public MediaPlayer	_mediaPlayerB;
 		public DisplayUGUI	_mediaDisplay;
+		public RectTransform _bufferedSliderRect;
 
 		public Slider		_videoSeekSlider;
 		private float		_setVideoSeekSliderValue;
@@ -35,6 +44,7 @@ namespace RenderHeads.Media.AVProVideo.Demos
 		public string[] _videoFiles = { "BigBuckBunny_720p30.mp4", "SampleSphere.mp4" };
 
 		private int _VideoIndex = 0;
+		private Image _bufferedSliderImage;
 
 		private MediaPlayer _loadingPlayer;
 
@@ -92,6 +102,11 @@ namespace RenderHeads.Media.AVProVideo.Demos
 //				SetButtonEnabled( "PlayButton", !_mediaPlayer.m_AutoStart );
 //				SetButtonEnabled( "PauseButton", _mediaPlayer.m_AutoStart );
 			}
+
+			if (_bufferedSliderRect != null)
+			{
+				_bufferedSliderImage = _bufferedSliderRect.GetComponent<Image>();
+			}
 		}
 
 		public void OnAutoStartChange()
@@ -148,6 +163,7 @@ namespace RenderHeads.Media.AVProVideo.Demos
 				PlayingPlayer.Control.Seek(_videoSeekSlider.value * PlayingPlayer.Info.GetDurationMs());
 			}
 		}
+
 		public void OnVideoSliderDown()
 		{
 			if(PlayingPlayer)
@@ -274,7 +290,39 @@ namespace RenderHeads.Media.AVProVideo.Demos
 
 				_setVideoSeekSliderValue = d;
 				_videoSeekSlider.value = d;
-			}
+
+				if (_bufferedSliderRect != null)
+				{
+					float t1 = 0f;
+					float t2 = PlayingPlayer.Control.GetBufferingProgress();
+					if (t2 <= 0f)
+					{
+						if (PlayingPlayer.Control.GetBufferedTimeRangeCount() > 0)
+						{
+							PlayingPlayer.Control.GetBufferedTimeRange(0, ref t1, ref t2);
+							t1 /= PlayingPlayer.Info.GetDurationMs();
+							t2 /= PlayingPlayer.Info.GetDurationMs();
+						}
+					}
+
+					Vector2 anchorMin = Vector2.zero;
+                	Vector2 anchorMax = Vector2.one;
+	
+					if (_bufferedSliderImage != null &&
+						_bufferedSliderImage.type == Image.Type.Filled)
+					{
+						_bufferedSliderImage.fillAmount = d;
+					}
+					else
+					{   
+						anchorMin[0] = t1;   
+						anchorMax[0] = t2;
+					}
+                	
+                	_bufferedSliderRect.anchorMin = anchorMin;
+                	_bufferedSliderRect.anchorMax = anchorMax;
+				}
+			}			
 		}
 
 		// Callback function to handle events

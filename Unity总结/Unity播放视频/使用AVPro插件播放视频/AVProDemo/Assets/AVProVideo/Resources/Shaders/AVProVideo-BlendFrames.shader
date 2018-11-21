@@ -1,6 +1,4 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // Copyright 2014-2017 RenderHeads Ltd.  All rights reserved.
 //-----------------------------------------------------------------------------
 
@@ -25,6 +23,7 @@ Shader "AVProVideo/BlendFrames"
 			#pragma fragment frag
 			#pragma exclude_renderers flash xbox360 ps3 gles
 			#include "UnityCG.cginc"
+			#include "AVProVideo.cginc"
 
 			uniform sampler2D _MainTex;
 			uniform sampler2D _AfterTex;
@@ -40,7 +39,7 @@ Shader "AVProVideo/BlendFrames"
 			{
 				v2f o;
 				o.uv = float4(0.0, 0.0, 0.0, 0.0);
-				o.pos = UnityObjectToClipPos(v.vertex);
+				o.pos = XFormObjectToClip(v.vertex);
 
 				o.uv.xy = v.texcoord.xy;
 				return o;

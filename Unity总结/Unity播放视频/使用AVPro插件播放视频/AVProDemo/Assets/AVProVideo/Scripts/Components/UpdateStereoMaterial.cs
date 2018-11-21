@@ -5,7 +5,7 @@
 using UnityEngine;
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo
@@ -29,13 +29,24 @@ namespace RenderHeads.Media.AVProVideo
 		public UnityEngine.UI.Graphic _uGuiComponent;
 		public Material _material;
 
-		private int _cameraPositionId;
-		private int _viewMatrixId;
+		[SerializeField]
+		private StereoEye _forceEyeMode;
+
+		private static int _cameraPositionId;
+		private static int _viewMatrixId;
+		private StereoEye _setForceEyeMode = StereoEye.Both;
+		public StereoEye ForceEyeMode { get { return _forceEyeMode; } set { _forceEyeMode = value; } }
 
 		void Awake()
 		{
-			_cameraPositionId = Shader.PropertyToID("_cameraPosition");
-			_viewMatrixId = Shader.PropertyToID("_ViewMatrix");
+			if (_cameraPositionId == 0)
+			{
+				_cameraPositionId = Shader.PropertyToID("_cameraPosition");
+			}
+			if (_viewMatrixId == 0)
+			{
+				_viewMatrixId = Shader.PropertyToID("_ViewMatrix");
+			}
 			if (_camera == null)
 			{
 				Debug.LogWarning("[AVProVideo] No camera set for UpdateStereoMaterial component. If you are rendering in stereo then it is recommended to set this.");
@@ -46,10 +57,15 @@ namespace RenderHeads.Media.AVProVideo
 		{
 			m.SetVector(_cameraPositionId, camera.transform.position);
 			m.SetMatrix(_viewMatrixId, camera.worldToCameraMatrix.transpose);
+			if (_forceEyeMode != _setForceEyeMode)
+			{
+				Helper.SetupStereoEyeModeMaterial(m, _forceEyeMode);
+				_setForceEyeMode = _forceEyeMode;
+			}
 		}
 
 		// We do a LateUpdate() to allow for any changes in the camera position that may have happened in Update()
-		void LateUpdate()
+		private void LateUpdate()
 		{
 			Camera camera = _camera;
 			if (camera == null)

@@ -22,11 +22,36 @@
 	#define FLOAT3X3 float3x3
 #endif
 
+// Specify this so Unity doesn't automatically update our shaders.
+#define UNITY_SHADER_NO_UPGRADE 1
+
+// We use this method so that when Unity automatically updates the shader from the old
+// mul(UNITY_MATRIX_MVP.. to UnityObjectToClipPos that it only changes in one place.
+INLINE FLOAT4 XFormObjectToClip(FLOAT4 vertex)
+{
+#if defined(SHADERLAB_GLSL)
+	return gl_ModelViewProjectionMatrix * vertex;
+#else
+#if (UNITY_VERSION >= 560)
+	return UnityObjectToClipPos(vertex);
+#else
+	return mul(UNITY_MATRIX_MVP, vertex);
+#endif
+#endif
+}
+
 INLINE bool IsStereoEyeLeft(FLOAT3 worldNosePosition, FLOAT3 worldCameraRight)
 {
-#if defined(UNITY_SINGLE_PASS_STEREO)
+#if defined(FORCEEYE_LEFT)
+	return true;
+#elif defined(FORCEEYE_RIGHT)
+	return false;
+#elif defined(UNITY_SINGLE_PASS_STEREO) || defined (UNITY_STEREO_INSTANCING_ENABLED)
 	// Unity 5.4 has this new variable
 	return (unity_StereoEyeIndex == 0);
+#elif defined (UNITY_DECLARE_MULTIVIEW)
+	// OVR_multiview extension
+	return (UNITY_VIEWID == 0);
 #else
 
 //#if (UNITY_VERSION > 540) && defined(GOOGLEVR) && !defined(SHADERLAB_GLSL)
@@ -111,6 +136,9 @@ INLINE FLOAT4 GetStereoDebugTint(bool isLeftEye)
 #if defined(UNITY_UV_STARTS_AT_TOP)
 	tint.b = 0.5;
 #endif
+/*#if defined(UNITY_SINGLE_PASS_STEREO) || defined(UNITY_STEREO_INSTANCING_ENABLED) || defined(UNITY_DECLARE_MULTIVIEW)
+	tint.b = 1.0;
+#endif*/
 
 	return tint;
 }

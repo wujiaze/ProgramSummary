@@ -2,20 +2,27 @@
 using System.Collections.Generic;
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo.Demos
 {
+	/// <summary>
+	/// Runs the demo for the scene that demonstrates how to map video playback to 3D models
+	/// Spawns and removes cubes with video mapping
+	/// </summary>
 	public class Mapping3D : MonoBehaviour
 	{
-		public GameObject _cubePrefab;
+		[SerializeField]
+		private GameObject _cubePrefab;
+
 		private const int MaxCubes = 48;
 		private const float SpawnTime = 0.25f;
+
 		private float _timer = SpawnTime;
 		private List<GameObject> _cubes = new List<GameObject>(32);
 
-		void Update()
+		private void Update()
 		{
 			_timer -= Time.deltaTime;
 			if (_timer <= 0f)

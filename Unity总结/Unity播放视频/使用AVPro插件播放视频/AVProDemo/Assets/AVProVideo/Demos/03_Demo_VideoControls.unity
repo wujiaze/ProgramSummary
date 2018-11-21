@@ -102,7 +102,7 @@ RectTransform:
   m_Children:
   - {fileID: 1078246519}
   m_Father: {fileID: 1110412939}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -269,21 +269,35 @@ MonoBehaviour:
   m_AutoStart: 1
   m_Loop: 1
   m_Volume: 1
+  m_Balance: 0
   m_Muted: 0
   m_PlaybackRate: 1
-  m_DebugGui: 0
+  m_Resample: 0
+  m_ResampleMode: 0
+  m_ResampleBufferSize: 5
   m_Persistent: 0
+  m_videoMapping: 0
   m_StereoPacking: 0
   m_AlphaPacking: 0
   m_DisplayDebugStereoColorTint: 0
   m_FilterMode: 1
   m_WrapMode: 1
   m_AnisoLevel: 0
+  m_LoadSubtitles: 0
+  m_SubtitleLocation: 2
+  m_SubtitlePath: 
+  m_AudioHeadTransform: {fileID: 0}
+  m_AudioFocusEnabled: 0
+  m_AudioFocusTransform: {fileID: 0}
+  m_AudioFocusWidthDegrees: 90
+  m_AudioFocusOffLevelDB: 0
   m_events:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: RenderHeads.Media.AVProVideo.MediaPlayerEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  m_forceFileFormat: 0
+  m_manuallySetAudioSourceProperties: 0
   _optionsWindows:
     overridePath: 0
     pathLocation: 2
@@ -291,36 +305,66 @@ MonoBehaviour:
     videoApi: 0
     useHardwareDecoding: 1
     useUnityAudio: 0
+    forceAudioResample: 1
+    useTextureMips: 0
+    hintAlphaChannel: 0
+    useLowLatency: 0
     forceAudioOutputDeviceName: 
+    preferredFilters: []
+    enableAudio360: 0
+    audio360ChannelMode: 0
   _optionsMacOSX:
     overridePath: 0
     pathLocation: 2
     path: 
+    httpHeaderJson: 
   _optionsIOS:
     overridePath: 0
     pathLocation: 2
     path: 
+    useYpCbCr420Textures: 1
+    httpHeaderJson: 
   _optionsTVOS:
     overridePath: 0
     pathLocation: 2
     path: 
+    useYpCbCr420Textures: 1
+    httpHeaderJson: 
   _optionsAndroid:
     overridePath: 0
     pathLocation: 2
     path: 
+    videoApi: 1
     useFastOesPath: 0
+    showPosterFrame: 0
+    enableAudio360: 0
+    audio360ChannelMode: 0
+    preferSoftwareDecoder: 0
+    httpHeaderJson: 
     fileOffset: 0
   _optionsWindowsPhone:
     overridePath: 0
     pathLocation: 2
     path: 
     useHardwareDecoding: 1
+    useUnityAudio: 0
+    forceAudioResample: 1
+    useTextureMips: 0
+    useLowLatency: 0
   _optionsWindowsUWP:
     overridePath: 0
     pathLocation: 2
     path: 
     useHardwareDecoding: 1
+    useUnityAudio: 0
+    forceAudioResample: 1
+    useTextureMips: 0
+    useLowLatency: 0
   _optionsWebGL:
+    overridePath: 0
+    pathLocation: 2
+    path: 
+  _optionsPS4:
     overridePath: 0
     pathLocation: 2
     path: 
@@ -478,27 +522,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 638c870cac4da414fba921606d504407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_VideoLocation: 2
+  m_VideoLocation: 0
   m_VideoPath: 
   m_AutoOpen: 0
   m_AutoStart: 1
   m_Loop: 1
   m_Volume: 1
+  m_Balance: 0
   m_Muted: 0
   m_PlaybackRate: 1
-  m_DebugGui: 0
+  m_Resample: 0
+  m_ResampleMode: 0
+  m_ResampleBufferSize: 5
   m_Persistent: 0
+  m_videoMapping: 0
   m_StereoPacking: 0
   m_AlphaPacking: 0
   m_DisplayDebugStereoColorTint: 0
   m_FilterMode: 1
   m_WrapMode: 1
   m_AnisoLevel: 0
+  m_LoadSubtitles: 0
+  m_SubtitleLocation: 2
+  m_SubtitlePath: 
+  m_AudioHeadTransform: {fileID: 0}
+  m_AudioFocusEnabled: 0
+  m_AudioFocusTransform: {fileID: 0}
+  m_AudioFocusWidthDegrees: 90
+  m_AudioFocusOffLevelDB: 0
   m_events:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: RenderHeads.Media.AVProVideo.MediaPlayerEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  m_forceFileFormat: 0
+  m_manuallySetAudioSourceProperties: 0
   _optionsWindows:
     overridePath: 0
     pathLocation: 2
@@ -506,36 +564,66 @@ MonoBehaviour:
     videoApi: 0
     useHardwareDecoding: 1
     useUnityAudio: 0
+    forceAudioResample: 1
+    useTextureMips: 0
+    hintAlphaChannel: 0
+    useLowLatency: 0
     forceAudioOutputDeviceName: 
+    preferredFilters: []
+    enableAudio360: 0
+    audio360ChannelMode: 0
   _optionsMacOSX:
     overridePath: 0
     pathLocation: 2
     path: 
+    httpHeaderJson: 
   _optionsIOS:
     overridePath: 0
     pathLocation: 2
     path: 
+    useYpCbCr420Textures: 1
+    httpHeaderJson: 
   _optionsTVOS:
     overridePath: 0
     pathLocation: 2
     path: 
+    useYpCbCr420Textures: 1
+    httpHeaderJson: 
   _optionsAndroid:
     overridePath: 0
     pathLocation: 2
     path: 
+    videoApi: 1
     useFastOesPath: 0
+    showPosterFrame: 0
+    enableAudio360: 0
+    audio360ChannelMode: 0
+    preferSoftwareDecoder: 0
+    httpHeaderJson: 
     fileOffset: 0
   _optionsWindowsPhone:
     overridePath: 0
     pathLocation: 2
     path: 
     useHardwareDecoding: 1
+    useUnityAudio: 0
+    forceAudioResample: 1
+    useTextureMips: 0
+    useLowLatency: 0
   _optionsWindowsUWP:
     overridePath: 0
     pathLocation: 2
     path: 
     useHardwareDecoding: 1
+    useUnityAudio: 0
+    forceAudioResample: 1
+    useTextureMips: 0
+    useLowLatency: 0
   _optionsWebGL:
+    overridePath: 0
+    pathLocation: 2
+    path: 
+  _optionsPS4:
     overridePath: 0
     pathLocation: 2
     path: 
@@ -581,6 +669,7 @@ MonoBehaviour:
   _mediaPlayer: {fileID: 109038280}
   _mediaPlayerB: {fileID: 136179555}
   _mediaDisplay: {fileID: 1459959098}
+  _bufferedSliderRect: {fileID: 1297862111}
   _videoSeekSlider: {fileID: 1110412940}
   _audioVolumeSlider: {fileID: 592025963}
   _AutoStartToggle: {fileID: 1961666199}
@@ -1494,7 +1583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -1598,6 +1687,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1501146530}
+  - {fileID: 1466566863}
   - {fileID: 1496113064}
   - {fileID: 39748676}
   m_Father: {fileID: 352449133}
@@ -1850,6 +1940,67 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!1 &1297862110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1297862111}
+  - 222: {fileID: 1297862113}
+  - 114: {fileID: 1297862112}
+  m_Layer: 5
+  m_Name: Fill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1297862111
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1297862110}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1466566863}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 10, y: 0}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &1297862112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1297862110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1297862113
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1297862110}
 --- !u!1 &1349230639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1981,6 +2132,39 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1459959096}
+--- !u!1 &1466566862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1466566863}
+  m_Layer: 5
+  m_Name: Buffered Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1466566863
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1466566862}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1297862111}
+  m_Father: {fileID: 1110412939}
+  m_RootOrder: 1
+  m_AnchorMin: {x: 0, y: .25}
+  m_AnchorMax: {x: 1, y: .75}
+  m_AnchoredPosition: {x: 5.5, y: 0}
+  m_SizeDelta: {x: 1, y: 0}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1 &1496113063
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,11 +2192,11 @@ RectTransform:
   m_Children:
   - {fileID: 2053384619}
   m_Father: {fileID: 1110412939}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_AnchorMin: {x: 0, y: .25}
   m_AnchorMax: {x: 1, y: .75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 5.50003433, y: 0}
+  m_SizeDelta: {x: 1, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &1501146529
 GameObject:
@@ -2519,7 +2703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0

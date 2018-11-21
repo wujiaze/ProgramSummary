@@ -2,6 +2,10 @@
 	#define UNITY_FEATURE_UGUI
 #endif
 
+#if UNITY_ANDROID && !UNITY_EDITOR
+	#define REAL_ANDROID
+#endif
+
 #if UNITY_EDITOR || UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN
 	#define UNITY_PLATFORM_SUPPORTS_LINEAR
 #elif UNITY_IOS || UNITY_ANDROID
@@ -25,11 +29,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo
 {
+	/// <summary>
+	/// Displays the video from MediaPlayer component using uGUI
+	/// </summary>
 	[ExecuteInEditMode]
 #if UNITY_HELPATTRIB
 	[HelpURL("http://renderheads.com/product/avpro-video/")]
@@ -64,6 +71,9 @@ namespace RenderHeads.Media.AVProVideo
 		private Texture _lastTexture;
 		private static Shader _shaderStereoPacking;
 		private static Shader _shaderAlphaPacking;
+#if REAL_ANDROID
+		private static Shader _shaderAndroidOES;
+#endif
 		private static int _propAlphaPack;
 		private static int _propVertScale;
 		private static int _propStereo;
@@ -113,7 +123,16 @@ namespace RenderHeads.Media.AVProVideo
 					Debug.LogWarning("[AVProVideo] Missing shader AVProVideo/UI/Stereo");
 				}
 			}
-
+#if REAL_ANDROID
+			if (_shaderAndroidOES == null)
+			{
+				_shaderAndroidOES = Shader.Find("AVProVideo/UI/AndroidOES");
+				if (_shaderAndroidOES == null)
+				{
+					Debug.LogWarning("[AVProVideo] Missing shader AVProVideo/UI/AndroidOES");
+				}
+			}
+#endif
 			base.Awake();
 		}
 
@@ -180,6 +199,12 @@ namespace RenderHeads.Media.AVProVideo
 				result = _shaderAlphaPacking;
 			}
 
+#if REAL_ANDROID
+			if (_mediaPlayer.PlatformOptionsAndroid.useFastOesPath)
+			{
+				result = _shaderAndroidOES;
+			}
+#endif
 			return result;
 		}
 
@@ -273,6 +298,7 @@ namespace RenderHeads.Media.AVProVideo
 			{
 				_lastTexture = mainTexture;
 				SetVerticesDirty();
+				SetMaterialDirty();
 			}
 
 			if (HasValidTexture())
@@ -284,6 +310,7 @@ namespace RenderHeads.Media.AVProVideo
 						_lastWidth = mainTexture.width;
 						_lastHeight = mainTexture.height;
 						SetVerticesDirty();
+						SetMaterialDirty();
 					}
 				}
 			}
@@ -339,8 +366,6 @@ namespace RenderHeads.Media.AVProVideo
 				_propApplyGamma |= 0;
 #endif
 			}
-
-			SetMaterialDirty();
 		}
 
 		/// <summary>

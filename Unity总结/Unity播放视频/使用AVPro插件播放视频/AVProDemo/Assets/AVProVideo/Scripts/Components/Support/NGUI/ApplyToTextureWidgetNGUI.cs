@@ -3,12 +3,16 @@ using UnityEngine;
 using System.Collections;
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 #if NGUI
 namespace RenderHeads.Media.AVProVideo
 {
+	/// <summary>
+	/// Integrates AVPro Video with NGUI
+	/// Applies the video texture to the NGUI UITexture component
+	/// </summary>
 	[AddComponentMenu("AVPro Video/Display NGUI")]
 	public class ApplyToTextureWidgetNGUI : MonoBehaviour 
 	{

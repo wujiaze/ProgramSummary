@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 #if PLAYMAKER
@@ -18,6 +18,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Listen to the Closing Event of a MediaPlayer and sends an event.")]
 	public class AVProVideoEventClosing: AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+	
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -70,6 +72,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Listen to the Error Event of a MediaPlayer and sends an event. Error Code is passed in the event data as an int. 100 = loadFailed 200 = decodeFailed")]
 	public class AVProVideoEventError : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+	
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -123,6 +127,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Listen to the FinishedPlaying Event of a MediaPlayer and sends an event.")]
 	public class AVProVideoEventFinishedPlaying : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+	
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -175,6 +181,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Listen to the FirstFrameReady Event of a MediaPlayer and sends an event.")]
 	public class AVProVideoEventFirstFrameReady : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+	
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -229,6 +237,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Listen to the MetaDataReady Event of a MediaPlayer and sends an event.")]
 	public class AVProVideoEventMetaDataReady : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -282,6 +292,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Listen to the ReadytoPlay Event of a MediaPlayer and sends an event.")]
 	public class AVProVideoEventReadyToPlay : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -335,6 +347,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Listen to the Stalled Event of a MediaPlayer and sends an event.")]
 	public class AVProVideoEventStalled : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -388,6 +402,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Listen to the ReadytoPlay Event of a MediaPlayer and sends an event.")]
 	public class AVProVideoEventStarted : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -440,6 +456,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Listen to the SubtitleChange Event of a MediaPlayer and sends an event.")]
 	public class AVProVideoEventSubtitleChange : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -492,6 +510,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Listen to the Unstalled Event of a MediaPlayer and sends an event.")]
 	public class AVProVideoEventUnstalled : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]

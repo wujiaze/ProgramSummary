@@ -1,8 +1,8 @@
 #if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_IPHONE || UNITY_IOS || UNITY_TVOS
 #if UNITY_5 || UNITY_5_4_OR_NEWER
-	#if !UNITY_5_0 && !UNITY_5_1
-		#define AVPROVIDEO_ISSUEPLUGINEVENT_UNITY52
-	#endif
+#if !UNITY_5_0 && !UNITY_5_1
+#define AVPROVIDEO_ISSUEPLUGINEVENT_UNITY52
+#endif
 #endif
 
 using UnityEngine;
@@ -13,11 +13,14 @@ using System.Text.RegularExpressions;
 using AOT;
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo
 {
+	/// <summary>
+	/// macOS, iOS and tvOS implementation of BaseMediaPlayer
+	/// </summary>
 	public class OSXMediaPlayer : BaseMediaPlayer
 	{
 #if UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX
@@ -82,6 +85,13 @@ namespace RenderHeads.Media.AVProVideo
 			public int flipped;
 		};
 
+		[StructLayout(LayoutKind.Sequential, Pack=4)]
+		private struct AVPPlayerTimeRange
+		{
+			public double start;
+			public double duration;
+		};
+
 		[DllImport(PluginName)]
 		private static extern string AVPGetVersion();
 
@@ -95,6 +105,9 @@ namespace RenderHeads.Media.AVProVideo
 
 		[DllImport(PluginName)]
 		private static extern double AVPPlayerGetCurrentTime(IntPtr player);
+
+		[DllImport(PluginName)]
+		private static extern double AVPPlayerGetCurrentDate(IntPtr player);
 
 		[DllImport(PluginName)]
 		private static extern double AVPPlayerGetDuration(IntPtr player);
@@ -125,6 +138,9 @@ namespace RenderHeads.Media.AVProVideo
 
 		[DllImport(PluginName)]
 		private static extern bool AVPPlayerGetBufferedTimeRange(IntPtr player, int index, out float start, out float end);
+
+		[DllImport(PluginName)]
+		private static extern int AVPPlayerGetSeekableTimeRanges(IntPtr player, [In, Out] AVPPlayerTimeRange[] ranges, ref int count);
 
 		[DllImport(PluginName)]
 		private static extern bool AVPPlayerGetTextures(IntPtr player, [In, Out] AVPPlayerTextureInfo[] textures, ref int count);
@@ -181,7 +197,13 @@ namespace RenderHeads.Media.AVProVideo
 		private static extern void AVPPlayerPause(IntPtr player);
 
 		[DllImport(PluginName)]
-		private static extern void AVPPlayerSeekToTime(IntPtr player, double time, bool fast);
+		private static extern void AVPPlayerSeek(IntPtr player, double time);
+
+		[DllImport(PluginName)]
+		private static extern void AVPPlayerSeekFast(IntPtr player, double time);
+
+		[DllImport(PluginName)]
+		private static extern void AVPPlayerSeekWithTolerance(IntPtr player, double time, double before, double after);
 
 		[DllImport(PluginName)]
 		private static extern float AVPPlayerGetPlaybackRate(IntPtr player);
@@ -230,6 +252,9 @@ namespace RenderHeads.Media.AVProVideo
 
 		[DllImport(PluginName)]
 		private static extern int AVPPlayerExtractFrame(IntPtr player, [In, Out] AVPPlayerTextureInfo[] textures, ref int count, double timeout);
+
+		[DllImport(PluginName)]
+		private static extern void AVPPlayerAddValueDidChangeObserver(IntPtr player, IntPtr self, IntPtr callback, string key, uint flags);
 
 		[DllImport(PluginName)]
 		private static extern void AVPPluginRegister();
@@ -285,6 +310,46 @@ namespace RenderHeads.Media.AVProVideo
 #endif
 		}
 
+#if UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+#endif
+		private delegate void ValueAtKeyPathDidChangeDelegate(IntPtr self, string keyPath);
+
+#if UNITY_IPHONE || UNITY_IOS || UNITY_TVOS
+		[MonoPInvokeCallback(typeof(ValueAtKeyPathDidChangeDelegate))]
+#endif
+		private static void ValueAtKeyPathDidChangeThunk(IntPtr self, string keyPath)
+		{
+			GCHandle handle = GCHandle.FromIntPtr(self);
+			OSXMediaPlayer player = (OSXMediaPlayer)handle.Target;
+			player.ValueAtKeyPathDidChange(keyPath);
+		}
+
+		private void ValueAtKeyPathDidChange(string keyPath)
+		{
+			if (keyPath == "seekableTimeRanges")
+			{
+				AVPPlayerTimeRange[] ranges = new AVPPlayerTimeRange[4];
+				int count = ranges.Length;
+				int numRanges = AVPPlayerGetSeekableTimeRanges(_player, ranges, ref count);
+				if (numRanges > count)
+				{
+					ranges = new AVPPlayerTimeRange[numRanges];
+					count = numRanges;
+					AVPPlayerGetSeekableTimeRanges(_player, ranges, ref count);
+				}
+				if (_seekableTimeRanges.Length != count)
+				{
+					_seekableTimeRanges = new TimeRange[count];
+				}
+				for (int i = 0; i < count; ++i)
+				{
+					_seekableTimeRanges[i].startTime = (float)(ranges[i].start * 1000.0);
+					_seekableTimeRanges[i].duration = (float)(ranges[i].duration * 1000.0);
+				}
+			}
+		}
+
 		static void Initialise()
 		{
 			if (!_initialised)
@@ -319,6 +384,7 @@ namespace RenderHeads.Media.AVProVideo
 		private int _height = 0;
 		private bool _flipped = false;
 		private bool _isMetaDataReady = false;
+		private GCHandle _thisHandle;
 
 		static OSXMediaPlayer()
 		{
@@ -329,6 +395,13 @@ namespace RenderHeads.Media.AVProVideo
 		{
 			_player = AVPPlayerNew(useYuv420Textures);
 			_handle = AVPPlayerGetHandle(_player);
+
+			_thisHandle = GCHandle.Alloc(this, GCHandleType.Normal);
+			ValueAtKeyPathDidChangeDelegate callbackDelegate = new ValueAtKeyPathDidChangeDelegate(ValueAtKeyPathDidChangeThunk);
+
+			IntPtr self = GCHandle.ToIntPtr(_thisHandle);
+			IntPtr callback = Marshal.GetFunctionPointerForDelegate(callbackDelegate);
+			AVPPlayerAddValueDidChangeObserver(_player, self, callback, "seekableTimeRanges", 0);
 		}
 
 		// Convenience method for calling OSXMediaPlayer.IssuePluginEvent.
@@ -345,7 +418,7 @@ namespace RenderHeads.Media.AVProVideo
 			return AVPGetVersion();
 		}
 
-		public override bool OpenVideoFromFile(string path, long offset /* ignored */, string httpHeaderJson)
+		public override bool OpenVideoFromFile(string path, long offset /* ignored */, string httpHeaderJson, uint sourceSamplerate = 0, uint sourceChannels = 0, int forceFileFormat = 0)
 		{
 			if (_matchURLRegex.IsMatch(path))
 			{
@@ -377,6 +450,8 @@ namespace RenderHeads.Media.AVProVideo
 			_height = 0;
 			_isMetaDataReady = false;
 			_planeCount = 0;
+			
+			base.CloseVideo();
 		}
 
 		public override bool IsLooping()
@@ -426,22 +501,32 @@ namespace RenderHeads.Media.AVProVideo
 
 		public override void Rewind()
 		{
-			AVPPlayerSeekToTime(_player, 0.0, true);
+			AVPPlayerSeekFast(_player, 0.0);
 		}
 
 		public override void Seek(float ms)
 		{
-			AVPPlayerSeekToTime(_player, ms / 1000.0, false);
+			AVPPlayerSeek(_player, ms / 1000.0);
 		}
 
 		public override void SeekFast(float ms)
 		{
-			AVPPlayerSeekToTime(_player, ms / 1000.0, true);
+			AVPPlayerSeekFast(_player, ms / 1000.0);
+		}
+
+		public override void SeekWithTolerance(float timeMs, float beforeMs, float afterMs)
+		{
+			AVPPlayerSeekWithTolerance(_player, timeMs / 1000.0, beforeMs / 1000.0, afterMs / 1000.0);
 		}
 
 		public override float GetCurrentTimeMs()
 		{
 			return (float)(AVPPlayerGetCurrentTime(_player) * 1000.0f);
+		}
+
+		public override double GetCurrentDateTimeSecondsSince1970()
+		{
+			return AVPPlayerGetCurrentDate(_player);
 		}
 
 		public override void SetPlaybackRate(float rate)
@@ -750,6 +835,7 @@ namespace RenderHeads.Media.AVProVideo
 			CloseVideo();
 			AVPPlayerRelease(_player);
 			_player = IntPtr.Zero;
+			_thisHandle.Free();
 		}
 
 	}
