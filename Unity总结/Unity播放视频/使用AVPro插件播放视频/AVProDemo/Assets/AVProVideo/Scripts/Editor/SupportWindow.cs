@@ -8,45 +8,46 @@ using UnityEngine;
 using UnityEditor;
 
 //-----------------------------------------------------------------------------
-// Copyright 2016-2017 RenderHeads Ltd.  All rights reserved.
+// Copyright 2016-2018 RenderHeads Ltd.  All rights reserved.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo.Editor
 {
-	public class PopupExample : PopupWindowContent
-	{
-		private string _text;
-
-		public PopupExample(string text)
-		{
-			_text = text;
-		}
-
-		public override Vector2 GetWindowSize()
-		{
-			return new Vector2(400, 520);
-		}
-
-		public override void OnGUI(Rect rect)
-		{
-			GUILayout.BeginHorizontal();
-			GUILayout.Label("Copy-Paste this text, then ", EditorStyles.boldLabel);
-			GUI.color = Color.green;
-			if (GUILayout.Button("Go to Forum", GUILayout.ExpandWidth(true)))
-			{
-				Application.OpenURL(MediaPlayerEditor.LinkForumLastPage);
-			}
-			GUILayout.EndHorizontal();
-			GUI.color = Color.white;
-			EditorGUILayout.TextArea(_text);
-		}
-	}
-
 	/// <summary>
-	/// 
+	/// A window to display options to the user to help them report bugs
+	/// Also collects some metadata about the machine specs, plugin version etc
 	/// </summary>
 	public class SupportWindow : EditorWindow
 	{
+		private class MyPopupWindow : PopupWindowContent
+		{
+			private string _text;
+
+			public MyPopupWindow(string text)
+			{
+				_text = text;
+			}
+
+			public override Vector2 GetWindowSize()
+			{
+				return new Vector2(400, 520);
+			}
+
+			public override void OnGUI(Rect rect)
+			{
+				GUILayout.BeginHorizontal();
+				GUILayout.Label("Copy-Paste this text, then ", EditorStyles.boldLabel);
+				GUI.color = Color.green;
+				if (GUILayout.Button("Go to Forum", GUILayout.ExpandWidth(true)))
+				{
+					Application.OpenURL(MediaPlayerEditor.LinkForumLastPage);
+				}
+				GUILayout.EndHorizontal();
+				GUI.color = Color.white;
+				EditorGUILayout.TextArea(_text);
+			}
+		}
+
 		private static bool _isCreated = false;
 		private static bool _isInit = false;
 
@@ -319,7 +320,7 @@ namespace RenderHeads.Media.AVProVideo.Editor
 				}
 				if (GUILayout.Button("Send at the Unity Forum ➔", GUILayout.ExpandWidth(false), GUILayout.Height(32f)))
 				{
-					PopupWindow.Show(buttonRect, new PopupExample(emailBody));
+					PopupWindow.Show(buttonRect, new MyPopupWindow(emailBody));
 					//SupportWindowPopup.Init(emailBody);
 					//EditorUtility.DisplayDialog("AVPro Video", "Please include as much information as you can in the forum post", "OK");
 				}

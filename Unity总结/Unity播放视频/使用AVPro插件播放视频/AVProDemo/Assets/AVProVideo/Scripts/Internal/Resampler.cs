@@ -2,8 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//-----------------------------------------------------------------------------
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
+//-----------------------------------------------------------------------------
+
 namespace RenderHeads.Media.AVProVideo
 {
+	/// <summary>
+	/// Utility class to resample MediaPlayer video frames to allow for smoother playback
+	/// Keeps a buffer of frames with timestamps and presents them using its own clock
+	/// </summary>
 	public class Resampler
 	{
 		private class TimestampedRenderTexture
@@ -219,6 +227,7 @@ namespace RenderHeads.Media.AVProVideo
 			return true;
 		}
 
+		//finds closest frame that occurs before given index
 		private int FindBeforeFrameIndex(int frameIdx)
 		{
 			if (frameIdx >= _buffer.Count)
@@ -294,6 +303,7 @@ namespace RenderHeads.Media.AVProVideo
 			return foundPos;
 		}
 
+		//point update selects closest frame and uses that as output
 		private void PointUpdate()
 		{
 			for (int i = 0; i < _buffer.Count; ++i)
@@ -312,6 +322,7 @@ namespace RenderHeads.Media.AVProVideo
 
 		}
 
+		//Updates currently displayed frame
 		private void SampleFrame(int frameIdx, int bufferIdx)
 		{
 			_outputTexture[bufferIdx].DiscardContents();
@@ -320,6 +331,7 @@ namespace RenderHeads.Media.AVProVideo
 			_currentDisplayedTimestamp = _buffer[bufferIdx][frameIdx].timestamp;
 		}
 
+		//Same as sample frame, but does a lerp of the two given frames and outputs that image instead
 		private void SampleFrames(int bufferIdx, int frameIdx1, int frameIdx2, float t)
 		{
 			_blendMat.SetFloat(_propT, t);
@@ -409,6 +421,7 @@ namespace RenderHeads.Media.AVProVideo
 
 			long currentTimestamp = _mediaPlayer.TextureProducer.GetTextureTimeStamp();
 
+			//if frame has been updated, do a calculation to estimate dropped frames
 			if (currentTimestamp != _lastTimeStamp)
 			{
 				float dif = Mathf.Abs(currentTimestamp - _lastTimeStamp);

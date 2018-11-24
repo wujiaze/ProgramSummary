@@ -122,7 +122,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 739613493}
   m_GameObject: {fileID: 56631014}
-  m_Mesh: {fileID: 4300000, guid: 1b556993d24b54648b59aadb78f94ea9, type: 3}
+  m_Mesh: {fileID: 4300000, guid: c8b055314efcb4b4dbd29f97a847fc4c, type: 2}
 --- !u!4 &56631017
 Transform:
   m_ObjectHideFlags: 0
@@ -169,6 +169,7 @@ MonoBehaviour:
   _renderer: {fileID: 56631015}
   _uGuiComponent: {fileID: 0}
   _material: {fileID: 0}
+  _forceEyeMode: 0
 --- !u!1 &520026262
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,13 +260,21 @@ Prefab:
     - target: {fileID: 3327526, guid: 5a12218ea7e5b7a4e8b89d25e07d237d, type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4300000, guid: 1b556993d24b54648b59aadb78f94ea9, type: 3}
+      objectReference: {fileID: 4300000, guid: c8b055314efcb4b4dbd29f97a847fc4c, type: 2}
     - target: {fileID: 2327526, guid: 5a12218ea7e5b7a4e8b89d25e07d237d, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0fd638029ad31c3408b8cd59c9364952, type: 2}
     - target: {fileID: 11498420, guid: 5a12218ea7e5b7a4e8b89d25e07d237d, type: 2}
       propertyPath: _optionsWindows.videoApi
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11498420, guid: 5a12218ea7e5b7a4e8b89d25e07d237d, type: 2}
+      propertyPath: m_videoMapping
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404242, guid: 5a12218ea7e5b7a4e8b89d25e07d237d, type: 2}
+      propertyPath: _forceEyeMode
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -374,9 +383,11 @@ MonoBehaviour:
   m_Balance: 0
   m_Muted: 0
   m_PlaybackRate: 1
-  m_DebugGui: 0
-  m_DebugGuiControls: 1
+  m_Resample: 0
+  m_ResampleMode: 0
+  m_ResampleBufferSize: 5
   m_Persistent: 0
+  m_videoMapping: 3
   m_StereoPacking: 0
   m_AlphaPacking: 0
   m_DisplayDebugStereoColorTint: 0
@@ -386,11 +397,18 @@ MonoBehaviour:
   m_LoadSubtitles: 0
   m_SubtitleLocation: 2
   m_SubtitlePath: 
+  m_AudioHeadTransform: {fileID: 0}
+  m_AudioFocusEnabled: 0
+  m_AudioFocusTransform: {fileID: 0}
+  m_AudioFocusWidthDegrees: 90
+  m_AudioFocusOffLevelDB: 0
   m_events:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: RenderHeads.Media.AVProVideo.MediaPlayerEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  m_forceFileFormat: 0
+  m_manuallySetAudioSourceProperties: 0
   _optionsWindows:
     overridePath: 0
     pathLocation: 2
@@ -399,10 +417,13 @@ MonoBehaviour:
     useHardwareDecoding: 1
     useUnityAudio: 0
     forceAudioResample: 1
-    desiredAudioChannels: 2
     useTextureMips: 0
+    hintAlphaChannel: 0
     useLowLatency: 0
     forceAudioOutputDeviceName: 
+    preferredFilters: []
+    enableAudio360: 0
+    audio360ChannelMode: 0
   _optionsMacOSX:
     overridePath: 0
     pathLocation: 2
@@ -412,20 +433,24 @@ MonoBehaviour:
     overridePath: 0
     pathLocation: 2
     path: 
-    useYpCbCr420Textures: 0
+    useYpCbCr420Textures: 1
     httpHeaderJson: 
   _optionsTVOS:
     overridePath: 0
     pathLocation: 2
     path: 
-    useYpCbCr420Textures: 0
+    useYpCbCr420Textures: 1
     httpHeaderJson: 
   _optionsAndroid:
     overridePath: 0
     pathLocation: 2
     path: 
+    videoApi: 1
     useFastOesPath: 0
     showPosterFrame: 0
+    enableAudio360: 0
+    audio360ChannelMode: 0
+    preferSoftwareDecoder: 0
     httpHeaderJson: 
     fileOffset: 0
   _optionsWindowsPhone:
@@ -435,7 +460,6 @@ MonoBehaviour:
     useHardwareDecoding: 1
     useUnityAudio: 0
     forceAudioResample: 1
-    desiredAudioChannels: 2
     useTextureMips: 0
     useLowLatency: 0
   _optionsWindowsUWP:
@@ -445,10 +469,13 @@ MonoBehaviour:
     useHardwareDecoding: 1
     useUnityAudio: 0
     forceAudioResample: 1
-    desiredAudioChannels: 2
     useTextureMips: 0
     useLowLatency: 0
   _optionsWebGL:
+    overridePath: 0
+    pathLocation: 2
+    path: 
+  _optionsPS4:
     overridePath: 0
     pathLocation: 2
     path: 

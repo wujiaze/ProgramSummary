@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 #if PLAYMAKER
@@ -18,6 +18,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Closes Video of a MediaPlayer.")]
 	public class AVProVideoPlayerCloseVideo : AVProVideoActionBase
     {
+		public AVProVideoActionHeader headerImage;
+	
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -49,6 +51,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Disable subtitles of a MediaPlayer.")]
 	public class AVProVideoPlayerDisableSubtitles : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+	
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -80,6 +84,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Enable subtitles of a MediaPlayer.")]
 	public class AVProVideoPlayerEnableSubtitles : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -137,6 +143,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Open a video at a location in a MediaPlayer.")]
 	public class AVProVideoPlayerOpenVideoLocation : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -197,6 +205,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Pauses playback of a MediaPlayer.")]
 	public class AVProVideoPlayerPause : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+	
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -227,6 +237,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Starts playback of a MediaPlayer.")]
 	public class AVProVideoPlayerPlay : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+	
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -257,6 +269,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Rewinds the video of a MediaPlayer.")]
 	public class AVProVideoPlayerRewind : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+	
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -290,6 +304,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Stops playback of a MediaPlayer.")]
 	public class AVProVideoPlayerStop : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+	
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]

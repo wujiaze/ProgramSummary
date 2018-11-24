@@ -8,7 +8,7 @@ var AVProVideoWebGL = {
     },
     count: 0,
     videos: [],
-    hasVideos__deps: ["count", "videos"],
+    hasVideos__deps: ["videos"],
     hasVideos: function (videoIndex) {
         if (videoIndex) {
             if (videoIndex == -1) {
@@ -41,6 +41,13 @@ var AVProVideoWebGL = {
 
         var vid = document.createElement("video");
 
+        // NOTE: Uncomment these lines below to add dash.js support for MPEG-DASH
+        //       You need to copy dash.all.min.js and copy it into /Plugins/WebGL/ folder
+        //       You need to rename it to dash.all.min.jspre
+        //       The player will ONLY open MPEG-DASH streams after this change
+        // var player = dashjs.MediaPlayer().create();
+        // player.initialize(vid, path, true);
+
 		// Some sources say that this is the proper way to catch errors...
 		/*vid.addEventListener('error', function(event) {
 			console.log("Error: " + event);
@@ -55,6 +62,7 @@ var AVProVideoWebGL = {
             video: vid,
             ready: false,
             hasMetadata: false,
+            isStalled: false,
             buffering: false,
             lastErrorCode: 0
         };
@@ -67,6 +75,7 @@ var AVProVideoWebGL = {
                 hasSetCanPlay = true;
                 vidData.ready = true;
             }
+            //console.log("ONCANPLAY");
         };
 
         vid.onloadedmetadata = function () {
@@ -75,26 +84,39 @@ var AVProVideoWebGL = {
 
         vid.oncanplaythrough = function () {
             vidData.buffering = false;
+            //console.log("CANPLAYTHROUGH");
         };
 
         vid.onplaying = function () {
-            // buffering
-            this.buffering = false;
+            vidData.buffering = false;
+            vidData.isStalled = false;
+            //console.log("PLAYING");
         };
 
         vid.onwaiting = function () {
             vidData.buffering = true;
+            //console.log("WAITING");
         };
+
+        vid.onstalled = function () {
+            vidData.isStalled = true;
+            //console.log("STALLED");
+        }
 
         /*vid.onpause = function () {
-        };
-
-        vid.onended = function () {
         };*/
 
-        /*vid.ontimeupdate = function() {
-         //console.log("vid current time: ", this.currentTime);
-         };*/
+        vid.onended = function () {
+            vidData.buffering = false;
+            vidData.isStalled = false;
+            //console.log("ENDED");
+        };
+
+        vid.ontimeupdate = function() {
+            vidData.buffering = false;
+            vidData.isStalled = false;
+            //console.log("vid current time: ", this.currentTime);
+        };
 
         vid.onerror = function (texture) {
             var err = "unknown error";
@@ -141,13 +163,20 @@ var AVProVideoWebGL = {
         return ret;
     },
     AVPPlayerFetchVideoTexture__deps: ["videos", "hasVideos"],
-    AVPPlayerFetchVideoTexture: function (playerIndex, texture) {
+    AVPPlayerFetchVideoTexture: function (playerIndex, texture, init) {
         if (!_hasVideos(playerIndex)) {
             return;
         }
 
         GLctx.bindTexture(GLctx.TEXTURE_2D, GL.textures[texture]);
-		GLctx.texSubImage2D(GLctx.TEXTURE_2D, 0, 0, 0, GLctx.RGBA, GLctx.UNSIGNED_BYTE, _videos[playerIndex].video);
+        if (!init)
+        {
+        	GLctx.texSubImage2D(GLctx.TEXTURE_2D, 0, 0, 0, GLctx.RGBA, GLctx.UNSIGNED_BYTE, _videos[playerIndex].video);
+        }
+        else
+		{
+        	GLctx.texImage2D(GLctx.TEXTURE_2D, 0, GLctx.RGBA, GLctx.RGBA, GLctx.UNSIGNED_BYTE, _videos[playerIndex].video);
+        }
 		
         //NB: This line causes the texture to not show unless something else is rendered (not sure why)
 		//GLctx.bindTexture(GLctx.TEXTURE_2D, null);
@@ -300,6 +329,14 @@ var AVProVideoWebGL = {
         }
 
         return _videos[playerIndex].buffering;
+    },
+    AVPPlayerIsPlaybackStalled__deps: ["videos", "hasVideos"],
+    AVPPlayerIsPlaybackStalled: function (playerIndex) {
+        if (!_hasVideos(playerIndex)) {
+            return false;
+        }
+
+        return _videos[playerIndex].isStalled;
     },
     AVPPlayerPlay__deps: ["videos", "hasVideos"],
     AVPPlayerPlay: function (playerIndex) {
@@ -473,7 +510,7 @@ var AVProVideoWebGL = {
         }
 
         var vid = _videos[playerIndex].video;
-        if (vid.readyState <= HTMLMediaElement.HAVE_CURRENT_DATA || vid.paused) {
+        if (vid.readyState <= HTMLMediaElement.HAVE_CURRENT_DATA) {
             return 0;
         }
 
@@ -490,6 +527,25 @@ var AVProVideoWebGL = {
 
         return frameCount;
     },
+    AVPPlayerSupportedDecodedFrameCount__deps: ["videos, hasVideos"],
+    AVPPlayerSupportedDecodedFrameCount: function (playerIndex) {
+        if (!_hasVideos(playerIndex)) {
+            return 0;
+        }
+
+        var vid = _videos[playerIndex].video;
+
+        if (vid.webkitDecodedFrameCount)
+        {
+        	return true;
+        }
+        else if (vid.mozDecodedFrames)
+        {
+        	return true;
+        }
+
+        return false;
+    },    
     AVPPlayerGetNumBufferedTimeRanges__deps: ["videos, hasVideos"],
     AVPPlayerGetNumBufferedTimeRanges: function(playerIndex){   
         if (!_hasVideos(playerIndex)) {

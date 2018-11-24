@@ -6,13 +6,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo
 {
 	/// <summary>
-	/// Update uGUI Text element with subtitle text as it plays from the MediaPlayer
+	/// Update a standard uGUI Text element with subtitle text as it plays from the MediaPlayer
 	/// </summary>
 	[AddComponentMenu("AVPro Video/Subtitles uGUI", 201)]
 #if UNITY_HELPATTRIB

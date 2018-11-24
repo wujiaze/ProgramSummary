@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 #if PLAYMAKER
@@ -18,6 +18,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Gets Whether this MediaPlayer instance supports linear color space from media info a MediaPlayer. If it doesn't then a correction may have to be made in the shader")]
 	public class AVProVideoInfoDoesSupportsLinearColorSpace : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+	
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -83,6 +85,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Gets the number of audio tracks from media info a MediaPlayer.")]
 	public class AVProVideoInfoGetAudioTrackCount : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+	
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -130,6 +134,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Gets the current audio bitrate from media info a MediaPlayer.")]
 	public class AVProVideoInfoGetCurrentAudioTrackBitrate : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -177,6 +183,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Gets the current audio track identification from media info a MediaPlayer.")]
 	public class AVProVideoInfoGetCurrentAudioTrackId : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+	
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -224,6 +232,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Gets the current video bitrate from media info a MediaPlayer.")]
 	public class AVProVideoInfoGetCurrentVideoTrackBitrate : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+	
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -271,6 +281,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Gets the current video track identification from media info a MediaPlayer.")]
 	public class AVProVideoInfoGetCurrentVideoTrackId : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+	
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -318,6 +330,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Gets video duration from media info a MediaPlayer.")]
 	public class AVProVideoInfoGetDurationMs : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -365,6 +379,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Gets the description of which playback path is used internally from media info a MediaPlayer.")]
 	public class AVProVideoInfoAVProInfoGetPlayerDescription : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -412,6 +428,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Gets the current achieved display rate in frames per second from media info a MediaPlayer.")]
 	public class AVProVideoInfoGetVideoDisplayRate : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -459,6 +477,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Gets video frame rate from media info a MediaPlayer.")]
 	public class AVProVideoInfoGetVideoFrameRate : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+		
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -506,6 +526,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Gets video size ( width and height ) from media info a MediaPlayer.")]
 	public class AVProVideoInfoGetVideoSize : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+		
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -565,6 +587,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Gets the number of video tracks from media info a MediaPlayer.")]
 	public class AVProVideoInfoGetVideoTrackCount : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+	
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -612,6 +636,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Gets hasAudio from media info a MediaPlayer.")]
 	public class AVProVideoInfoHasAudio : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+		
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -677,6 +703,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Gets hasVideo from media info a MediaPlayer.")]
 	public class AVProVideoInfoHasVideo : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+		
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]
@@ -742,6 +770,8 @@ namespace RenderHeads.Media.AVProVideo.PlayMaker.Actions
 	[Tooltip("Checks if the playback is in a stalled state from media info a MediaPlayer.")]
 	public class AVProVideoInfoIsPlaybackStalled : AVProVideoActionBase
 	{
+		public AVProVideoActionHeader headerImage;
+		
 		[RequiredField]
 		[CheckForComponent(typeof(MediaPlayer))]
 		[Tooltip("The GameObject with a MediaPlayer component.")]

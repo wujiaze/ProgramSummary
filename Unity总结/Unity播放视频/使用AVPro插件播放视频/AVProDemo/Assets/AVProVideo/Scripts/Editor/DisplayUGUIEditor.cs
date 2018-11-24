@@ -8,27 +8,30 @@ using UnityEditor;
 using UnityEditor.UI;
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo.Editor
 {
 	/// <summary>
-	/// Editor class used to edit UI Images.
+	/// Editor for the DisplayUGUI component
 	/// </summary>
 	[CustomEditor(typeof(DisplayUGUI), true)]
 	[CanEditMultipleObjects]
 	public class DisplayUGUIEditor : GraphicEditor
 	{
-	    SerializedProperty m_Movie;
-	    SerializedProperty m_UVRect;
-		SerializedProperty m_DefaultTexture;
-		SerializedProperty m_NoDefaultDisplay;
-		SerializedProperty m_DisplayInEditor;
-		SerializedProperty m_SetNativeSize;
-		SerializedProperty m_ScaleMode;
-	    GUIContent m_UVRectContent;
+		// Note we have precedence for calling rectangle for just rect, even in the Inspector.
+		// For example in the Camera component's Viewport Rect.
+		// Hence sticking with Rect here to be consistent with corresponding property in the API.
+		private static readonly GUIContent m_guiTextUVRectContent = new GUIContent("UV Rect");
 
+		private SerializedProperty m_Movie;
+		private SerializedProperty m_UVRect;
+		private SerializedProperty m_DefaultTexture;
+		private SerializedProperty m_NoDefaultDisplay;
+		private SerializedProperty m_DisplayInEditor;
+		private SerializedProperty m_SetNativeSize;
+		private SerializedProperty m_ScaleMode;
 
 		[MenuItem("GameObject/UI/AVPro Video uGUI", false, 0)]
 		public static void CreateGameObject()
@@ -46,24 +49,19 @@ namespace RenderHeads.Media.AVProVideo.Editor
 			}
 			else
 			{
-				EditorUtility.DisplayDialog( "AVPro Video", "You must make the AVPro Video uGUI object as a child of a Canvas.", "Ok" );
+				EditorUtility.DisplayDialog("AVPro Video", "You must make the AVPro Video uGUI object as a child of a Canvas.", "Ok");
 			}
 		}
 
 		public override bool RequiresConstantRepaint()
 		{
-			DisplayUGUI rawImage = target as DisplayUGUI;
-			return (rawImage != null && rawImage.HasValidTexture());
+			DisplayUGUI displayComponent = target as DisplayUGUI;
+			return (displayComponent != null && displayComponent.HasValidTexture());
 		}
 
 	    protected override void OnEnable()
 	    {
 	        base.OnEnable();
-
-	        // Note we have precedence for calling rectangle for just rect, even in the Inspector.
-	        // For example in the Camera component's Viewport Rect.
-	        // Hence sticking with Rect here to be consistent with corresponding property in the API.
-	        m_UVRectContent = new GUIContent("UV Rect");
 
 	        m_Movie = serializedObject.FindProperty("_mediaPlayer");
 	        m_UVRect = serializedObject.FindProperty("m_UVRect");
@@ -86,7 +84,10 @@ namespace RenderHeads.Media.AVProVideo.Editor
 			EditorGUILayout.PropertyField(m_NoDefaultDisplay);
 			EditorGUILayout.PropertyField(m_DisplayInEditor);
 			AppearanceControlsGUI();
-	        EditorGUILayout.PropertyField(m_UVRect, m_UVRectContent);
+#if UNITY_5_2 || UNITY_5_3 || UNITY_5_4_OR_NEWER
+			RaycastControlsGUI();
+#endif
+			EditorGUILayout.PropertyField(m_UVRect, m_guiTextUVRectContent);
 
 			EditorGUILayout.PropertyField(m_SetNativeSize);
 			EditorGUILayout.PropertyField(m_ScaleMode);
@@ -97,7 +98,7 @@ namespace RenderHeads.Media.AVProVideo.Editor
 	        serializedObject.ApplyModifiedProperties();
 	    }
 
-	    void SetShowNativeSize(bool instant)
+	    private void SetShowNativeSize(bool instant)
 	    {
 	        base.SetShowNativeSize(m_Movie.objectReferenceValue != null, instant);
 	    }
@@ -105,7 +106,6 @@ namespace RenderHeads.Media.AVProVideo.Editor
 	    /// <summary>
 	    /// Allow the texture to be previewed.
 	    /// </summary>
-
 	    public override bool HasPreviewGUI()
 	    {
 			DisplayUGUI rawImage = target as DisplayUGUI;
@@ -132,7 +132,7 @@ namespace RenderHeads.Media.AVProVideo.Editor
 			{
 				if (rawImage._mediaPlayer.TextureProducer.RequiresVerticalFlip())
 				{
-					GUIUtility.ScaleAroundPivot(new Vector2(1f, -1f), new Vector2(0, outerRect.y + (outerRect.height / 2)));
+					GUIUtility.ScaleAroundPivot(new Vector2(1f, -1f), new Vector2(0, outerRect.y + (outerRect.height / 2f)));
 				}
 			}
 

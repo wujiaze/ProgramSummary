@@ -7,11 +7,15 @@ using UnityEngine;
 using System.Collections;
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo.Demos
 {
+	/// <summary>
+	/// A demo that shows how to extract a series of frames from the video,
+	/// copy them into textures, and then save them to disk as images
+	/// </summary>
 	public class FrameExtract : MonoBehaviour
 	{
 		private const int NumFrames = 8;

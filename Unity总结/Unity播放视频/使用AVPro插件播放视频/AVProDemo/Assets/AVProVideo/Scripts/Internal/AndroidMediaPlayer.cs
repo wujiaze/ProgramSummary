@@ -15,11 +15,14 @@ using System;
 using System.Runtime.InteropServices;
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo
 {
+	/// <summary>
+	/// Android implementation of BaseMediaPlayer
+	/// </summary>
 	// TODO: seal this class
 	public class AndroidMediaPlayer : BaseMediaPlayer
 	{
@@ -47,6 +50,24 @@ namespace RenderHeads.Media.AVProVideo
 		private Android.VideoApi			m_API;
 		private bool						m_HeadRotationEnabled = false;
 		private bool						m_FocusEnabled = false;
+		private System.IntPtr 				m_Method_SetHeadRotation;
+		private System.IntPtr				m_Method_GetCurrentTimeMs;
+		private System.IntPtr				m_Method_GetSourceVideoFrameRate;
+		private System.IntPtr				m_Method_IsPlaying;
+		private System.IntPtr				m_Method_IsPaused;
+		private System.IntPtr				m_Method_IsFinished;
+		private System.IntPtr				m_Method_IsSeeking;
+		private System.IntPtr				m_Method_IsBuffering;
+		private System.IntPtr				m_Method_IsLooping;
+		private System.IntPtr				m_Method_HasVideo;
+		private System.IntPtr				m_Method_HasAudio;
+		private System.IntPtr				m_Method_SetFocusProps;
+		private System.IntPtr				m_Method_SetFocusEnabled;
+		private System.IntPtr				m_Method_SetFocusRotation;
+		private jvalue[]					m_Value0 = new jvalue[0];
+		private jvalue[]					m_Value1 = new jvalue[1];
+		private jvalue[]					m_Value2 = new jvalue[2];
+		private jvalue[]					m_Value4 = new jvalue[4];
 
 #if AVPROVIDEO_FIXREGRESSION_TEXTUREQUALITY_UNITY542
 		private int _textureQuality = QualitySettings.masterTextureLimit;
@@ -114,15 +135,30 @@ namespace RenderHeads.Media.AVProVideo
 #endif
 		}
 
-		public AndroidMediaPlayer(bool useFastOesPath, bool showPosterFrame, Android.VideoApi api, bool enable360Audio, Audio360ChannelMode channelMode)
+		public AndroidMediaPlayer(bool useFastOesPath, bool showPosterFrame, Android.VideoApi api, bool enable360Audio, Audio360ChannelMode channelMode, bool preferSoftware)
 		{
 			m_API = api;
 			// Create a java-size video class up front
-			m_Video = s_Interface.Call<AndroidJavaObject>("CreatePlayer", (int)m_API, enable360Audio, (int)channelMode);
+			m_Video = s_Interface.Call<AndroidJavaObject>("CreatePlayer", (int)m_API, useFastOesPath, enable360Audio, (int)channelMode, preferSoftware);
 
             if (m_Video != null)
             {
-                m_iPlayerIndex = m_Video.Call<int>("GetPlayerIndex");
+				m_Method_SetHeadRotation = AndroidJNIHelper.GetMethodID(m_Video.GetRawClass(), "SetHeadRotation", "(FFFF)V", false);
+				m_Method_SetFocusProps = AndroidJNIHelper.GetMethodID(m_Video.GetRawClass(), "SetFocusProps", "(FF)V", false);
+				m_Method_SetFocusEnabled = AndroidJNIHelper.GetMethodID(m_Video.GetRawClass(), "SetFocusEnabled", "(Z)V", false);
+				m_Method_SetFocusRotation = AndroidJNIHelper.GetMethodID(m_Video.GetRawClass(), "SetFocusRotation", "(FFFF)V", false);
+				m_Method_GetCurrentTimeMs = AndroidJNIHelper.GetMethodID(m_Video.GetRawClass(), "GetCurrentTimeMs", "()J", false);
+				m_Method_GetSourceVideoFrameRate = AndroidJNIHelper.GetMethodID(m_Video.GetRawClass(), "GetSourceVideoFrameRate", "()F", false);
+				m_Method_IsPlaying = AndroidJNIHelper.GetMethodID(m_Video.GetRawClass(), "IsPlaying", "()Z", false);
+				m_Method_IsPaused = AndroidJNIHelper.GetMethodID(m_Video.GetRawClass(), "IsPaused", "()Z", false);
+				m_Method_IsFinished = AndroidJNIHelper.GetMethodID(m_Video.GetRawClass(), "IsFinished", "()Z", false);
+				m_Method_IsSeeking = AndroidJNIHelper.GetMethodID(m_Video.GetRawClass(), "IsSeeking", "()Z", false);
+				m_Method_IsBuffering = AndroidJNIHelper.GetMethodID(m_Video.GetRawClass(), "IsBuffering", "()Z", false);
+				m_Method_IsLooping = AndroidJNIHelper.GetMethodID(m_Video.GetRawClass(), "IsLooping", "()Z", false);
+				m_Method_HasVideo = AndroidJNIHelper.GetMethodID(m_Video.GetRawClass(), "HasVideo", "()Z", false);
+				m_Method_HasAudio = AndroidJNIHelper.GetMethodID(m_Video.GetRawClass(), "HasAudio", "()Z", false);
+
+				m_iPlayerIndex = m_Video.Call<int>("GetPlayerIndex");
 				Helper.LogInfo("Creating player " + m_iPlayerIndex);
 				//Debug.Log( "AVPro: useFastOesPath: " + useFastOesPath );
 				SetOptions(useFastOesPath, showPosterFrame);
@@ -141,12 +177,23 @@ namespace RenderHeads.Media.AVProVideo
 			}
 		}
 
-        public override string GetVersion()
+		public override long GetEstimatedTotalBandwidthUsed()
+		{
+			long result = -1;
+			if (s_Interface != null)
+			{
+				result = m_Video.Call<long>("GetEstimatedBandwidthUsed");
+			}
+			return result;
+		}
+
+
+		public override string GetVersion()
 		{
 			return s_Version;
 		}
 
-		public override bool OpenVideoFromFile(string path, long offset, string httpHeaderJson)
+		public override bool OpenVideoFromFile(string path, long offset, string httpHeaderJson, uint sourceSamplerate = 0, uint sourceChannels = 0, int forceFileFormat = 0)
 		{
 			bool bReturn = false;
 
@@ -157,13 +204,24 @@ namespace RenderHeads.Media.AVProVideo
 				Debug.Assert(m_Width == 0 && m_Height == 0 && m_DurationMs == 0.0f);
 #endif
 
-				bReturn = m_Video.Call<bool>("OpenVideoFromFile", path, offset, httpHeaderJson);
+				bReturn = m_Video.Call<bool>("OpenVideoFromFile", path, offset, httpHeaderJson, forceFileFormat);
 			}
 
 			return bReturn;
 		}
 
-        public override void CloseVideo()
+		public override TimeRange[] GetSeekableTimeRanges()
+		{
+			float[] rangeArray = m_Video.Call<float[]>("GetSeekableTimeRange");
+
+			TimeRange[] result = new TimeRange[1];
+			result[0].startTime = rangeArray[0];
+			result[0].duration = rangeArray[1] - rangeArray[0];
+
+			return result;
+		}
+
+		public override void CloseVideo()
         {
 			if (m_Texture != null)
             {
@@ -176,9 +234,9 @@ namespace RenderHeads.Media.AVProVideo
             m_Width = 0;
             m_Height = 0;
 
-			_lastError = ErrorCode.None;
+			m_Video.Call("CloseVideo");
 
-            m_Video.Call("CloseVideo");
+			base.CloseVideo();
 		}
 
         public override void SetLooping( bool bLooping )
@@ -194,7 +252,14 @@ namespace RenderHeads.Media.AVProVideo
 			bool result = false;
 			if( m_Video != null )
 			{
-				result = m_Video.Call<bool>("IsLooping");
+				if (m_Method_IsLooping != System.IntPtr.Zero)
+				{
+					result = AndroidJNI.CallBooleanMethod(m_Video.GetRawObject(), m_Method_IsLooping, m_Value0);
+				}
+				else
+				{
+					result = m_Video.Call<bool>("IsLooping");
+				}
 			}
 			return result;
 		}
@@ -204,7 +269,14 @@ namespace RenderHeads.Media.AVProVideo
 			bool result = false;
 			if( m_Video != null )
 			{
-				result = m_Video.Call<bool>("HasVideo");
+				if (m_Method_HasVideo != System.IntPtr.Zero)
+				{
+					result = AndroidJNI.CallBooleanMethod(m_Video.GetRawObject(), m_Method_HasVideo, m_Value0);
+				}
+				else
+				{
+					result = m_Video.Call<bool>("HasVideo");
+				}
 			}
 			return result;
 		}
@@ -214,7 +286,14 @@ namespace RenderHeads.Media.AVProVideo
 			bool result = false;
 			if( m_Video != null )
 			{
-				result = m_Video.Call<bool>("HasAudio");
+				if (m_Method_HasAudio != System.IntPtr.Zero)
+				{
+					result = AndroidJNI.CallBooleanMethod(m_Video.GetRawObject(), m_Method_HasAudio, m_Value0);
+				}
+				else
+				{
+					result = m_Video.Call<bool>("HasAudio");
+				}
 			}
 			return result;
 		}
@@ -299,7 +378,14 @@ namespace RenderHeads.Media.AVProVideo
 			float result = 0.0f;
 			if (m_Video != null)
 			{
-				result = (float)m_Video.Call<long>("GetCurrentTimeMs");
+				if (m_Method_GetCurrentTimeMs != System.IntPtr.Zero)
+				{
+					result = AndroidJNI.CallLongMethod(m_Video.GetRawObject(), m_Method_GetCurrentTimeMs, m_Value0);
+				}
+				else
+				{
+					result = (float)m_Video.Call<long>("GetCurrentTimeMs");
+				}
 			}
 			return result;
 		}
@@ -332,7 +418,18 @@ namespace RenderHeads.Media.AVProVideo
 					m_HeadRotationEnabled = true;
 				}
 
-				m_Video.Call("SetHeadRotation", q.x, q.y, q.z, q.w);
+				if (m_Method_SetHeadRotation != System.IntPtr.Zero)
+				{
+					m_Value4[0].f = q.x;
+					m_Value4[1].f = q.y;
+					m_Value4[2].f = q.z;
+					m_Value4[3].f = q.w;
+					AndroidJNI.CallVoidMethod(m_Video.GetRawObject(), m_Method_SetHeadRotation, m_Value4);
+				}
+				else
+				{
+					m_Video.Call("SetHeadRotation", q.x, q.y, q.z, q.w);
+				}
 			}
 		}
 
@@ -349,7 +446,15 @@ namespace RenderHeads.Media.AVProVideo
 		{
 			if (m_Video != null && enabled != m_FocusEnabled)
 			{
-				m_Video.Call("SetFocusEnabled", enabled);
+				if (m_Method_SetFocusEnabled != System.IntPtr.Zero)
+				{
+					m_Value1[0].z = enabled;
+					AndroidJNI.CallVoidMethod(m_Video.GetRawObject(), m_Method_SetFocusEnabled, m_Value1);
+				}
+				else
+				{
+					m_Video.Call("SetFocusEnabled", enabled);
+				}
 				m_FocusEnabled = enabled;
 			}
 		}
@@ -358,7 +463,16 @@ namespace RenderHeads.Media.AVProVideo
 		{
 			if(m_Video != null && m_FocusEnabled)
 			{
-				m_Video.Call("SetFocusProps", offFocusLevel, widthDegrees);
+				if (m_Method_SetFocusProps != System.IntPtr.Zero)
+				{
+					m_Value2[0].f = offFocusLevel;
+					m_Value2[1].f = widthDegrees;
+					AndroidJNI.CallVoidMethod(m_Video.GetRawObject(), m_Method_SetFocusProps, m_Value2);
+				}
+				else
+				{
+					m_Video.Call("SetFocusProps", offFocusLevel, widthDegrees);
+				}
 			}
 		}
 
@@ -366,7 +480,18 @@ namespace RenderHeads.Media.AVProVideo
 		{
 			if (m_Video != null && m_FocusEnabled)
 			{
-				m_Video.Call("SetFocusRotation", q.x, q.y, q.z, q.w);
+				if (m_Method_SetFocusRotation != System.IntPtr.Zero)
+				{
+					m_Value4[0].f = q.x;
+					m_Value4[1].f = q.y;
+					m_Value4[2].f = q.z;
+					m_Value4[3].f = q.w;
+					AndroidJNI.CallVoidMethod(m_Video.GetRawObject(), m_Method_SetFocusRotation, m_Value4);
+				}
+				else
+				{
+					m_Video.Call("SetFocusRotation", q.x, q.y, q.z, q.w);
+				}
 			}
 		}
 
@@ -374,9 +499,28 @@ namespace RenderHeads.Media.AVProVideo
 		{
 			if (m_Video != null)
 			{
-				m_Video.Call("SetFocusProps", 0, 90);
-				m_Video.Call("SetFocusEnabled", false);
-				m_Video.Call("SetFocusRotation", 0, 0, 0, 1);
+
+				if (m_Method_SetFocusProps != System.IntPtr.Zero &&
+					m_Method_SetFocusEnabled != System.IntPtr.Zero &&
+					m_Method_SetFocusRotation != System.IntPtr.Zero)
+				{
+					m_Value2[0].f = 0f;
+					m_Value2[1].f = 90f;
+					AndroidJNI.CallVoidMethod(m_Video.GetRawObject(), m_Method_SetFocusProps, m_Value2);
+					m_Value1[0].z = false;
+					AndroidJNI.CallVoidMethod(m_Video.GetRawObject(), m_Method_SetFocusEnabled, m_Value1);
+					m_Value4[0].f = 0f;
+					m_Value4[1].f = 0f;
+					m_Value4[2].f = 0f;
+					m_Value4[3].f = 1f;
+					AndroidJNI.CallVoidMethod(m_Video.GetRawObject(), m_Method_SetFocusRotation, m_Value4);
+				}
+				else
+				{
+					m_Video.Call("SetFocusProps", 0f, 90f);
+					m_Video.Call("SetFocusEnabled", false);
+					m_Video.Call("SetFocusRotation", 0f, 0f, 0f, 1f);
+				}
 			}
 		}
 
@@ -400,7 +544,14 @@ namespace RenderHeads.Media.AVProVideo
 			float result = 0.0f;
 			if( m_Video != null )
 			{
-				result = m_Video.Call<float>("GetSourceVideoFrameRate");
+				if (m_Method_GetSourceVideoFrameRate != System.IntPtr.Zero)
+				{
+					result = AndroidJNI.CallFloatMethod(m_Video.GetRawObject(), m_Method_GetSourceVideoFrameRate, m_Value0);
+				}
+				else
+				{
+					result = m_Video.Call<float>("GetSourceVideoFrameRate");
+				}
 			}
 			return result;
 		}
@@ -434,7 +585,14 @@ namespace RenderHeads.Media.AVProVideo
 			bool result = false;
 			if (m_Video != null)
 			{
-				result = m_Video.Call<bool>("IsSeeking");
+				if (m_Method_IsSeeking != System.IntPtr.Zero)
+				{
+					result = AndroidJNI.CallBooleanMethod(m_Video.GetRawObject(), m_Method_IsSeeking, m_Value0);
+				}
+				else
+				{
+					result = m_Video.Call<bool>("IsSeeking");
+				}
 			}
 			return result;
 		}
@@ -444,7 +602,14 @@ namespace RenderHeads.Media.AVProVideo
 			bool result = false;
 			if (m_Video != null)
 			{
-				result = m_Video.Call<bool>("IsPlaying");
+				if (m_Method_IsPlaying != System.IntPtr.Zero)
+				{
+					result = AndroidJNI.CallBooleanMethod(m_Video.GetRawObject(), m_Method_IsPlaying, m_Value0);
+				}
+				else
+				{
+					result = m_Video.Call<bool>("IsPlaying");
+				}
 			}
 			return result;
 		}
@@ -454,7 +619,14 @@ namespace RenderHeads.Media.AVProVideo
 			bool result = false;
 			if (m_Video != null)
 			{
-				result = m_Video.Call<bool>("IsPaused");
+				if (m_Method_IsPaused != System.IntPtr.Zero)
+				{
+					result = AndroidJNI.CallBooleanMethod(m_Video.GetRawObject(), m_Method_IsPaused, m_Value0);
+				}
+				else
+				{
+					result = m_Video.Call<bool>("IsPaused");
+				}
 			}
 			return result;
 		}
@@ -464,7 +636,14 @@ namespace RenderHeads.Media.AVProVideo
 			bool result = false;
 			if (m_Video != null)
 			{
-				result = m_Video.Call<bool>("IsFinished");
+				if (m_Method_IsFinished != System.IntPtr.Zero)
+				{
+					result = AndroidJNI.CallBooleanMethod(m_Video.GetRawObject(), m_Method_IsFinished, m_Value0);
+				}
+				else
+				{
+					result = m_Video.Call<bool>("IsFinished");
+				}
 			}
 			return result;
 		}
@@ -474,7 +653,14 @@ namespace RenderHeads.Media.AVProVideo
 			bool result = false;
 			if (m_Video != null)
 			{
-				result = m_Video.Call<bool>("IsBuffering");
+				if (m_Method_IsBuffering != System.IntPtr.Zero)
+				{
+					result = AndroidJNI.CallBooleanMethod(m_Video.GetRawObject(), m_Method_IsBuffering, m_Value0);
+				}
+				else
+				{
+					result = m_Video.Call<bool>("IsBuffering");
+				}
 			}
 			return result;
 		}
@@ -592,29 +778,36 @@ namespace RenderHeads.Media.AVProVideo
 
 		public override string GetCurrentAudioTrackId()
 		{
-			string id = "";
+			/*string id = "";
 			if( m_Video != null )
 			{
-				id = m_Video.Call<string>("GetCurrentAudioTrackId");
+				id = m_Video.Call<string>("GetCurrentAudioTrackIndex");
 			}
-			return id;
+			return id;*/
+
+			return GetCurrentAudioTrack().ToString();
 		}
 
 		public override int GetCurrentAudioTrackBitrate()
 		{
 			int result = 0;
-			if( m_Video != null )
+			/*if( m_Video != null )
 			{
 				result = m_Video.Call<int>("GetCurrentAudioTrackIndex");
-			}
-			return result;		}
+			}*/
+			return result;
+		}
 
 		public override int GetVideoTrackCount()
 		{
 			int result = 0;
 			if( m_Video != null )
 			{
-				result = m_Video.Call<int>("GetNumberVideoTracks");
+				if (HasVideo())
+				{
+					result = 1;
+				}
+				//result = m_Video.Call<int>("GetNumberVideoTracks");
 			}
 			return result;
 		}
@@ -622,38 +815,38 @@ namespace RenderHeads.Media.AVProVideo
 		public override int GetCurrentVideoTrack()
 		{
 			int result = 0;
-			if( m_Video != null )
+			/*if( m_Video != null )
 			{
 				result = m_Video.Call<int>("GetCurrentVideoTrackIndex");
-			}
+			}*/
 			return result;
 		}
 
 		public override void SetVideoTrack( int index )
 		{
-			if( m_Video != null )
+			/*if( m_Video != null )
 			{
 				m_Video.Call("SetVideoTrack", index);
-			}
+			}*/
 		}
 
 		public override string GetCurrentVideoTrackId()
 		{
 			string id = "";
-			if( m_Video != null )
+			/*if( m_Video != null )
 			{
 				id = m_Video.Call<string>("GetCurrentVideoTrackId");
-			}
+			}*/
 			return id;
 		}
 
 		public override int GetCurrentVideoTrackBitrate()
 		{
 			int bitrate = 0;
-			if( m_Video != null )
+			/*if( m_Video != null )
 			{
 				bitrate = m_Video.Call<int>("GetCurrentVideoTrackBitrate");
-			}
+			}*/
 			return bitrate;
 		}
 
@@ -830,6 +1023,16 @@ namespace RenderHeads.Media.AVProVideo
 #if AVPROVIDEO_FIXREGRESSION_TEXTUREQUALITY_UNITY542
 			_textureQuality = QualitySettings.masterTextureLimit;
 #endif
+		}
+
+		public override double GetCurrentDateTimeSecondsSince1970()
+		{
+            double result = 0.0;
+			if (m_Video != null)
+            {
+				result = m_Video.Call<double>("GetCurrentAbsoluteTimestamp");
+			}
+			return result;
 		}
 
 		public override void Update()

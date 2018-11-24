@@ -2,7 +2,7 @@
 using UnityEngine;
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo
@@ -35,7 +35,7 @@ namespace RenderHeads.Media.AVProVideo
 			return "0.0.0";
 		}
 
-		public override bool OpenVideoFromFile(string path, long offset, string httpHeaderJson)
+		public override bool OpenVideoFromFile(string path, long offset, string httpHeaderJson, uint sourceSamplerate = 0, uint sourceChannels = 0, int forceFileFormat = 0)
 		{
 			_texture_AVPro = (Texture2D)Resources.Load("AVPro");
 			_texture_AVPro1 = (Texture2D)Resources.Load("AVPro1");
@@ -59,6 +59,8 @@ namespace RenderHeads.Media.AVProVideo
 			_frameCount = 0;
 			Resources.UnloadAsset(_texture_AVPro);
 			Resources.UnloadAsset(_texture_AVPro1);
+
+			base.CloseVideo();
         }
 
         public override void SetLooping( bool bLooping )
@@ -179,6 +181,11 @@ namespace RenderHeads.Media.AVProVideo
 		}
 
 		public override void SeekFast(float timeMs)
+		{
+			_currentTime = timeMs;
+		}
+
+		public override void SeekWithTolerance(float timeMs, float beforeMs, float afterMs)
 		{
 			_currentTime = timeMs;
 		}

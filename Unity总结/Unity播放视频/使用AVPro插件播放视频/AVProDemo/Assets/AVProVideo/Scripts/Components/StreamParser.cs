@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 using System.Threading;
@@ -19,7 +19,11 @@ namespace RenderHeads.Media.AVProVideo
 		}
 	}
 
-	public class StreamParser : MonoBehaviour
+	/// <summary>
+	/// Utility class for parsing adaptive media streams, such as HLS
+	/// A URL is specified, loaded and then the hierarchy of the stream elements are exposed
+	/// </summary>
+	public class StreamParser : MonoBehaviour			// TODO: make this not a component
 	{
 		public enum StreamType { HLS }
 
@@ -66,7 +70,10 @@ namespace RenderHeads.Media.AVProVideo
 				_loaded = true;
 
 				Debug.Log("[AVProVideo] Stream parser completed parsing stream file " + _url);
-				_events.Invoke(this, StreamParserEvent.EventType.Success);
+				if (_events != null)
+				{
+					_events.Invoke(this, StreamParserEvent.EventType.Success);
+				}
 			}
 			catch (Exception e)
 			{
@@ -74,7 +81,10 @@ namespace RenderHeads.Media.AVProVideo
 
 				Debug.LogError("[AVProVideo] Parser unable to read stream " + e.Message);
 
-				_events.Invoke(this, StreamParserEvent.EventType.Failed);
+				if (_events != null)
+				{
+					_events.Invoke(this, StreamParserEvent.EventType.Failed);
+				}
 			}
 		}
 

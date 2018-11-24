@@ -2,19 +2,25 @@
 using UnityEngine;
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo.Editor
 {
+	/// <summary>
+	/// Editor for the AudioOutput component
+	/// </summary>
 	[CanEditMultipleObjects]
 	[CustomEditor(typeof(AudioOutput))]
 	public class AudioOutputEditor : UnityEditor.Editor
 	{
-		private AudioOutput _target;
+		private static readonly GUIContent _guiTextChannel = new GUIContent("Channel");
+		private static readonly GUIContent _guiTextChannels = new GUIContent("Channels");
+		private static readonly string[] _channelMaskOptions = { "1", "2", "3", "4", "5", "6", "7", "8" };
 
+		private AudioOutput _target;
 		private SerializedProperty _channelMaskProperty;
-		private string[] _channelMaskOptions = {"1", "2" , "3" , "4" , "5" , "6" , "7" , "8"};
+
 		void OnEnable()
 		{
 			_target = (this.target) as AudioOutput;
@@ -29,7 +35,7 @@ namespace RenderHeads.Media.AVProVideo.Editor
 
 			if(_target._audioOutputMode == AudioOutput.AudioOutputMode.Multiple)
 			{
-				_channelMaskProperty.intValue = EditorGUILayout.MaskField("Channels", _channelMaskProperty.intValue, _channelMaskOptions);
+				_channelMaskProperty.intValue = EditorGUILayout.MaskField(_guiTextChannels, _channelMaskProperty.intValue, _channelMaskOptions);
 			}
 			else
 			{
@@ -43,7 +49,7 @@ namespace RenderHeads.Media.AVProVideo.Editor
 					}
 				}
 				
-				int newVal = Mathf.Clamp(EditorGUILayout.IntSlider("Channel", prevVal, 0, 7), 0, 7);
+				int newVal = Mathf.Clamp(EditorGUILayout.IntSlider(_guiTextChannel, prevVal, 0, 7), 0, 7);
 				_channelMaskProperty.intValue = 1 << newVal;
 			}
 

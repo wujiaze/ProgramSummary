@@ -1,6 +1,4 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "AVProVideo/IMGUI/Texture Transparent"
+﻿Shader "AVProVideo/IMGUI/Texture Transparent"
 {
 	Properties
 	{
@@ -63,7 +61,7 @@ Shader "AVProVideo/IMGUI/Texture Transparent"
 			v2f vert(appdata_t v)
 			{
 				v2f o;
-				o.vertex = UnityObjectToClipPos(v.vertex);
+				o.vertex = XFormObjectToClip(v.vertex);
 				o.color = v.color;
 				o.texcoord = OffsetAlphaPackingUV(_MainTex_TexelSize.xy, TRANSFORM_TEX(v.texcoord, _MainTex), _VertScale < 0.0);
 

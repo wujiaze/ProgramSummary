@@ -2,11 +2,14 @@
 using UnityEditor;
 
 //-----------------------------------------------------------------------------
-// Copyright 2015-2017 RenderHeads Ltd.  All rights reserverd.
+// Copyright 2015-2018 RenderHeads Ltd.  All rights reserverd.
 //-----------------------------------------------------------------------------
 
 namespace RenderHeads.Media.AVProVideo.Editor
 {
+	/// <summary>
+	/// Editor for UpdateStereoMaterial component
+	/// </summary>
 	[CanEditMultipleObjects]
 	[CustomEditor(typeof(UpdateStereoMaterial))]
 	public class UpdateStereoMaterialEditor : UnityEditor.Editor
@@ -15,12 +18,14 @@ namespace RenderHeads.Media.AVProVideo.Editor
 		private SerializedProperty _propRenderer;
 		private SerializedProperty _propGraphic;
 		private SerializedProperty _propMaterial;
+		private SerializedProperty _propForceEyeMode;
 
 		void OnEnable()
 		{
 			_propCamera = serializedObject.FindProperty("_camera");
 			_propRenderer = serializedObject.FindProperty("_renderer");
 			_propGraphic = serializedObject.FindProperty("_uGuiComponent");
+			_propForceEyeMode = serializedObject.FindProperty("_forceEyeMode");
 			_propMaterial = serializedObject.FindProperty("_material");
 		}
 
@@ -53,6 +58,7 @@ namespace RenderHeads.Media.AVProVideo.Editor
 			EditorGUILayout.PropertyField(_propRenderer);
 			EditorGUILayout.PropertyField(_propGraphic);
 			EditorGUILayout.PropertyField(_propMaterial);
+			EditorGUILayout.PropertyField(_propForceEyeMode);
 			if (_propRenderer.objectReferenceValue == null && _propGraphic.objectReferenceValue == null && _propMaterial.objectReferenceValue == null)
 			{
 				ShowNoticeBox(MessageType.Error, "At least one of the renderers (MeshRenderer, uGUI Graphic or Material) need to be assigned.");

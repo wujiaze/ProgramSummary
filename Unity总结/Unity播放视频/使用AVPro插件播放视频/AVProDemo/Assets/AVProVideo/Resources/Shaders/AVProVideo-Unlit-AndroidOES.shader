@@ -43,7 +43,7 @@
 
 			void main()
 			{
-				gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
+				gl_Position = XFormObjectToClip(gl_Vertex);
 				texVal = transformTex(gl_MultiTexCoord0, _MainTex_ST);
 				//texVal.x = 1.0 - texVal.x;
 				texVal.y = 1.0 - texVal.y;

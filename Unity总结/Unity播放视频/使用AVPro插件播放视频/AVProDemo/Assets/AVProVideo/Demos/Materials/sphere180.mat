@@ -52,12 +52,16 @@ Material:
         second: 0
       data:
         first:
+          name: Layout
+        second: 0
+      data:
+        first:
           name: _HighQuality
         second: 0
       data:
         first:
           name: _EdgeFeather
-        second: .107142858
+        second: .0357142873
     m_Colors:
       data:
         first:
