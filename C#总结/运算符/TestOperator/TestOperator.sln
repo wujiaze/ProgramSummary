@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestOperator", "TestOperator\TestOperator.csproj", "{1EB0C54F-3865-4069-850C-51B7C9BF9FF9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Operator_01Simple", "TestOperator\Operator_01Simple.csproj", "{1EB0C54F-3865-4069-850C-51B7C9BF9FF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Operator_02Logic", "Operator_02Logic\Operator_02Logic.csproj", "{5CBD5C85-9158-471B-B78A-1B03283B2B10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Operator_03Shift", "Operator_03Shift\Operator_03Shift.csproj", "{2479C5E1-E329-4022-862E-84626571B7EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{1EB0C54F-3865-4069-850C-51B7C9BF9FF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EB0C54F-3865-4069-850C-51B7C9BF9FF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EB0C54F-3865-4069-850C-51B7C9BF9FF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CBD5C85-9158-471B-B78A-1B03283B2B10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CBD5C85-9158-471B-B78A-1B03283B2B10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CBD5C85-9158-471B-B78A-1B03283B2B10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CBD5C85-9158-471B-B78A-1B03283B2B10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2479C5E1-E329-4022-862E-84626571B7EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2479C5E1-E329-4022-862E-84626571B7EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2479C5E1-E329-4022-862E-84626571B7EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2479C5E1-E329-4022-862E-84626571B7EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

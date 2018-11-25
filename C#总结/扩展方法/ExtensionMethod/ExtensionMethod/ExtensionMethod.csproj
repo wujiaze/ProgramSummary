@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1EB0C54F-3865-4069-850C-51B7C9BF9FF9}</ProjectGuid>
+    <ProjectGuid>{2CA57631-54E3-431E-BF51-2C88B843DE41}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>TestOperator</RootNamespace>
-    <AssemblyName>TestOperator</AssemblyName>
+    <RootNamespace>ExtensionMethod</RootNamespace>
+    <AssemblyName>ExtensionMethod</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -21,7 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>

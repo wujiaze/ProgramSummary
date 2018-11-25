@@ -34,7 +34,7 @@ namespace ExtensionMethod
     static class MyClass
     {
         // 扩展方法
-        public static string Get(this Program program,string str,int x)
+        public static string Get(this Program program, string str, int x)
         {
             return program.Set(x) + "扩展方法" + str;
         }
