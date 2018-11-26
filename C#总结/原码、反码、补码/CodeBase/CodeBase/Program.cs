@@ -38,6 +38,10 @@
  *      工具： byte
  *          因为byte能表示 0000 0000 ~ 1111 1111 ,所以用它可以作为工具
  *
+ *      适用类型：
+ *         整型：byte sbyte short ushort int uint long ulong
+ *         布尔型 bool
+ *         字符型 char
  */
 using System;
 
@@ -165,7 +169,33 @@ namespace CodeBase
                 Console.WriteLine("{0:X}", *p2); // 0x0000000000000000,作为正数，补码 = 原码
             }
 
-          
+
+
+            Console.WriteLine("-----------bool-----------");
+            // 无符号  byte 
+            bool booltrue = true;      //原码 0000 0001
+            bool boolfalse = false;    //原码 0000 0000
+            unsafe
+            {
+                byte* p1 = (byte*)&booltrue;
+                byte* p2 = (byte*)&boolfalse;
+                Console.WriteLine("{0:X}", *p1); // 0x01,作为正数，补码 = 原码
+                Console.WriteLine("{0:X}", *p2); // 0x00,作为正数，补码 = 原码
+            }
+
+            Console.WriteLine("-----------char-----------");
+            // 无符号  byte 
+            char c1 = 'Z';      //原码 0000 0000 0111 1010
+            unsafe
+            {
+                byte* p2 = (byte*)&c1;
+                for (int i = 0; i < sizeof(char); i++)
+                {
+                    Console.WriteLine("Address: {0},Value: {1:X}",(int)p2, *p2); // 0x005A,作为正数，补码 = 原码
+                    p2++;
+                }
+               
+            }
             Console.Read();
         }
 

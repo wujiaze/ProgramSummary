@@ -12,16 +12,17 @@
  *      三、工具： byte
  *          因为byte能表示 0000 0000 ~ 1111 1111 ,所以用它可以作为工具
  *
- *      数组元素的地址顺序
+ *      四、原理：
+ *          byte数组，随着索引的增加,地址随之增加
+ *          小端系统:低地址存放低位字节，高地址存放高位字节
+ *
+ *
  *      本地转换
  *      网络转换
  *      本地存储于字符串的区别  发送字符串，不需要考虑字节顺序
  */
 
 using System;
-using System.IO;
-using System.Net;
-using System.Text;
 
 namespace NumberConvertBit
 {
@@ -49,7 +50,7 @@ namespace NumberConvertBit
             }
 
             Console.WriteLine("-------ushort------");
-            ushort us = 11111; // 16进制表示 0x2B67
+            ushort us = 11111; // 16进制表示 0x2B67  原码 0010 1011 0110 0111  = 补码
             byte[] bytes2 = BitConverter.GetBytes(us);
             for (int i = 0; i < bytes2.Length; i++)
             {
@@ -165,8 +166,73 @@ namespace NumberConvertBit
                 }
             }
 
+            Console.WriteLine("-------float 正数------");
+            float fplus = 13.0625f; // 0x41510000 来源详见原码、反码、补码
+            float fmins = -13.0625f;// 0xC1510000
+            byte[] fplusBytes = BitConverter.GetBytes(fplus);
+            byte[] fminsBytes = BitConverter.GetBytes(fmins);
+            for (int i = 0; i < fplusBytes.Length; i++)
+            {
+                unsafe
+                {
+                    fixed (byte* p1 = &fplusBytes[i])
+                    {
+                        // byte数组，随着索引的增加,地址随之增加
+                        // 小端系统:低地址存放低位字节 00 ，高地址存放高位字节 41
+                        Console.WriteLine("Address:{0}, Value:{1:X}", (int)p1, fplusBytes[i]);
+                    }
+                }
+            }
+
+            Console.WriteLine("------float 负数-----");
+            for (int i = 0; i < fminsBytes.Length; i++)
+            {
+                unsafe
+                {
+                    fixed (byte* p1 = &fminsBytes[i])
+                    {
+                        // byte数组，随着索引的增加,地址随之增加
+                        // 小端系统:低地址存放低位字节 00 ，高地址存放高位字节 41
+                        Console.WriteLine("Address:{0}, Value:{1:X}", (int)p1, fminsBytes[i]);
+                    }
+                }
+            }
 
 
+            Console.WriteLine("------double   正数-----");
+            double doubleplus = 15.63;
+            byte[] doubleplusBytes = BitConverter.GetBytes(doubleplus);
+            for (int i = 0; i < doubleplusBytes.Length; i++)
+            {
+                unsafe
+                {
+                    fixed (byte* p1 = &doubleplusBytes[i])
+                    {
+                        // byte数组，随着索引的增加,地址随之增加
+                        // 小端系统:低地址存放低位字节 00 ，高地址存放高位字节 41
+                        Console.WriteLine("Address:{0}, Value:{1:X}", (int)p1, doubleplusBytes[i]);
+                    }
+                }
+            }
+            Console.WriteLine("-----double 负数-----");
+            doubleplus = -15.63;
+            doubleplusBytes = BitConverter.GetBytes(doubleplus);
+            for (int i = 0; i < doubleplusBytes.Length; i++)
+            {
+                unsafe
+                {
+                    fixed (byte* p1 = &doubleplusBytes[i])
+                    {
+                        // byte数组，随着索引的增加,地址随之增加
+                        // 小端系统:低地址存放低位字节 00 ，高地址存放高位字节 41
+                        Console.WriteLine("Address:{0}, Value:{1:X}", (int)p1, doubleplusBytes[i]);
+                    }
+                }
+            }
+
+
+            long longtype = BitConverter.DoubleToInt64Bits(doubleplus);
+            Console.WriteLine(longtype);
             //// 将本地的int数值
             //int cc = 1;
             //Console.WriteLine(IPAddress.HostToNetworkOrder(cc));
