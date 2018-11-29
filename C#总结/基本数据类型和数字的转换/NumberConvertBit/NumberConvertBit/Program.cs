@@ -17,8 +17,9 @@
  *          小端系统:低地址存放低位字节，高地址存放高位字节
  *
  *
- *      本地转换
- *      网络转换
+ *      本地转换 ：X86CPU是小端系统，所以本地的数据保存都遵循 低地址保存低字节 高地址保存高字节
+ *      网络转换 ：网络都是大端，所以根据本地的大小端来判断到底需要不需要进行大小端转换
+ *          大小端转换:
  *      本地存储于字符串的区别  发送字符串，不需要考虑字节顺序
  */
 
@@ -31,8 +32,34 @@ namespace NumberConvertBit
         static void Main(string[] args)
         {
             Program program = new Program();
-            program.JudgeSystem();
 
+            //program.JudgeSystem();
+            //program.TestGetBytes();
+            //program.TestGetNumber();
+            program.TestTostring();
+            //// 将本地的int数值
+            //int cc = 1;
+            //Console.WriteLine(IPAddress.HostToNetworkOrder(cc));
+            Console.Read();
+        }
+
+        /// <summary>
+        /// 判断系统的大端小端
+        /// </summary>
+        private void JudgeSystem()
+        {
+            bool result = BitConverter.IsLittleEndian;
+            if (result)
+                Console.WriteLine("小端系统");
+            else
+                Console.WriteLine("大端系统");
+        }
+        /// <summary>
+        /// 测试各类数据转换成Byte数组
+        /// </summary>
+
+        private void TestGetBytes()
+        {
             Console.WriteLine("-------short------");
             short s = -11111; // 原码 1010 1011 0110 0111 补码 1101 0100 1001 1001 ,补码16进制表示 0xD499 ，也是内存中的存储值
             byte[] bytes1 = BitConverter.GetBytes(s);
@@ -200,7 +227,7 @@ namespace NumberConvertBit
 
 
             Console.WriteLine("------double   正数-----");
-            double doubleplus = 15.63;
+            double doubleplus = 15.63; // 0x402F428F5C28F5C3
             byte[] doubleplusBytes = BitConverter.GetBytes(doubleplus);
             for (int i = 0; i < doubleplusBytes.Length; i++)
             {
@@ -215,7 +242,7 @@ namespace NumberConvertBit
                 }
             }
             Console.WriteLine("-----double 负数-----");
-            doubleplus = -15.63;
+            doubleplus = -15.63;// 0xC02F428F5C28F5C3
             doubleplusBytes = BitConverter.GetBytes(doubleplus);
             for (int i = 0; i < doubleplusBytes.Length; i++)
             {
@@ -230,68 +257,59 @@ namespace NumberConvertBit
                 }
             }
 
-
-            long longtype = BitConverter.DoubleToInt64Bits(doubleplus);
+            // 将Double转换成有符号的Int数
+            Console.WriteLine("-----DoubleToInt64Bits 正数-----");
+            long longtype = BitConverter.DoubleToInt64Bits(1);// double 1 的二进制表示 0 011 1111 1111 0000000....16进制表示 0x3FF0000...
+                                                              // 将double的码直接作为 int 的补码
+                                                              // 获得 int 的原码 = 0x3FF0000... = (2^62-1)-（2^52-1）=2^62 - 2^52 = 4607182418800017408
+            Console.WriteLine("{0:X}", longtype);
             Console.WriteLine(longtype);
-            //// 将本地的int数值
-            //int cc = 1;
-            //Console.WriteLine(IPAddress.HostToNetworkOrder(cc));
 
+            Console.WriteLine("-----DoubleToInt64Bits 负数-----");
+            longtype = BitConverter.DoubleToInt64Bits(-1);// double -1 的二进制表示 1 011 1111 1111 0000000....16进制表示 0xBFF0000...
+                                                          // 将double的码直接作为 int 的补码
+                                                          // 获得 int 的原码 =  1100 0000 0001 0000.....   16进制表示 0xC010000...  = - (2^62)+（2^52）=2^62 - 2^52 = -4616189618054758400
+            Console.WriteLine("{0:X}", longtype);
+            Console.WriteLine(longtype);
+        }
 
-            //int value = 9;
-            //byte[] bytes = BitConverter.GetBytes('中');  // 小端Unicode形式，若需要写入文件需要添加 小端头 0xFF 0xFE
-            //Console.WriteLine(bytes.Length);
-            //foreach (byte b in bytes)
-            //{
-            //    Console.WriteLine(b);
-            //}
-            //Console.WriteLine(BitConverter.ToString(bytes));
+        // 测试从byte数组获得数字， 这里以 int 为例
+        private void TestGetNumber()
+        {
+            // 正数
+            byte[] bytes = new byte[]{1,2,3,4};//二进制表示 00000001 00000010 00000011 00000100 
+            //在小端系统中，低字节存储在低地址 高字节存储在高地址
+            //1 是 bytes数组的低地址 --> 转换到int数字的低地址中
+            //4 是 bytes数组的高地址 --> 转换到int数字的高地址中
+            // int 的内存表示就应该是(补码) 00000100000000110000001000000001 =原码 =67305985  16进制表示0x4030201 
+            int value = BitConverter.ToInt32(bytes,0);
+            Console.WriteLine("Value: {0}, 16进制： {1:X}",value,value);
+            bytes = new byte[] { 1, 2, 3, 132 };//二进制表示 00000001 00000010 00000011 10000100 
+            //在小端系统中，低字节存储在低地址 高字节存储在高地址
+            //1   是 bytes数组的低地址 --> 转换到int数字的低地址中
+            //132 是 bytes数组的高地址 --> 转换到int数字的高地址中
+            //int 的内存表示就应该是(补码) 1000 0100 0000 0011 0000 0010 0000 0001 16进制表示0x84030201 > 原码 1111 1011 1111 1100 1111 1101 1111 1111 = -2080177663  
+            value = BitConverter.ToInt32(bytes, 0);
+            Console.WriteLine("Value: {0}, 16进制： {1:X}", value, value);
 
-            //Console.WriteLine("-------------");
-            //byte[] intBytes = BitConverter.GetBytes(1);
-            //foreach (var intByte in intBytes)
-            //{
-            //    Console.WriteLine(intByte);
-            //}
-            //Console.WriteLine("-------------");
-            //byte[] bbb = Encoding.Unicode.GetPreamble();
-            //foreach (byte b in bbb)
-            //{
-            //    Console.WriteLine(b);
-            //}
-            //byte[] bytes2 = Encoding.Unicode.GetBytes("中");
-            //Console.WriteLine(bytes2.Length);
-            //foreach (byte b in bytes2)
-            //{
-            //    Console.WriteLine(b);
-            //}
-            //using (FileStream fs = File.Create(@"D:\Desktop\t.txt"))
-            //{
-            //    fs.Write(bbb, 0, bbb.Length);
-            //    Console.WriteLine(fs.Position);
+            // 别的类型也一样
+        }
 
-            //    fs.Write(bytes, 0, bytes.Length);
-            //    Console.WriteLine(fs.Position);
-            //}
-            //Console.WriteLine("-------------");
-            //byte[] str1bytes = Encoding.ASCII.GetBytes("1");
-            //foreach (var str1Byte in str1bytes)
-            //{
-            //    Console.WriteLine(str1Byte);
-            //}
-            Console.Read();
+        private void TestTostring()
+        {
+            byte[] bytes = new byte[] { 1, 2, 3, 4 };
+            string str = BitConverter.ToString(bytes);  // 将byte的值，转换成 16进制 0x01 0x02 0x03 0x04 ,并按顺序写出
+            Console.WriteLine(str);
         }
 
         /// <summary>
-        /// 判断系统的大端小端
+        /// 网络应用测试
         /// </summary>
-        private void JudgeSystem()
+        private void NetWorkApply()
         {
-            bool result = BitConverter.IsLittleEndian;
-            if (result)
-                Console.WriteLine("小端系统");
-            else
-                Console.WriteLine("大端系统");
+            // 第一种 Array.Resay
+            // 第二种IPAddress.HostToNetworkOrder()
+            // 第三种IPAddress.NetworkToHostOrder()
         }
     }
 }
