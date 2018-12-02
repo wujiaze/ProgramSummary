@@ -80,6 +80,21 @@ namespace PointLearn
     {
         static void Main(string[] args)
         {
+            byte xx = 10;
+            byte yy = xx;
+            unsafe
+            {
+                byte* p1 = &xx;
+                byte* p2 = &yy;
+                Console.WriteLine((int)p1 + "  " + (int)p2);
+            }
+            xx = 20;
+            unsafe
+            {
+                byte* p1 = &xx;
+                Console.WriteLine((int)p1);
+            }
+            
             Console.WriteLine("--------指针转换-------");
             PointConvert();
             Console.WriteLine("--------指针寻址的值--------");
@@ -120,9 +135,9 @@ namespace PointLearn
                 int* pInt = &temp;
                 byte* pByte = (byte*)&temp;
                 Console.WriteLine(*pInt);
-                Console.WriteLine("{0:X}",*pByte);  // pInt 和 pByte 对应的地址是同一个，但是类型不同，所以 pInt 对应4个地址合成的数据，pByte 对应1个地址的数据，再根据小端系统，那么就是 10(16进制)
+                Console.WriteLine("{0:X}", *pByte);  // pInt 和 pByte 对应的地址是同一个，但是类型不同，所以 pInt 对应4个地址合成的数据，pByte 对应1个地址的数据，再根据小端系统，那么就是 10(16进制)
 
-                
+
             }
         }
 
