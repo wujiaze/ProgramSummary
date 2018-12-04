@@ -50,7 +50,7 @@ public class QRcreateUI : MonoBehaviour
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             // 接受服务器数据 todo
-            QRTool.SendQrToServer(@"D:\编程软件安装包\系统镜像文件\OS\OS X 10.11.1(15B42).cdr");
+            //QRTool.SendQrToServer(@"D:\编程软件安装包\系统镜像文件\OS\OS X 10.11.1(15B42).cdr");
             stopwatch.Stop();
             print(stopwatch.ElapsedMilliseconds);
         }
