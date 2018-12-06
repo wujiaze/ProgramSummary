@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class DatasEND : MonoBehaviour {
+public class DataSend : MonoBehaviour {
 
     /// <summary>
     /// 将本地文件中的音乐，视频上传

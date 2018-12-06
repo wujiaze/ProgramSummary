@@ -61,7 +61,7 @@ public class QRTool
 
 
     /// <summary>
-    /// 创建二维码,添加小图标,可以不添加
+    /// 创建二维码,添加小图标,也可以不添加
     /// </summary>
     /// <param name="content">二维码的内容</param>
     /// <param name="qrWidth">二维码的宽度</param>
@@ -85,11 +85,11 @@ public class QRTool
             {
                 if (bitMatrix[x, y])
                 {
-                    tex.SetPixel(x, y, Color.black);   // true 的地方 不能用白色
+                    tex.SetPixel(x, qrHeight-y, Color.black);   // true 的地方 不能用白色
                 }
                 else
                 {
-                    tex.SetPixel(x, y, Color.white);    // false 的位置 不能用黑色
+                    tex.SetPixel(x, qrHeight-y, Color.white);    // false 的位置 不能用黑色
                 }
             }
         }
@@ -172,4 +172,6 @@ public class QRTool
         tex.LoadImage(bytes);
         return tex;
     }
+
+
 }
