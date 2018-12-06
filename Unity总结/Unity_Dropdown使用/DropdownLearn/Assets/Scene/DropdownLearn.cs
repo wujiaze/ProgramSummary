@@ -27,10 +27,12 @@
  *          1、纯文本及颜色修改(itemText 和 captionText)
  *          2、文本+图片
  *          3、修改 Dropdown 的大小
+ *          4、选择同一个选项也调用回调函数onValueChanged
  *      五、注意点
  *          当下拉框超过 Canvas的区域时，下拉列表的显示会自动反向，这是UI内部的设置
  */
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,12 +43,13 @@ public class DropdownLearn : MonoBehaviour
     private Dropdown _dropdownDefault;
     private Dropdown _dropdownImage;
     private Dropdown _dropdownSize;
-
+    private DropdownExpand _dropdownExpand;
     private void Awake()
     {
         _dropdownDefault = transform.Find("Dropdown默认的下拉组件").GetComponent<Dropdown>();
         _dropdownImage = transform.Find("Dropdown添加了Image").GetComponent<Dropdown>();
         _dropdownSize = transform.Find("DropdownSize").GetComponent<Dropdown>();
+        _dropdownExpand = transform.Find("DropdownExpand").GetComponent<DropdownExpand>();
     }
 
     void Start ()
@@ -54,6 +57,7 @@ public class DropdownLearn : MonoBehaviour
         DropdownApply1();
         DropdownApply2();
         DropdownApply3();
+        DropdownApply4();
     }
 
     private List<Dropdown.OptionData> _list1;
@@ -133,7 +137,7 @@ public class DropdownLearn : MonoBehaviour
         // 第二步 设置Item模板框的大小
         RectTransform itemRect = rect.Find("Template/Viewport/Content/Item").GetComponent<RectTransform>();
         itemRect.sizeDelta = new Vector2(0, 100);
-        // 第三步 给模板的Content添加 VerticalLayoutGroup
+        // 第三步 给 Template 的Content添加 VerticalLayoutGroup
         RectTransform content = rect.Find("Template/Viewport/Content").GetComponent<RectTransform>();
         VerticalLayoutGroup layout = content.gameObject.AddComponent<VerticalLayoutGroup>();
         // 因为是竖直，所以这么设置
@@ -141,13 +145,34 @@ public class DropdownLearn : MonoBehaviour
         layout.childForceExpandWidth = true;
         layout.childControlHeight = false;
         layout.childForceExpandHeight = false;
-        // 第四步 给模板的Content添加 ContentSizeFitter
+        // 第四步 给 Template 的Content添加 ContentSizeFitter
         ContentSizeFitter fitter = content.gameObject.AddComponent<ContentSizeFitter>();
         fitter.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
         fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+        // 第五步(可选)，将下拉列表尽可能的多显示出来
+        content.sizeDelta = itemRect.sizeDelta; //content 需要和 item 一样大小
+        RectTransform templeta = rect.Find("Template").GetComponent<RectTransform>();
+        templeta.sizeDelta = itemRect.sizeDelta * 3.5F;// templeta设置为三个半Item的大小，就显示三个半Item的大小
     }
 
+    /// <summary>
+    /// 实现多次点击相同选项也有回调
+    /// </summary>
+    private void DropdownApply4()
+    {
+        // 要实现此功能，需要扩展 Dropdown 类
+        // 详情查看 DropdownExpand 和 DropdownExpandEditor
+        // 这里是使用方法
+        // 创建一个Dropdown，然后移除Dropdown组件，添加自己的 DropdownExpand组件
+        // 将 Template CaptionText CaptionImage(可选) ItemText ItemImage(可选) Options(测试可选) 都添加上，其他的用法和dropdown一致
 
+        // 将 m_AlwaysCallback 设置为 true ，即可实现同选项回调
+        _dropdownExpand.m_AlwaysCallback = true;
+        _dropdownExpand.onValueChanged.AddListener(AlwaysCallBack);
+    }
 
-
+    private void AlwaysCallBack(int arg0)
+    {
+        print(arg0);
+    }
 }
