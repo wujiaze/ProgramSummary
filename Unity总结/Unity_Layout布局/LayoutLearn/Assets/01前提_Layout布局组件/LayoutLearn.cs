@@ -1,6 +1,10 @@
 ﻿/*
- *   Auto Layout 自动布局组件  参考地址：1、官网      2、http://www.manew.com/thread-95758-1-1.html
- *
+ *   Auto Layout 自动布局组件  参考地址：1、官网api
+*                                      2、http://www.manew.com/thread-95758-1-1.html
+*                                      3、https://docs.unity3d.com/2017.3/Documentation/Manual/UIAutoLayout.html
+*                                      4、https://docs.unity3d.com/2017.3/Documentation/Manual/comp-UIAutoLayout.html
+*                                      5、https://docs.unity3d.com/2017.3/Documentation/ScriptReference/UI.LayoutRebuilder.html
+ *                                     6、https://docs.unity3d.com/2017.3/Documentation/ScriptReference/UI.LayoutUtility.html
  *      子物体自身：Layout Element
  *      父物体用来控制子物体：Horizontal Layout Group 、Vertical Layout Group 、Grid Layout Group
  *      父物体自身：Content Size Fitter、Aspect Ratio Fitter
@@ -16,6 +20,7 @@
  *                                                  PreferredSize = 图片原始大小/Text会根据字体自动设置大小(内置 Content Size Fitter来获取值)
  *                                                  Flexible Size = 不勾选
  *                 当无法满足我们的需求时，可以添加一个Layout Element，用来覆盖原来的值(勾选表示覆盖)
+ *              注意:隐藏 Layout Element，可以通过UI元素的属性 min prefer flexible 获取
  *              3、API：
  *                      minHeight、minWidth、preferredHeight、preferredWidth、flexibleHeight、flexibleWidth
  *                      ignoreLayout：忽略本组件
@@ -37,7 +42,7 @@
  *                          所以要满足 Layout Element 的分配顺序：Vertical Layout Group需要勾选 childControlHeight 和 childForceExpandHeight，另外两个如要保持分辨率，建议勾选 childControlWidth，这个看情况 childForceExpandWidth
  *                                                              Horizontal Layout Group需要勾选 childControlWidth 和 childForceExpandWidth，另外两个如要保持分辨率，建议勾选 childControlHeight，这个看情况 childForceExpandHeight
  *                 3、总结：分配子物体Size的顺序：MinSize、PreferredSize(childControl)、 Flexible Size(childForceExpand)
-
+ *                 4、可以通过布局控制器的属性获取父物体的 min prefer flexible
  *      三、父物体的布局控制器(二):Grid Layout Group
  *                不同于上面的控制器：Grid Layout Group 布局控制器不采用Layout Element分配规则
  *                1、API:
@@ -79,6 +84,15 @@
  *                              第三类：Fit In Parent、Envelope Parent，这两个需要添加在子物体中
  *                              Fit In Parent：子物体根据aspectRatio，自动适配父物体的Size，不超出父物体，来设置自身的Size
  *                              Envelope Parent：子物体根据aspectRatio，自动适配父物体的Size，完全覆盖父物体，来设置自身的Size
+ *     六、LayoutRebuilder
+ *          1、定义：刷新Layout，有时候对布局做了改变，需要立即更新Layout
+ *          2、API
+ *              LayoutRebuilder.MarkLayoutForRebuild(parent); // 标记 parent 父物体，在这一帧的末尾更新
+ *              LayoutRebuilder.ForceRebuildLayoutImmediate(parent); // 调用这个方法时，立即更新 parent 父物体，有些耗性能
+ *    七、LayoutUtility
+ *          1、定义：获取 RectTransform 的 minSize preferSize flexibleSize
+ *          一般我们可以使用Image、Text、Group的属性来获取 minSize preferSize flexibleSize，也可以采用这个API来获取 minSize preferSize flexibleSize
+ *      
  */
 using UnityEngine;
 using UnityEngine.UI;
@@ -123,6 +137,6 @@ public class LayoutLearn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }
