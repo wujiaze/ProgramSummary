@@ -56,7 +56,7 @@ public class RectSize : MonoBehaviour
         //print("x " + _rectLearn.rect.x + "  y " + _rectLearn.rect.y + "x,y " + _rectLearn.rect.position);
         //print("width " + _rectLearn.rect.width + "  height " + _rectLearn.rect.height + "size " + _rectLearn.rect.size);
         /* 表示方法2 */
-        //print("xmin " + _rectLearn.rect.xMin + " ymin " + _rectLearn.rect.yMin + " xmax " + _rectLearn.rect.xMax + " yMax " + _rectLearn.rect.yMax);
+        print("xmin " + _rectLearn.rect.xMin + " ymin " + _rectLearn.rect.yMin + " xmax " + _rectLearn.rect.xMax + " yMax " + _rectLearn.rect.yMax);
         //print("min " + _rectLearn.rect.min + " max " + _rectLearn.rect.max);
         // center
         //print(_rectLearn.rect.center);
