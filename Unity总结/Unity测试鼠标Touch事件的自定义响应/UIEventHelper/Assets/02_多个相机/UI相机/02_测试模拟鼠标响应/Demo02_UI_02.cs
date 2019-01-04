@@ -33,12 +33,12 @@ public class Demo02_UI_02 : MonoBehaviour
 
     void Start()
     {
-        //EventTriggerListener.Bind(ui1.gameObject).onClick = OnClick;
-        //EventTriggerListener.Bind(ui2.gameObject).onClick = OnClick;
-        //EventTriggerListener.Bind(cube1.gameObject).onClick = OnClick;
-        //EventTriggerListener.Bind(cube2.gameObject).onClick = OnClick;
-        //EventTriggerListener.Bind(spt1.gameObject).onClick = OnClick;
-        //EventTriggerListener.Bind(spt2.gameObject).onClick = OnClick;
+        //EventTriggerListener.Bind(ui1.Go).onClick = OnClick;
+        //EventTriggerListener.Bind(ui2.Go).onClick = OnClick;
+        //EventTriggerListener.Bind(cube1.Go).onClick = OnClick;
+        //EventTriggerListener.Bind(cube2.Go).onClick = OnClick;
+        //EventTriggerListener.Bind(spt1.Go).onClick = OnClick;
+        //EventTriggerListener.Bind(spt2.Go).onClick = OnClick;
 
 
         EventTriggerListener.BindPass(ui1.gameObject).onClick = OnClick;
@@ -52,9 +52,9 @@ public class Demo02_UI_02 : MonoBehaviour
     private void OnClick(EventTriggerListener.PointerDataStruct obj)
     {
         if (Application.isEditor)
-            print("点击了： " + obj.gameObject.name);
+            print("点击了： " + obj.Go.name);
         else
-            Debug.LogError("点击了： " + obj.gameObject.name);
+            Debug.LogError("点击了： " + obj.Go.name);
     }
     private void PosCallBack(string arg0)
     {

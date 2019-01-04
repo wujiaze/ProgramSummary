@@ -21,7 +21,7 @@ public class TestDemo : MonoBehaviour
 
     private void OnEnter(EventTriggerListener.PointerDataStruct obj)
     {
-        print("Enter" + obj.gameObject.name);
+        print("Enter" + obj.Go.name);
     }
 
     // Update is called once per frame

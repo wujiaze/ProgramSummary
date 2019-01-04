@@ -29,35 +29,35 @@ public class Demo3 : MonoBehaviour
         posY.onEndEdit.AddListener(PosCallBack);
 
         //// 绑定自定义委托
-        //EventTriggerListener.Bind(ui1.gameObject).onClick = OnClickHandler;
-        //EventTriggerListener.Bind(ui2.gameObject).onClick = OnClickHandler;
-        //EventTriggerListener.Bind(cube.gameObject).onClick = OnClickHandler;
-        //EventTriggerListener.Bind(sprite.gameObject).onClick = OnClickHandler;
+        //EventTriggerListener.Bind(ui1.Go).onClick = OnClickHandler;
+        //EventTriggerListener.Bind(ui2.Go).onClick = OnClickHandler;
+        //EventTriggerListener.Bind(cube.Go).onClick = OnClickHandler;
+        //EventTriggerListener.Bind(sprite.Go).onClick = OnClickHandler;
         //// 拖动
-        //EventTriggerListener.Bind(ui1.gameObject).onDrag = OnDragHandler;
-        //EventTriggerListener.Bind(ui2.gameObject).onDrag = OnDragHandler;
-        //EventTriggerListener.Bind(cube.gameObject).onDrag = OnDragHandler;
-        //EventTriggerListener.Bind(sprite.gameObject).onDrag = OnDragHandler;
+        //EventTriggerListener.Bind(ui1.Go).onDrag = OnDragHandler;
+        //EventTriggerListener.Bind(ui2.Go).onDrag = OnDragHandler;
+        //EventTriggerListener.Bind(cube.Go).onDrag = OnDragHandler;
+        //EventTriggerListener.Bind(sprite.Go).onDrag = OnDragHandler;
         //// 进入
-        //EventTriggerListener.Bind(ui1.gameObject).onEnter = OnEnterHandler;
-        //EventTriggerListener.Bind(ui2.gameObject).onEnter = OnEnterHandler;
-        //EventTriggerListener.Bind(cube.gameObject).onEnter = OnEnterHandler;
-        //EventTriggerListener.Bind(sprite.gameObject).onEnter = OnEnterHandler;
+        //EventTriggerListener.Bind(ui1.Go).onEnter = OnEnterHandler;
+        //EventTriggerListener.Bind(ui2.Go).onEnter = OnEnterHandler;
+        //EventTriggerListener.Bind(cube.Go).onEnter = OnEnterHandler;
+        //EventTriggerListener.Bind(sprite.Go).onEnter = OnEnterHandler;
         //// 离开
-        //EventTriggerListener.Bind(ui1.gameObject).onExit = OnExitHandler;
-        //EventTriggerListener.Bind(ui2.gameObject).onExit = OnExitHandler;
-        //EventTriggerListener.Bind(cube.gameObject).onExit = OnExitHandler;
-        //EventTriggerListener.Bind(sprite.gameObject).onExit = OnExitHandler;
+        //EventTriggerListener.Bind(ui1.Go).onExit = OnExitHandler;
+        //EventTriggerListener.Bind(ui2.Go).onExit = OnExitHandler;
+        //EventTriggerListener.Bind(cube.Go).onExit = OnExitHandler;
+        //EventTriggerListener.Bind(sprite.Go).onExit = OnExitHandler;
         //// 按下
-        //EventTriggerListener.Bind(ui1.gameObject).onDown = OnDownHandler;
-        //EventTriggerListener.Bind(ui2.gameObject).onDown = OnDownHandler;
-        //EventTriggerListener.Bind(cube.gameObject).onDown = OnDownHandler;
-        //EventTriggerListener.Bind(sprite.gameObject).onDown = OnDownHandler;
+        //EventTriggerListener.Bind(ui1.Go).onDown = OnDownHandler;
+        //EventTriggerListener.Bind(ui2.Go).onDown = OnDownHandler;
+        //EventTriggerListener.Bind(cube.Go).onDown = OnDownHandler;
+        //EventTriggerListener.Bind(sprite.Go).onDown = OnDownHandler;
         //// 弹起
-        //EventTriggerListener.Bind(ui1.gameObject).onUp = OnUpHandler;
-        //EventTriggerListener.Bind(ui2.gameObject).onUp = OnUpHandler;
-        //EventTriggerListener.Bind(cube.gameObject).onUp = OnUpHandler;
-        //EventTriggerListener.Bind(sprite.gameObject).onUp = OnUpHandler;
+        //EventTriggerListener.Bind(ui1.Go).onUp = OnUpHandler;
+        //EventTriggerListener.Bind(ui2.Go).onUp = OnUpHandler;
+        //EventTriggerListener.Bind(cube.Go).onUp = OnUpHandler;
+        //EventTriggerListener.Bind(sprite.Go).onUp = OnUpHandler;
         //// 绑定自定义委托
         // 点击
         EventTriggerListener.BindPass(ui1.gameObject).onClick = OnClickHandler;
@@ -99,32 +99,32 @@ public class Demo3 : MonoBehaviour
 
     private void OnClickHandler(EventTriggerListener.PointerDataStruct obj)
     {
-        Debug.LogError("点击了： " + obj.gameObject.name);
-        Debug.LogError("点击的位置： " + obj.eventData.position);
+        Debug.LogError("点击了： " + obj.Go.name);
+        Debug.LogError("点击的位置： " + obj.PointerEventData.position);
     }
     private void OnDragHandler(EventTriggerListener.PointerDataStruct obj)
     {
-        print(obj.eventData.position);
-        if (obj.IsUI)
-            obj.rectTransform.anchoredPosition = obj.eventData.position;
+        print(obj.PointerEventData.position);
+        if (obj.IsUi)
+            obj.RectTransform.anchoredPosition = obj.PointerEventData.position;
         else
-            obj.Move3D2DonDistance(Camera.main);// 屏幕的 X,Y 坐标，以及物体相对相机的距离
+            obj.Move3D2DonDistance(Camera.main,false);// 屏幕的 X,Y 坐标，以及物体相对相机的距离
     }
     private void OnEnterHandler(EventTriggerListener.PointerDataStruct obj)
     {
-        Debug.Log("进入了： " + obj.gameObject.name);
+        Debug.Log("进入了： " + obj.Go.name);
     }
     private void OnExitHandler(EventTriggerListener.PointerDataStruct obj)
     {
-        Debug.Log("离开了： " + obj.gameObject.name);
+        Debug.Log("离开了： " + obj.Go.name);
     }
     private void OnDownHandler(EventTriggerListener.PointerDataStruct obj)
     {
-        Debug.Log("按下了： " + obj.gameObject.name);
+        Debug.Log("按下了： " + obj.Go.name);
     }
     private void OnUpHandler(EventTriggerListener.PointerDataStruct obj)
     {
-        Debug.Log("弹起了： " + obj.gameObject.name);
+        Debug.Log("弹起了： " + obj.Go.name);
     }
 
 

@@ -1,16 +1,18 @@
 ﻿/*
  *      EventTriggerListener  工具类使用方法：
  *      适用环境：
- *               1、UGUI   -- UI事件           条件：Canvas组件上添加 GraphicRaycaster 组件
- *               2、2D/3D  -- 射线检测封装事件  条件：1、渲染3D/2D 的Camera,添加 PhysicsRaycaster/PhysicsRaycaster2D 组件，需要去掉UI选项
- *                                                  2、3D/2D 对象，需要添加碰撞体/触发器
+ *               1、UGUI   -- UI事件           条件：Canvas组件上添加 GraphicRaycaster 组件(一般默认是自带的)
+ *               2、2D/3D  -- 射线检测封装事件  条件：1、渲染3D/2D 的Camera，可以同时是渲染Ui的相机
+ *                                                  2、相机可以同时添加 PhysicsRaycaster/PhysicsRaycaster2D 组件，需要去掉UI选项
+ *                                                  3、需要触发的3D/2D 对象，需要添加碰撞体/触发器
  *               3、不管是UI 还是 2D/3D 都需要添加 EventSystem 对象
  *      使用方法：
- *            
  *            需要触发 鼠标/touch 事件的对象，使用Bind方法，然后调用触发事件，添加自定义委托
- *
+ *            添加了本组件，EventSystem 会调用回调事件
+ *            在OnEnable中绑定，在OnDisable中解绑
+ *            
  *      提示：eventData 的坐标，都是相对于Unity屏幕的左下角，即Unity坐标系坐标
- *
+ *          
  *      注意点：
  *            一：单一相机：
  *            1.1、若需要优先响应UI事件： 将Canvas对象的Canvas组件的OrderInLayer设置为1(大于所有3D/2D)
@@ -41,8 +43,8 @@
  *               2.2.4 响应顺序
  *                   深度相机 Depth值大，所以先响应，其余的根据距离摄像机的远近来判断
  *               2.2.5 穿透触发效果：和单一相机一样的用法，一样的效果
- *         三、若图像有透明度，在透明度的地方也会触发事件响应
- *            
+ *
+ *            三、若图像有透明度，在透明度的地方也会触发事件响应
  */
 using System;
 using System.Collections.Generic;
@@ -53,53 +55,54 @@ public class EventTriggerListener : EventTrigger
 {
     public struct PointerDataStruct
     {
-        private GameObject gameobject;
-        private PointerEventData eventdata;
-        private bool isUI;
-        private RectTransform recttransform;
-        public GameObject gameObject { get { return gameobject; } }
-        public PointerEventData eventData { get { return eventdata; } }
-        public bool IsUI { get { return isUI; } }
-        public RectTransform rectTransform { get { return recttransform; } }
+        public GameObject Go { get; private set; }
+        public BaseEventData BaseEventData { get; private set; }
+        public PointerEventData PointerEventData { get; private set; }
+        public bool IsUi { get; private set; }
+        public RectTransform RectTransform { get; private set; }
 
-        public PointerDataStruct(GameObject gameobject, PointerEventData eventdata)
+        public PointerDataStruct(GameObject gameobject, BaseEventData eventdata):this()
         {
-            this.gameobject = gameobject;
-            this.eventdata = eventdata;
-            this.recttransform = gameobject.GetComponent<RectTransform>();
-            this.isUI = this.recttransform != null ? true : false;
+            Go = gameobject;
+            if (eventdata is PointerEventData)
+            {
+                PointerEventData = eventdata as PointerEventData;
+                BaseEventData = null;
+            }
+            else
+            {
+                PointerEventData = null;
+                BaseEventData = eventdata;
+            }
+
+            // 推断
+            RectTransform = gameobject.GetComponent<RectTransform>();
+            IsUi = RectTransform != null;
         }
 
         /// <summary>
-        /// 在当前的距离上移动3D/2D模型
+        /// 在某一距离上移动3D/2D模型，一般用于OnDrag事件
         /// </summary>
         /// <param name="camera">渲染3D/2D的相机</param>
-        /// <param name="distance">设定的距离，默认为当前距离</param>
-        public void Move3D2DonDistance(Camera camera, float distance = -1f)
+        /// <param name="isFix">是否为固定距离，false表示当前的距离，true需要自己设定距离</param>
+        /// <param name="distance">设定的距离</param>
+        public void Move3D2DonDistance(Camera camera, bool isFix = false, float distance = 0)
         {
-            if (Mathf.Approximately(distance, -1f))
-                distance = Mathf.Abs(camera.transform.position.z - gameObject.transform.position.z);
-            Vector3 pos = camera.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, distance));
-            gameObject.transform.position = pos;
+            if (PointerEventData != null)
+            {
+                float zoffest = 0;
+                if (isFix && distance > 0)
+                    zoffest = camera.transform.position.z + distance;
+                if (!isFix)
+                    zoffest = Go.transform.position.z;
+                Vector3 currentPos = camera.ScreenToWorldPoint(new Vector3(PointerEventData.position.x, PointerEventData.position.y, zoffest));
+                Vector3 lastPos = camera.ScreenToWorldPoint(new Vector3(PointerEventData.position.x - PointerEventData.delta.x, PointerEventData.position.y - PointerEventData.delta.y, zoffest));
+                Vector3 deltaPos = currentPos - lastPos;
+                Go.transform.position += deltaPos;
+                Go.transform.position = new Vector3(Go.transform.position.x, Go.transform.position.y, zoffest);
+            }
         }
-    }
-    public struct BaseDataStruct
-    {
-        private GameObject gameobject;
-        private BaseEventData eventdata;
-        private bool isUI;
-        private RectTransform recttransform;
-        public GameObject gameObject { get { return gameobject; } }
-        public BaseEventData eventData { get { return eventdata; } }
-        public bool IsUI { get { return isUI; } }
-        public RectTransform rectTransform { get { return recttransform; } }
-        public BaseDataStruct(GameObject gameobject, BaseEventData eventdata)
-        {
-            this.gameobject = gameobject;
-            this.eventdata = eventdata;
-            this.recttransform = gameobject.GetComponent<RectTransform>();
-            this.isUI = this.recttransform != null ? true : false;
-        }
+
     }
 
     public Action<PointerDataStruct> onClick;
@@ -108,11 +111,10 @@ public class EventTriggerListener : EventTrigger
     public Action<PointerDataStruct> onDown;
     public Action<PointerDataStruct> onUp;
     public Action<PointerDataStruct> onDrag;
+    public Action<PointerDataStruct> onSelect;
+    public Action<PointerDataStruct> onUpdateSelect;
 
-    public Action<BaseDataStruct> onSelect;
-    public Action<BaseDataStruct> onUpdateSelect;
-
-    private bool isPass;
+    public bool IsPass;
 
     /// <summary>
     /// 给游戏对象添上 “监听器”
@@ -124,7 +126,7 @@ public class EventTriggerListener : EventTrigger
         EventTriggerListener triggerListener = go.GetComponent<EventTriggerListener>();
         if (triggerListener == null)
             triggerListener = go.AddComponent<EventTriggerListener>();
-        triggerListener.isPass = false;
+        triggerListener.IsPass = false;
         return triggerListener;
     }
     /// <summary>
@@ -135,66 +137,47 @@ public class EventTriggerListener : EventTrigger
     public static EventTriggerListener BindPass(GameObject go)
     {
         EventTriggerListener triggerListener = Bind(go);
-        triggerListener.isPass = true;
+        triggerListener.IsPass = true;
         return triggerListener;
     }
 
-    /// <summary>
-    /// 穿透方法
-    /// </summary>
-    public void PassEvent<T>(PointerEventData eventData, ExecuteEvents.EventFunction<T> function) where T : IEventSystemHandler
-    {
-        List<RaycastResult> results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventData, results);
-        GameObject currentGo = eventData.pointerCurrentRaycast.gameObject;
-        for (int i = 0; i < results.Count; i++)
-        {
-            if (EventCache.Instance.ResponseGoList.Count == results.Count)
-                break;
-            if (EventCache.Instance.ResponseGoList.Contains(results[i].gameObject))
-                continue;
-            EventCache.Instance.ResponseGoList.Add(results[i].gameObject);
-            if (currentGo != results[i].gameObject)
-                ExecuteEvents.Execute(results[i].gameObject, eventData, function);
-        }
-        if (currentGo!=null && this.name == currentGo.name)
-            EventCache.Instance.ResponseGoList.Clear();
-    }
+
 
 
     // 点击事件
     public override void OnPointerClick(PointerEventData eventData)
     {
-        DoPointerHandle(onClick, eventData);
-        if (isPass)
+        if (IsPass)
             PassEvent(eventData, ExecuteEvents.pointerClickHandler);
+        else
+            DoHandle(onClick, eventData);
     }
     // 进入事件
     public override void OnPointerEnter(PointerEventData eventData)
     {
-        DoPointerHandle(onEnter, eventData);
-        if (isPass)
+        DoHandle(onEnter, eventData);
+        if (IsPass)
             PassEvent(eventData, ExecuteEvents.pointerEnterHandler);
     }
     // 离开事件
     public override void OnPointerExit(PointerEventData eventData)
     {
-        DoPointerHandle(onExit, eventData);
-        if (isPass)
+        DoHandle(onExit, eventData);
+        if (IsPass)
             PassEvent(eventData, ExecuteEvents.pointerExitHandler);
     }
     // 按下事件
     public override void OnPointerDown(PointerEventData eventData)
     {
-        DoPointerHandle(onDown, eventData);
-        if (isPass)
+        DoHandle(onDown, eventData);
+        if (IsPass)
             PassEvent(eventData, ExecuteEvents.pointerDownHandler);
     }
     // 弹起事件
     public override void OnPointerUp(PointerEventData eventData)
     {
-        DoPointerHandle(onUp, eventData);
-        if (isPass)
+        DoHandle(onUp, eventData);
+        if (IsPass)
             PassEvent(eventData, ExecuteEvents.pointerUpHandler);
     }
 
@@ -206,75 +189,49 @@ public class EventTriggerListener : EventTrigger
     /// <param name="eventData"></param>
     public override void OnDrag(PointerEventData eventData)
     {
-        DoPointerHandle(onDrag, eventData);
-        if (isPass)
+        DoHandle(onDrag, eventData);
+        if (IsPass)
             PassEvent(eventData, ExecuteEvents.dragHandler);
     }
 
     // 选择事件
     public override void OnSelect(BaseEventData eventData)
     {
-        DoBaseHandle(onSelect, eventData);
-       
+        DoHandle(onSelect, eventData);
     }
 
-    // 更新选泽事件
+    // 更新选择事件
     public override void OnUpdateSelected(BaseEventData eventData)
     {
-        DoBaseHandle(onUpdateSelect, eventData);
+        DoHandle(onUpdateSelect, eventData);
     }
 
 
     /* 辅助方法 */
-    private void DoPointerHandle(Action<PointerDataStruct> onAction, PointerEventData eventData)
+    /// <summary>
+    /// 一般响应
+    /// </summary>
+    /// <param name="onAction"></param>
+    /// <param name="eventData"></param>
+    private void DoHandle(Action<PointerDataStruct> onAction, BaseEventData eventData)
     {
         if (onAction == null)
             return;
         PointerDataStruct temp = new PointerDataStruct(gameObject, eventData);
         onAction(temp);
     }
-    private void DoBaseHandle(Action<BaseDataStruct> onAction, BaseEventData eventData)
+    /// <summary>
+    /// 穿透方法
+    /// </summary>
+    public void PassEvent<T>(PointerEventData eventData, ExecuteEvents.EventFunction<T> function) where T : IEventSystemHandler
     {
-        if (onAction == null)
-            return;
-        BaseDataStruct temp = new BaseDataStruct(gameObject, eventData);
-        onAction(temp);
-    }
-
-}
-public class EventCache
-{
-    private static EventCache _instance;
-    private static readonly object _lockobj;
-
-    public List<GameObject> ResponseGoList;
-    static EventCache()
-    {
-        _lockobj = new object();
-    }
-
-    private EventCache()
-    {
-        ResponseGoList = new List<GameObject>();
-    }
-
-    public static EventCache Instance
-    {
-        get
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+        for (int i = 0; i < results.Count; i++)
         {
-            if (_instance == null)
-            {
-                lock (_lockobj)
-                {
-                    if (_instance == null)
-                    {
-                        _instance = new EventCache();
-                    }
-                }
-            }
-            return _instance;
+            results[i].gameObject.GetComponent<EventTriggerListener>().IsPass = false; // 防止进入死循环
+            ExecuteEvents.Execute(results[i].gameObject, eventData, function); // 这个方法，就会调用相应的 回调事件
+            results[i].gameObject.GetComponent<EventTriggerListener>().IsPass = true; // 调用完毕，回复原来的状态
         }
     }
-
-    
 }
