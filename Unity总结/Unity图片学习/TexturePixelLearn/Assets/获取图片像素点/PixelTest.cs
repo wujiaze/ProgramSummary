@@ -39,7 +39,7 @@ public class PixelTest : MonoBehaviour {
         Debug.Log(T2d.height);
 
         // 获取图片在当前屏幕的坐标
-        List<Vector2> worldPoslist = TexMap2Screen.MapTex2Screen(T2d, gapdistance);
+        List<Vector2> worldPoslist = TexMap2Screen.MapTex2Screen(T2d, Vector2.zero, gapdistance);
         // 将这个位置赋给Target，然后让对象想这个位置移动
         // 这里直接让对做dotween
         for (int i = 0; i < worldPoslist.Count; i++)
