@@ -25,13 +25,13 @@
  *                      Vertical Overflow  纵向是溢出                             见Text4
  *
  *          二、使用 Best Fit
- *                  Horizontal Warp     当横向是换行时，矩形框 横向 改变大小 会   调整字体的大小，使字体不会自动换行，使其全部处于矩形中
+ *                  Horizontal Warp     当横向是换行时，矩形框 横向 改变大小 会   调整字体的大小，字体不会自动换行，使其全部处于矩形中
  *                                      
- *                  Horizontal Overflow 当横向是溢出时，矩形框 横向 改变大小 不会 调整字体的大小，使字体不会自动换行
+ *                  Horizontal Overflow 当横向是溢出时，矩形框 横向 改变大小 不会 调整字体的大小，字体不会自动换行
  *
- *                  Vertical Truncate   当纵向是截断时，矩形框 纵向 改变大小 会   调整字体的大小，使字体不会自动换列，使其全部处于矩形中    
+ *                  Vertical Truncate   当纵向是截断时，矩形框 纵向 改变大小 会   调整字体的大小，字体不会自动换列，使其全部处于矩形中    
  *                                      
- *                  Vertical Overflow   当纵向是溢出时，矩形框 纵向 改变大小 不会 调整字体的大小，使字体不会自动换行
+ *                  Vertical Overflow   当纵向是溢出时，矩形框 纵向 改变大小 不会 调整字体的大小，字体不会自动换行
  *
  *                  Horizontal Warp
  *                          Vertical Truncate                                   见Text5
@@ -54,7 +54,9 @@
  *
  *         重要提示： 1、对比  ContenSizeFitter 和   Best Fit 发现
  *                      Best Fit：固定的大小，改变字体适应
- *                      ContenSizeFitter：固定的内容，改变矩形来适应字体
+ *                                缺点：无法根据具体的内容，运行时调整字体的大小，使用自己的Tool 配合 BestFit 完成，内容适配矩形框     具体见 file://本工程--Tool--TxtTool
+ *                      ContenSizeFitter：固定的内容，预先设定的字体(可以由多种) ，改变矩形来适应字体              矩形框适配内容
+ *                                        
  *                   2、当 Font Size 固定 ，Horizontal Warp 时
  *                         当文字内容中的任何地方添加了任意个 " " 后，整体的文字内容超过了矩形的宽度，就会根据空格自动换行，而不是添加任意个空格
  *                         原因：选择了 Horizontal Warp，当行的长度超过了矩形的宽度，那么就会换行

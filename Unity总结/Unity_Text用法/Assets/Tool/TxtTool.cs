@@ -7,33 +7,34 @@ public static class TxtTool
     /// Text 组件 采用 BestFit ，且 Horizontal Overflow 采用 Warp
     /// </summary>
     /// <param name="text"></param>
-    /// <param name="rowMax"></param>
-    public static void TextBestFit(this Text text, int rowMax)
+    /// <param name="rowNum"></param>
+    public static void TextBestFit(this Text text, int rowNum)
     {
         char[] words = text.text.ToCharArray();
-        //正则
-        Regex isChinese = new Regex("^[\u4E00-\u9FA5]+$");
+        //正则 ：判断单个字符是否是中文
+        Regex chineseRegex = new Regex("^[\u4E00-\u9FA5]+$");
         int count = 0;
-        string res = string.Empty;
+        string resultStr = string.Empty;
         for (int i = 0; i < words.Length; i++)
         {
             string str = words[i].ToString();
-            if (isChinese.IsMatch(str))//是中文，算两个字
+            if (chineseRegex.IsMatch(str))  
             {
-                count += 2;
+                count += 2; //是中文，占两个字符
             }
             else
             {
                 count += 1;
             }
-            res += str;
-            if (count > rowMax && i != words.Length - 1)
+           
+            if (count > rowNum)
             {
-                res += "\n";
+                resultStr += "\n";
                 count = 0;
             }
+            resultStr += str;
         }
-        text.text = res;
+        text.text = resultStr;
     }
 
 }
