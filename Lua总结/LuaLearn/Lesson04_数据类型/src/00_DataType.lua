@@ -1,8 +1,8 @@
 ---
 --- Lua 的数据类型
 ---     1、nil      空类型
----     2、string   字符串类型
----     3、number   数值类型
+---     2、number   数值类型
+---     3、string   字符串类型
 ---     4、boolean  布尔类型
 ---     5、table    表类型
 ---     6、function 函数类型
