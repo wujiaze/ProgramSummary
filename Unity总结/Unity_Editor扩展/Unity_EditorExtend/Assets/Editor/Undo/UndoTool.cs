@@ -20,7 +20,7 @@
  *          MoveGameObjectToScene           todo 
  *          PerformRedo                     todo 
  *          PerformUndo                     todo 
- *          RecordObject                    记录对象当前状态，之后改变的状态可以撤销，对 1、改变父物体 2、添加组件 3、对象销毁 无效 
+ *          RecordObject                    记录对象当前状态，之后改变的状态可以撤销，不适用： 1、改变父物体 2、添加组件 3、对象销毁 
  *          RecordObjects                   todo 
  *          RegisterCompleteObjectUndo      todo 
  *          RegisterCreatedObjectUndo       todo 
@@ -34,7 +34,7 @@ using UnityEngine;
 using UnityEditor;                           
 public class UndoTool
 {
-    [MenuItem("UnDoMenu/DoDelete")]
+    [MenuItem("UnDoMenu/DoDelete _%u")]
     private static void UnDoDelete()// 采用本方法进行删除对象，可以撤销
     {
         foreach (GameObject gameObject in Selection.gameObjects)

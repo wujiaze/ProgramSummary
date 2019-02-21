@@ -29,7 +29,7 @@ public class MenuCommandTool
     [MenuItem("CONTEXT/MyScripts/MyItem")]
     private static void UpdateSelfScripts(MenuCommand cmd)
     {
-        ContextMenuTool box = cmd.context as ContextMenuTool;
+        MyContextMenuTool box = cmd.context as MyContextMenuTool;
         if (box == null)
         {
             Debug.LogError("MyScripts null");
