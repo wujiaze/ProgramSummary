@@ -1,33 +1,64 @@
 ﻿/*
  *    高层API :封装好的，适用于普遍需求
- *          UnityWebRequest
- *          UnityWebRequestTexture
- *          UnityWebRequestAssetBundle
+ *          UnityWebRequest                     对应低层API的 Buffer
+ *                  
+ *          UnityWebRequestTexture              对应低层API的 Texture
  *
- *          UnityWebRequestMultimedia
- *          UnityWebRequestAsyncOperation
+ *          UnityWebRequestAssetBundle          对应低层API的 AssetsBundle
+ *
+ *          UnityWebRequestMultimedia           对应低层API的 AudioClip 
+ *
+ *      特别：
+ *          UnityWebRequestAsyncOperation       是一个异步操作对象 ，由 UnityWebRequest.SendWebRequest() 创建
+ *              属性
+ *                  webRequest                  创建自身的 UnityWebRequest
+ *
+ *             父类静态属性
+ *                  isDone                      判断异步操作是否完成
+ *                  priority                    异步操作的优先级
+ *                  progress                    异步操作的进度
+ *                  completed                   异步操作完成后的回调
  */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class HApi_Learn : MonoBehaviour
 {
+    string _url = "D:/Desktop/1.txt";
+    private string texPath = @"D:\Desktop\0.jpg";
+    private string audioclippath = @"D:\Desktop\4.ogg";
+    public Text txt;
+    public RawImage rimg;
+    public Image img;
+    public AudioSource source;
+
+    private void Start()
+    {
+        StartCoroutine(DownLoadTxt(_url));
+        StartCoroutine(DownLoadTexture(texPath));
+        StartCoroutine(TestAudioAsync(audioclippath));
+    }
+
     #region 下载
     // 字符串/二进制数据
-    private IEnumerator DownLoadTxt()
+    private IEnumerator DownLoadTxt(string url)
     {
-        UnityWebRequest request = UnityWebRequest.Get("");// 文字、二进制数据
+        UnityWebRequest request = UnityWebRequest.Get(url);// 文字、二进制数据
         yield return request.SendWebRequest();
         if (request.isNetworkError || request.isHttpError)
         {
             Debug.Log(request.error);
+            Debug.Log("certificateHandler " + request.certificateHandler);
         }
         else
         {
+            Debug.Log("certificateHandler "+request.certificateHandler);
             /* 一般 */
             // 字符串
             string txt1 = DownloadHandlerBuffer.GetContent(request);
@@ -37,13 +68,15 @@ public class HApi_Learn : MonoBehaviour
             DownloadHandlerBuffer buffer = (DownloadHandlerBuffer)request.downloadHandler;
             string txt2 = buffer.text;
             byte[] bytes2 = buffer.data;
+            txt.text = txt1;
         }
+        request.Dispose();
     }
 
     //图片纹理
-    private IEnumerator DownLoadTexture()
+    private IEnumerator DownLoadTexture(string url)
     {
-        UnityWebRequest request = UnityWebRequestTexture.GetTexture("");// 图片
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);// 图片
         yield return request.SendWebRequest();
         if (request.isNetworkError || request.isHttpError)
         {
@@ -55,14 +88,18 @@ public class HApi_Learn : MonoBehaviour
             //DownloadHandlerTexture texHandler = (DownloadHandlerTexture)request2.downloadHandler;
             //Texture myTexture = texHandler.texture;
             // 方法2
-            Texture myTexture = DownloadHandlerTexture.GetContent(request);
+            Texture2D myTexture = DownloadHandlerTexture.GetContent(request);
+            rimg.texture = myTexture;
+            Sprite sprite = Sprite.Create(myTexture, new Rect(0, 0, myTexture.width, myTexture.height), new Vector2(0.5f, 0.5f), 100);
+            img.sprite = sprite;
         }
+        request.Dispose();
     }
 
     // AssetsBundle
-    private IEnumerator DownLoadAb()
+    private IEnumerator DownLoadAb(string url)
     {
-        UnityWebRequest request3 = UnityWebRequestAssetBundle.GetAssetBundle("");// AB
+        UnityWebRequest request3 = UnityWebRequestAssetBundle.GetAssetBundle(url);// AB
         yield return request3.SendWebRequest();
         if (request3.isNetworkError || request3.isHttpError)
         {
@@ -76,12 +113,13 @@ public class HApi_Learn : MonoBehaviour
             // 方法2
             AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(request3);
         }
+        request3.Dispose();
     }
 
     //Audio
-    private IEnumerator DownAudio()
+    private IEnumerator DownAudio(string url)
     {
-        UnityWebRequest request = UnityWebRequestMultimedia.GetAudioClip("url", AudioType.MPEG); // MP3类型? url 和类型一定匹配？
+        UnityWebRequest request = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG); // MP3类型? url 和类型一定匹配？
         yield return request.SendWebRequest();
         if (request.isNetworkError || request.isHttpError)
         {
@@ -90,8 +128,25 @@ public class HApi_Learn : MonoBehaviour
         else
         {
             AudioClip clip = DownloadHandlerAudioClip.GetContent(request);
+
         }
-        request.Dispose(); // todo 每个都要吗
+        request.Dispose(); 
+    }
+    // Async
+    private IEnumerator TestAudioAsync(string url)
+    {
+        UnityWebRequest request = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.OGGVORBIS);
+        UnityWebRequestAsyncOperation operation = request.SendWebRequest();
+        operation.completed += SSS;
+        yield return operation;
+    }
+
+    private void SSS(AsyncOperation operation)
+    {
+        UnityWebRequestAsyncOperation op = (UnityWebRequestAsyncOperation) operation;
+        AudioClip clip = DownloadHandlerAudioClip.GetContent(op.webRequest);
+        source.clip = clip;
+        source.Play();
     }
 
     #endregion
@@ -99,17 +154,17 @@ public class HApi_Learn : MonoBehaviour
     #region 上传
 
     // 上传格式化数据(表单数据)
-    private IEnumerator UpLoadData()
+    private IEnumerator UpLoadData(string url)
     {
-        // 新
-        List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
-        formData.Add(new MultipartFormDataSection("field1=foo&field2=bar"));
-        formData.Add(new MultipartFormFileSection("my ", "file.txt"));
-
         //// 旧
         ////WWWForm formData = new WWWForm();
         ////formData.AddField("myfield","mydata");
-        UnityWebRequest request4 = UnityWebRequest.Post("", formData);
+        // 新
+        List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
+        formData.Add(new MultipartFormDataSection("field1=foo&field2=bar"));
+        formData.Add(new MultipartFormFileSection("my", "myfile.txt"));
+
+        UnityWebRequest request4 = UnityWebRequest.Post(url, formData);
         yield return request4.SendWebRequest();
         if (request4.isNetworkError || request4.isHttpError)
         {
