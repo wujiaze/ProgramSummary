@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: "Assets/WWW/\u8DEF\u5F84\u7684\u603B\u7ED3/PathScene.unity"
+    path: "Assets/\u8DEF\u5F84\u7684\u603B\u7ED3_www_file_UnityWebRequest/PathScene.unity"
     guid: 11e2f3391da87a946b49c22259ec6cfb
   m_configObjects: {}

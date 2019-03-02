@@ -33,9 +33,7 @@
  *          (string data, string fileName)                                   默认是 null           默认是UTF8          默认是 file.txt
  */
 using UnityEngine;
-using UnityEngine.Networking;
-
-public class Post_IMultipartFormSection_Learn : MonoBehaviour
+public class IMultipartFormSection_Learn : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
