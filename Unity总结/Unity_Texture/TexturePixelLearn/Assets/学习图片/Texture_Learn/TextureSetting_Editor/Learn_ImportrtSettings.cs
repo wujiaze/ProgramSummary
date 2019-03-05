@@ -48,7 +48,7 @@
  *                      mipmapFadeDistanceEnd           mipmap完全隐藏的 miplevel ，默认3
  *                      aniso                           各向异性等级，默认是1
  *                      mipMapBias                      mipmap的偏差，正偏差模糊，负偏差锐化，默认-100，即无效，（面板上不显示）
- *              wrapMode                                循环模式，默认Repeat  详见 file://学习图片/Texture_Learn/WrapMode/WrapModeLearn
+ *              wrapMode                                循环模式，默认Repeat  详见 todo
  *              filterMode                              过滤模式，默认Billinear
  *                      1、Point                        纹理像素块状处理
  *                      2、Bilinear                     纹理像素平均采样
@@ -85,7 +85,7 @@
  *                      mipmapFadeDistanceEnd           mipmap完全隐藏的 miplevel 
  *                      aniso                           各向异性等级，默认是1
  *                      mipMapBias                      mipmap的偏差，正偏差模糊，负偏差锐化，默认-100，即无效，（面板上不显示）
- *              wrapMode                                循环模式，默认Repeat  详见 file://学习图片/Texture_Learn/WrapMode/WrapModeLearn
+ *              wrapMode                                循环模式，默认Repeat  详见 todo
  *              filterMode                              过滤模式，默认 Trilinear
  *                      1、Point                        纹理像素块状处理
  *                      2、Bilinear                     纹理像素平均采样
