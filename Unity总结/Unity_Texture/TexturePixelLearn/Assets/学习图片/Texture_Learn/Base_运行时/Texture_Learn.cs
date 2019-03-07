@@ -27,10 +27,10 @@
  *          isReadable              纹理是否可读可写，对于导入的图片需要手动设置，对于代码动态创建的图片始终是可读可写的
  *          graphicsFormat          图像格式
  *          imageContentsHash       纹理的哈希值(散列值)，用于判断纹理是否发生了更新
- *          updateCount             纹理更新的次数
+ *          updateCount             纹理更新的次数，意思是将纹理的数据上传给GPU的次数
  *          mipMapBias              纹理MipMap偏差,正偏差使图像模糊，负偏差使图像尖锐耗性能，取值范围 -1 ~ 1 ，默认是0
  *                                  当符合anisoLevel的使用条件时(看向图片的角度小)，可以用anisoLevel代替mipMapBias，性能好一点
- *          wrapMode                纹理循环模式，该值返回 wrapModeU 的值        详见 file://学习图片/Demo/WrapMode的Scene和WrapModeLearn脚本
+ *          wrapMode                纹理循环模式，该值返回 wrapModeU 的值        详见 file://学习图片/Texture_Learn/WrapMode/WrapModeLearn
  *                                  Tex2D设置该值相当于同时设置相同值的 wrapModeU 和  wrapModeV
  *          wrapModeU               纹理在U坐标上的循环模式，U坐标---横坐标
  *          wrapModeV               纹理在V坐标上的循环模式，V坐标---纵坐标

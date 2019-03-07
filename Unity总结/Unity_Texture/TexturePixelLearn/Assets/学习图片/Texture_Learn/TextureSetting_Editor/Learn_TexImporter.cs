@@ -20,8 +20,7 @@
  *              spritePackingTag                        精灵图集的Tag，默认 ""
  *
  *
- * todo 未知
- *spritesheet                             包含这张Sprite的图集
- *qualifiesForSpritePacking               默认false，将压缩后的Texture打包成Sprite，true表示将未压缩的texture打包成Sprite
- *ReadTextureImportInstructions
+ *spritesheet                         todo    包含这张Sprite的图集
+ *qualifiesForSpritePacking            todo   默认false，将压缩后的Texture打包成Sprite，true表示将未压缩的texture打包成Sprite
+ *ReadTextureImportInstructions         todo
  */
