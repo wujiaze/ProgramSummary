@@ -265,6 +265,5 @@
  *          ApplyTextureType                            用指定的类型参数来设置TextureImporterSettings 
  *          CopyTo                                      复制
  *
- *todo 未知：
- *spriteTessellationDetail
+ *spriteTessellationDetail  todo 未知：
  */
