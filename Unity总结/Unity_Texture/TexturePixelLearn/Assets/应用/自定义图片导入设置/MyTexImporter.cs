@@ -86,18 +86,21 @@ public class MyTexEditorWindow : EditorWindow
             case TextureImporterType.SingleChannel:
                 break;
         }
-        if (GUILayout.Button("设置好图片属性，大量导入或修改前，请点击这里！"))
+        if (GUILayout.Button("设置图片属性后、导入或修改前，请点击本按钮！"))
         {
             IsApply = true;
+            Debug.Log("已应用设置");
         }
-        if (GUILayout.Button("大量导入或修改后，请点击这里！"))
+        if (GUILayout.Button("还原设置： 请点击本按钮 或者 直接关闭面板 ！"))
         {
             IsApply = false;
+            Debug.Log("已还原设置");
         }
     }
     private void OnDestroy()
     {
         IsApply = false;
+        Debug.Log("已还原设置");
     }
 }
 public class MyTexImporter : AssetPostprocessor
